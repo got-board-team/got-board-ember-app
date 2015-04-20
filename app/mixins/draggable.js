@@ -1,41 +1,40 @@
 import Ember from 'ember';
 
 export default Ember.Mixin.create({
-  attributeBindings: 'draggable',
-  draggable: 'true',
-  dragStart: function() {
-    var element = this;
+  attributeBindings: ['draggable'],
+  draggable: true,
+
+  start: function() {
     window.dragging = true;
-    d3.select(element).attr('pointer-events', 'none');
+    d3.select(this).attr('pointer-events', 'none');
   },
-  dragmove: function() {
-    var ev = d3.event;
-    var x = parseFloat(d3.select(this).attr("x")) || 0;
-    var y = parseFloat(d3.select(this).attr("y") || 0);
-    x += ev.dx;
-    y += ev.dy;
-    d3.select(this).attr("x", x).attr("y", y);
+  move: function() {
+    var event = d3.event;
+    var d = d3.select(this);
+    var updatePosition = function (d, position, diff) {
+      var currentPos = parseFloat(d.attr(position)) || 0;
+      d.attr(position, currentPos + diff);
+    };
+    updatePosition(d, "x", event.dx);
+    updatePosition(d, "y", event.dy);
   },
-  dragEnd: function() {
+  end: function() {
     window.dragging = false;
-    d3.select(this).attr( 'pointer-events', null);
-    d3.selectAll(".territory").classed("drop-actived", false);
-    window.currentTerritory.parentNode.appendChild(this);
-    console.log(this.getAttribute("data-type") +
-                ' was dropped into ' +
-                window.currentTerritory.parentNode.id +
-                ' at x: ' + this.getAttribute("x") +
-                ' , y: ' + this.getAttribute("y")
-               );
+    d3.select(this).attr('pointer-events', null);
+    var event = document.createEvent('SVGEvents');
+    event.initEvent('svgdrop', true, true);
+    event.dragged = this;
+    if (window.droppable) {
+      window.droppable.dispatchEvent(event);
+    }
   },
-  initializeDrag: function (attribute) {
-    var elementId = "#" + this.get('elementId');
 
-    window.drag = d3.behavior.drag()
-      .on("dragstart", this.dragStart)
-      .on("drag", this.dragmove)
-      .on("dragend", this.dragEnd);
+  initialize: function () {
+    var dragBehavior = d3.behavior.drag()
+      .on("dragstart", this.start)
+      .on("drag", this.move)
+      .on("dragend", this.end);
 
-    d3.select(elementId).call(drag);
-  }.on("init"),
+    d3.select(this.element).call(dragBehavior);
+  }.on("didInsertElement"),
 });
