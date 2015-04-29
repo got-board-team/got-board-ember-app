@@ -13,15 +13,16 @@ body {
   fill: none;
   stroke: none;
   pointer-events: all;
-}
-.territory:hover {
-  fill: orange;
-  opacity: 0.7;
-}
 
-.territory.drop-actived {
-  fill: white;
-  opacity: 0.7;
+  &:hover {
+    fill: orange;
+    opacity: 0.7;
+  }
+
+  &.drop-actived {
+    fill: white;
+    opacity: 0.7;
+  }
 }
 
 .unit {
@@ -37,4 +38,29 @@ body {
 
 .stark-knight{
   background-image: url("images/units/stark-knight.png");
+}
+
+.player-dock {
+  display: block;
+  min-height: 17em;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.cards {
+  padding: 0;
+  margin: 0;
+
+  li {
+    width: 9em;
+    float: left;
+    margin: .5em;
+  }
+
+  img {
+    max-width: 100%;
+  }
 }
