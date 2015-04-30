@@ -1,27 +1,57 @@
-<ul class="cards">
-  <li>
-    <img src="assets/images/cards/stark-back.png">
-  </li>
-  <li>
-    <img src="assets/images/cards/stark-0-catelyn.png">
-  </li>
-  <li>
-    <img src="assets/images/cards/stark-1-blackfish.png">
-  </li>
-  <li>
-    <img src="assets/images/cards/stark-1-rodrick.png">
-  </li>
-  <li>
-    <img src="assets/images/cards/stark-2-greatjon.png">
-  </li>
-  <li>
-    <img src="assets/images/cards/stark-2-roose.png">
-  </li>
-  <li>
-    <img src="assets/images/cards/stark-3-robb.png">
-  </li>
-  <li>
-    <img src="assets/images/cards/stark-4-eddard.png">
-  </li>
-</ul>
-{{yield}}
+{{#if isExpanded}}
+  <section class="player-dock">
+    <ul class="stark orders">
+      <li class="taken"><img src="assets/images/tokens/consolidate.png"></li>
+      <li><img src="assets/images/tokens/consolidate.png"></li>
+      <li><img src="assets/images/tokens/consolidatep.png"></li>
+      <li><img src="assets/images/tokens/defend.png"></li>
+      <li><img src="assets/images/tokens/defend.png"></li>
+      <li><img src="assets/images/tokens/defendp.png"></li>
+      <li><img src="assets/images/tokens/raid.png"></li>
+      <li><img src="assets/images/tokens/raid.png"></li>
+      <li><img src="assets/images/tokens/raidp.png"></li>
+      <li><img src="assets/images/tokens/support.png"></li>
+      <li><img src="assets/images/tokens/support.png"></li>
+      <li><img src="assets/images/tokens/supportp.png"></li>
+      <li><img src="assets/images/tokens/march.png"></li>
+      <li><img src="assets/images/tokens/marchm.png"></li>
+      <li><img src="assets/images/tokens/marchp.png"></li>
+    </ul>
+
+    <ul class="cards">
+      <li>
+        <img src="assets/images/cards/stark-0-catelyn.png">
+      </li>
+      <li>
+        <img src="assets/images/cards/stark-1-blackfish.png">
+      </li>
+      <li>
+        <img src="assets/images/cards/stark-1-rodrick.png">
+      </li>
+      <li>
+        <img src="assets/images/cards/stark-2-greatjon.png">
+      </li>
+      <li>
+        <img src="assets/images/cards/stark-2-roose.png">
+      </li>
+      <li>
+        <img src="assets/images/cards/stark-3-robb.png">
+      </li>
+      <li>
+        <img src="assets/images/cards/stark-4-eddard.png">
+      </li>
+    </ul>
+
+    <p class="stark power-tokens">5</p>
+
+    <ul>
+      <li>
+        <img src="assets/images/cards/stark-4-eddard.png">
+      </li>
+    </ul>
+    {{yield}}
+    <button {{action 'contract'}}>Hide Player Dock</button>
+  </section>
+{{else}}
+  <button {{action 'expand'}}>Show Player Dock</button>
+{{/if}}

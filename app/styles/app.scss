@@ -3,6 +3,10 @@ body {
   margin: 0;
 }
 
+button {
+  cursor: pointer;
+}
+
 #board {
   width: 1980px;
   height: 2975px;
@@ -41,18 +45,25 @@ body {
 }
 
 .player-dock {
+  overflow: auto;
   display: block;
   min-height: 17em;
   width: 100%;
-  position: absolute;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.toggable-panel {
+  position: fixed;
   left: 0;
   top: 0;
-  background: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  width: 100%;
 }
 
 .cards {
   padding: 0;
   margin: 0;
+  float: left;
 
   li {
     width: 9em;
@@ -62,5 +73,47 @@ body {
 
   img {
     max-width: 100%;
+  }
+}
+
+.orders {
+  padding: 0;
+  margin: 0;
+  overflow: auto;
+  width: 10em;
+  float: left;
+
+  li {
+    margin: 3%;
+    width: 27%;
+    background-repeat: no-repeat;
+    float: left;
+    height: 3em;
+    list-style-type: none;
+    cursor: pointer;
+
+    &.taken {
+      img {
+        opacity: .2;
+      }
+    }
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.power-tokens {
+  color: #fff;
+  float: left;
+  margin: 0;
+  line-height: 2em;
+  font-size: 1.6em;
+  padding: 0 1.3em 0 .5em;
+
+  &.stark {
+    background: url("images/tokens/starkpower.png") no-repeat right center;
+    background-size: 1em;
   }
 }
