@@ -31,6 +31,22 @@ Unit.reopenClass({
       positionX: 675,
       positionY: 648,
     },
+    {
+      id: 333,
+      territory: 22,
+      type: "ship",
+      house: "stark",
+      positionX: 380,
+      positionY: 475,
+    },
+    {
+      id: 444,
+      territory: 11,
+      type: "siege",
+      house: "stark",
+      positionX: 806,
+      positionY: 568,
+    },
   ]
 });
 export default Unit;
