@@ -31,10 +31,19 @@ body {
   position: relative;
 }
 
-.stark-footmen{
+.stark-footman{
   background-image: url("images/units/stark-footman.png");
 }
 
 .stark-knight{
   background-image: url("images/units/stark-knight.png");
 }
+
+.greyjoy-footman{
+  background-image: url("images/units/greyjoy-footman.png");
+}
+
+.greyjoy-knight{
+  background-image: url("images/units/greyjoy-knight.png");
+}
+

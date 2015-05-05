@@ -5,7 +5,6 @@ export default Ember.Route.extend({
     return this.store.find("match", params.id);
   },
   serialize: function(model) {
-    console.log(model);
     return { id: model.get("id") };
   }
 });

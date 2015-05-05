@@ -18,13 +18,13 @@ export default Ember.Component.extend(Draggable, {
   .property('unit.type'),
 
   x: function() {
-    return this.unit.get('positionX');
+    return this.unit.get('x');
   }
-  .property('unit.positionX'),
+  .property('unit.x'),
 
   y: function() {
-    return this.unit.get('positionY');
+    return this.unit.get('y');
   }
-  .property('unit.positionY'),
+  .property('unit.y'),
 
 });

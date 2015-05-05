@@ -8,8 +8,10 @@ let Unit = DS.Model.extend({
   house: attr(),
   positionX: attr("number"),
   positionY: attr("number"),
+  x: attr("number"),
+  y: attr("number"),
   position: function() {
-    return { x: this.positionX, y: this.positionY };
+    return { x: this.x, y: this.y };
   },
 });
 
