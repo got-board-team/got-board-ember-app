@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import Bindings from 'ember-pusher/bindings';
+import { Bindings } from 'ember-pusher/bindings';
 
 export default Ember.Controller.extend(Bindings, {
   logPusherEvents: true,
