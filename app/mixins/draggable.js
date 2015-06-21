@@ -7,6 +7,7 @@ export default Ember.Mixin.create({
   start: function() {
     window.dragging = true;
     d3.select(this).attr('pointer-events', 'none');
+    d3.select(this).classed('dragging', true);
   },
   move: function() {
     var event = d3.event;
@@ -27,6 +28,7 @@ export default Ember.Mixin.create({
     if (window.droppable) {
       window.droppable.dispatchEvent(event);
     }
+    d3.select(this).classed('dragging', false);
   },
 
   initialize: function () {

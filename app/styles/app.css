@@ -31,6 +31,14 @@ body {
   position: relative;
 }
 
+.piece {
+  transition: all 1s;
+}
+
+.dragging {
+  transition: none;
+}
+
 .stark-footman{
   background-image: url("images/units/stark-footman.png");
 }
@@ -46,4 +54,3 @@ body {
 .greyjoy-knight{
   background-image: url("images/units/greyjoy-knight.png");
 }
-
