@@ -13,6 +13,7 @@
     "ember-qunit-notifications": "0.0.7",
     "qunit": "~1.17.1",
     "d3": "~3.5.5",
-    "ember-pusher": "0.1.1"
+    "ember-pusher": "0.1.1",
+    "ember-json-api": "~0.5.0"
   }
 }
