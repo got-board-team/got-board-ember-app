@@ -18,40 +18,35 @@
       <li><img src="assets/images/tokens/marchp.png"></li>
     </ul>
 
-    <ul class="cards">
-      <li>
-        <img src="assets/images/cards/stark-0-catelyn.png">
-      </li>
-      <li>
-        <img src="assets/images/cards/stark-1-blackfish.png">
-      </li>
-      <li>
-        <img src="assets/images/cards/stark-1-rodrick.png">
-      </li>
-      <li>
-        <img src="assets/images/cards/stark-2-greatjon.png">
-      </li>
-      <li>
-        <img src="assets/images/cards/stark-2-roose.png">
-      </li>
-      <li>
-        <img src="assets/images/cards/stark-3-robb.png">
-      </li>
-      <li>
-        <img src="assets/images/cards/stark-4-eddard.png">
-      </li>
+    <ul class="power-tokens">
+      <li class="stark"></li>
+      <li class="stark"></li>
+      <li class="stark"></li>
+      <li class="stark"></li>
+      <li class="stark"></li>
     </ul>
 
-    <p class="stark power-tokens">5</p>
-
-    <ul>
-      <li>
-        <img src="assets/images/cards/stark-4-eddard.png">
-      </li>
+    <ul class="stark units">
+      <li class="footman"></li>
+      <li class="footman"></li>
+      <li class="footman"></li>
+      <li class="footman"></li>
+      <li class="footman"></li>
+      <li class="footman"></li>
+      <li class="knight"></li>
+      <li class="knight"></li>
+      <li class="knight"></li>
+      <li class="knight"></li>
+      <li class="knight"></li>
+      <li class="knight"></li>
+      <li class="siege"></li>
+      <li class="siege"></li>
+      <li class="siege"></li>
+      <li class="siege"></li>
     </ul>
     {{yield}}
-    <button {{action 'contract'}}>Hide Player Dock</button>
+    <button {{action 'contract'}} class="toggle-trigger on-right">&#10094;</button>
   </section>
 {{else}}
-  <button {{action 'expand'}}>Show Player Dock</button>
+  <button {{action 'expand'}} class="toggle-trigger on-left">&#10095;</button>
 {{/if}}
