@@ -38,18 +38,11 @@ export default Ember.Mixin.create({
     var element = self.element;
     d3.select(element).attr('pointer-events', null);
 
-    var event = document.createEvent('SVGEvents');
-    event.initEvent('svgdrop', true, true);
-    event.dragged = element;
-
-    var x = element.getAttribute("x");
-    var y = element.getAttribute("y");
-
-    var obj = self.draggedObject();
-    obj.setProperties({ x: x, y: y });
-    obj.save();
-
     if (window.droppable) {
+      var event = document.createEvent('SVGEvents');
+      event.initEvent('svgdrop', true, true);
+      event.draggedElement = element;
+      event.draggedObject = self.draggedObject();
       window.droppable.dispatchEvent(event);
     }
 
