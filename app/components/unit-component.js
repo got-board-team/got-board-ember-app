@@ -16,4 +16,8 @@ export default Ember.Component.extend(Draggable, {
     return this.unit.get('y');
   }
   .property('unit.y'),
+
+  draggedObject: function () {
+    return this.unit;
+  },
 });

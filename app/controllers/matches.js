@@ -8,8 +8,8 @@ export default Ember.Controller.extend(Bindings, {
   },
   actions: {
     move: function(data) {
-      this.store.find("unit", data.id).then(function (u) {
-        u.setProperties({ x: data.x, y: data.y });
+      this.store.find("unit", data.id).then(function (unit) {
+        unit.setProperties({ x: data.x, y: data.y });
       });
     },
   },

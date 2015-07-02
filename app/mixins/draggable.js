@@ -30,23 +30,38 @@ export default Ember.Mixin.create({
     updatePosition(d, "x", event.dx);
     updatePosition(d, "y", event.dy);
   },
-  end: function() {
+  draggedObject: function () {
+   return this;
+  },
+  end: function(self) {
     window.dragging = false;
-    d3.select(this).attr('pointer-events', null);
+    var element = self.element;
+    d3.select(element).attr('pointer-events', null);
+
     var event = document.createEvent('SVGEvents');
     event.initEvent('svgdrop', true, true);
-    event.dragged = this;
+    event.dragged = element;
+
+    var x = element.getAttribute("x");
+    var y = element.getAttribute("y");
+
+    var obj = self.draggedObject();
+    obj.setProperties({ x: x, y: y });
+    obj.save();
+
     if (window.droppable) {
       window.droppable.dispatchEvent(event);
     }
-    d3.select(this).classed('dragging', false);
+
+    d3.select(element).classed('dragging', false);
   },
 
   initialize: function () {
+    var self = this;
     var dragBehavior = d3.behavior.drag()
       .on("dragstart", this.start)
       .on("drag", this.drag)
-      .on("dragend", this.end);
+      .on("dragend", function () { self.end(self); });
 
     d3.select(this.element).call(dragBehavior);
   }.on("didInsertElement"),

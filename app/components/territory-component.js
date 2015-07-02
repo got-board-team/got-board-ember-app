@@ -18,7 +18,7 @@ export default Ember.Component.extend(Droppable, {
     d3.select(this.element).select(".territory").classed("drop-actived", false);
     var dragged = event.dragged;
     this.element.appendChild(event.dragged);
-    console.log(dragged.getAttribute("data-type") +
+    console.log(dragged +
                 ' was dropped into ' +
                 this.territory.get("slug") +
                 ' at x: ' + dragged.getAttribute("x") +
