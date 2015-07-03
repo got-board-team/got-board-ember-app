@@ -22,6 +22,8 @@ export default Ember.Component.extend(Droppable, {
     var obj = event.draggedObject;
 
     this.element.appendChild(draggedElement);
+    d3.select(draggedElement).remove();
+
     obj.setProperties({ territory: this.territory, x: x, y: y });
     obj.save();
 
