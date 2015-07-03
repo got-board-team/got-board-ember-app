@@ -6,13 +6,8 @@ let Unit = DS.Model.extend({
   territory: DS.belongsTo(),
   type: attr(),
   house: attr(),
-  positionX: attr("number"),
-  positionY: attr("number"),
   x: attr("number"),
   y: attr("number"),
-  position: function() {
-    return { x: this.x, y: this.y };
-  },
 });
 
 Unit.reopenClass({
