@@ -1,0 +1,52 @@
+{{#if isExpanded}}
+  <section class="player-dock">
+    <ul class="stark orders">
+      <li class="taken"><img src="assets/images/tokens/consolidate.png"></li>
+      <li><img src="assets/images/tokens/consolidate.png"></li>
+      <li><img src="assets/images/tokens/consolidatep.png"></li>
+      <li><img src="assets/images/tokens/defend.png"></li>
+      <li><img src="assets/images/tokens/defend.png"></li>
+      <li><img src="assets/images/tokens/defendp.png"></li>
+      <li><img src="assets/images/tokens/raid.png"></li>
+      <li><img src="assets/images/tokens/raid.png"></li>
+      <li><img src="assets/images/tokens/raidp.png"></li>
+      <li><img src="assets/images/tokens/support.png"></li>
+      <li><img src="assets/images/tokens/support.png"></li>
+      <li><img src="assets/images/tokens/supportp.png"></li>
+      <li><img src="assets/images/tokens/march.png"></li>
+      <li><img src="assets/images/tokens/marchm.png"></li>
+      <li><img src="assets/images/tokens/marchp.png"></li>
+    </ul>
+
+    <ul class="power-tokens">
+      <li class="stark"></li>
+      <li class="stark"></li>
+      <li class="stark"></li>
+      <li class="stark"></li>
+      <li class="stark"></li>
+    </ul>
+
+    <ul class="stark units">
+      <li class="footman"></li>
+      <li class="footman"></li>
+      <li class="footman"></li>
+      <li class="footman"></li>
+      <li class="footman"></li>
+      <li class="footman"></li>
+      <li class="knight"></li>
+      <li class="knight"></li>
+      <li class="knight"></li>
+      <li class="knight"></li>
+      <li class="knight"></li>
+      <li class="knight"></li>
+      <li class="siege"></li>
+      <li class="siege"></li>
+      <li class="siege"></li>
+      <li class="siege"></li>
+    </ul>
+    {{yield}}
+    <button {{action 'contract'}} class="toggle-trigger on-right">&#10094;</button>
+  </section>
+{{else}}
+  <button {{action 'expand'}} class="toggle-trigger on-left">&#10095;</button>
+{{/if}}

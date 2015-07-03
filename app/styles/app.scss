@@ -1,0 +1,182 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+#board {
+  width: 1980px;
+  height: 2975px;
+  background-image: url("images/board.jpg");
+}
+
+.territory {
+  fill: none;
+  stroke: none;
+  pointer-events: all;
+
+  &:hover {
+    fill: orange;
+    opacity: 0.7;
+  }
+
+  &.drop-actived {
+    fill: white;
+    opacity: 0.7;
+  }
+}
+
+.unit {
+  background-repeat: no-repeat;
+  height: 70px;
+  width: 70px;
+  position: relative;
+}
+
+.stark-footmen{
+  background-image: url("images/units/stark-footman.png");
+}
+
+.stark-knight{
+  background-image: url("images/units/stark-knight.png");
+}
+
+.player-dock {
+  background: rgba(0, 0, 0, 0.7);
+  display: block;
+  overflow: auto;
+  position: relative;
+  width: 11em;
+  height: 100%;
+}
+
+.toggable-panel {
+  position: fixed;
+  left: 0;
+  top: 0;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+
+  .toggle-trigger {
+    background: rgba(107, 107, 107, 1);
+    border: 0;
+    width: 3em;
+    position: absolute;
+    top: 40%;
+    height: 5em;
+
+    &.on-right {
+      right: 0;
+    }
+
+    &.on-left {
+      left: 0;
+    }
+  }
+}
+
+.cards {
+  padding: 0;
+  margin: 0;
+  float: left;
+
+  li {
+    list-style-type: none;
+    width: 9em;
+    float: left;
+    margin: .5em;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.orders {
+  padding: 0;
+  margin: 0;
+  overflow: auto;
+  width: 10em;
+  float: left;
+
+  li {
+    margin: 3%;
+    width: 27%;
+    background-repeat: no-repeat;
+    float: left;
+    height: 3em;
+    list-style-type: none;
+    cursor: pointer;
+
+    &.taken {
+      img {
+        opacity: .2;
+      }
+    }
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.power-tokens {
+  padding: 0;
+  margin: 0;
+  overflow: auto;
+  width: 10em;
+  float: left;
+
+  li {
+    margin: 3%;
+    width: 27%;
+    background-size: 2em;
+    background-repeat: no-repeat;
+    background-position: right center;
+    float: left;
+    height: 3em;
+    list-style-type: none;
+    cursor: pointer;
+  }
+
+  .stark {
+    background-image: url("images/tokens/starkpower.png");
+  }
+}
+
+.units {
+  padding: 0;
+  margin: 0;
+  overflow: auto;
+  width: 10em;
+  float: left;
+
+  li {
+    margin: 3%;
+    width: 27%;
+    background-size: 2em;
+    background-repeat: no-repeat;
+    float: left;
+    height: 3em;
+    list-style-type: none;
+    cursor: pointer;
+  }
+
+  &.stark {
+    .footman {
+      background-image: url("images/units/stark-footman.png");
+    }
+
+    .knight {
+      background-image: url("images/units/stark-knight.png");
+    }
+
+    .siege {
+      background-image: url("images/units/stark-siege.png");
+    }
+  }
+}
