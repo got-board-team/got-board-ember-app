@@ -19,9 +19,27 @@ body {
   fill: rgba(255, 255, 255, .5);
 }
 
-.unit {
+.piece {
+  position: relative;
+  background-repeat: no-repeat;
+  transition-property: x, y;
+  transition-duration: 1s;
+}
+
+.dragging {
+  transition: none;
+}
+
+/* Units */
+.footman {
   background-repeat: no-repeat;
   position: relative;
+}
+
+.knight {
+  background-repeat: no-repeat;
+  height: 75px;
+  width: 60px;
 }
 
 .unit:active {
@@ -34,13 +52,14 @@ body {
   cursor: -webkit-grab;
 }
 
-.stark-footmen{
+
+.stark .footman{
   background-image: url("images/units/stark-footman.png");
   width: 80px;
   height: 89px;
 }
 
-.stark-knight{
+.stark .knight{
   background-image: url("images/units/stark-knight.png");
   height: 93px;
   width: 80px;
@@ -176,4 +195,12 @@ body {
   background-image: url("images/units/tyrell-siege.png");
   width: 80px;
   height: 97px;
+}
+
+.greyjoy .footman{
+  background-image: url("images/units/greyjoy-footman.png");
+}
+
+.greyjoy .knight{
+  background-image: url("images/units/greyjoy-knight.png");
 }

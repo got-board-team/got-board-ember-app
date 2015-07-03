@@ -1,7 +1,8 @@
 import DS from 'ember-data';
 
 let Match = DS.Model.extend({
-  territories: DS.hasMany({ async: true }),
+  players: DS.hasMany({ async: true }),
+  board: DS.belongsTo("board"),
 });
 
 Match.reopenClass({

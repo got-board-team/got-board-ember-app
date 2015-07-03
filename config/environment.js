@@ -16,6 +16,11 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+      PUSHER_OPTS: {
+        key: 'cfdf3c0b0c4a559c3dfe',
+        connection: {},
+        logAllEvents: false
+      }
     }
   };
 
@@ -42,6 +47,14 @@ module.exports = function(environment) {
   if (environment === 'production') {
 
   }
+
+  ENV['contentSecurityPolicy'] = {
+    'default-src': "'none'",
+    'script-src': "'self' http://stats.pusher.com/",
+    'connect-src': "'self' ws://ws.pusherapp.com/ http://localhost:3000",
+    'img-src': "'self'",
+    'media-src': "'self'",
+  };
 
   return ENV;
 };

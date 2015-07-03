@@ -16,9 +16,16 @@ export default Ember.Component.extend(Droppable, {
   },
   svgdrop: function (event) {
     d3.select(this.element).select(".territory").classed("drop-actived", false);
-    var dragged = event.dragged;
-    this.element.appendChild(event.dragged);
-    console.log(dragged.getAttribute("data-type") +
+    var draggedElement = event.draggedElement;
+    var x = draggedElement.getAttribute("x");
+    var y = draggedElement.getAttribute("y");
+    var obj = event.draggedObject;
+
+    this.element.appendChild(draggedElement);
+    obj.setProperties({ territory: this.territory, x: x, y: y });
+    obj.save();
+
+    console.log(obj.get("type") +
                 ' was dropped into ' +
                 this.territory.get("slug") +
                 ' at x: ' + dragged.getAttribute("x") +
