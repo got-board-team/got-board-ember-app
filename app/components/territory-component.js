@@ -3,11 +3,9 @@ import Droppable from '../mixins/droppable';
 
 export default Ember.Component.extend(Droppable, {
   tagName: "g",
-  attributeBindings: ["data-slug"],
-  "data-slug": function() {
-    return this.territory.get("slug");
-  }.property('territory.slug'),
-
+  territory: Ember.computed("territory", function () {
+    return this.territory;
+  }),
   svgdragover: function () {
     d3.select(this.element).select(".territory").classed("drop-actived", true);
   },
@@ -22,16 +20,11 @@ export default Ember.Component.extend(Droppable, {
     var obj = event.draggedObject;
 
     this.element.appendChild(draggedElement);
-    d3.select(draggedElement).remove();
 
     obj.setProperties({ territory: this.territory, x: x, y: y });
     obj.save();
 
-    console.log(obj.get("type") +
-                ' was dropped into ' +
-                this.territory.get("slug") +
-                ' at x: ' + dragged.getAttribute("x") +
-                ' , y: ' + dragged.getAttribute("y")
-               );
+    console.log(obj.get("type") + ' was dropped into ' + this.territory.id +
+                ' at x: ' + obj.get("x") + ' , y: ' + obj.get("y"));
   },
 });

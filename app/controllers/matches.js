@@ -8,7 +8,9 @@ export default Ember.Controller.extend(Bindings, {
   },
   unitUpdate: function(data) {
     this.store.find("unit", data.id).then(function (unit) {
-      unit.setProperties({ x: data.x, y: data.y });
+      data.territory_id = data.territory;
+      delete data.territory;
+      unit.setProperties(data);
     });
   },
   actions: {
