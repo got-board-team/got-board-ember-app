@@ -1,5 +1,10 @@
 {{#if isExpanded}}
   <section class="player-dock">
+    <h1>House Of {{player.house}} {{units.length}} </h1>
+    <strong>Avaiable Units: {{units.length}}</strong>
+    {{#each unit in units}}
+      {{unit-component unit=unit}}
+    {{/each}}
     <ul class="stark orders">
       <li class="taken"><img src="assets/images/tokens/consolidate.png"></li>
       <li><img src="assets/images/tokens/consolidate.png"></li>
@@ -26,24 +31,26 @@
       <li class="stark"></li>
     </ul>
 
-    <ul class="stark units">
-      <li class="footman"></li>
-      <li class="footman"></li>
-      <li class="footman"></li>
-      <li class="footman"></li>
-      <li class="footman"></li>
-      <li class="footman"></li>
-      <li class="knight"></li>
-      <li class="knight"></li>
-      <li class="knight"></li>
-      <li class="knight"></li>
-      <li class="knight"></li>
-      <li class="knight"></li>
-      <li class="siege"></li>
-      <li class="siege"></li>
-      <li class="siege"></li>
-      <li class="siege"></li>
-    </ul>
+
+
+    <!--<ul class="stark units">-->
+      <!--<li class="footman"></li>-->
+      <!--<li class="footman"></li>-->
+      <!--<li class="footman"></li>-->
+      <!--<li class="footman"></li>-->
+      <!--<li class="footman"></li>-->
+      <!--<li class="footman"></li>-->
+      <!--<li class="knight"></li>-->
+      <!--<li class="knight"></li>-->
+      <!--<li class="knight"></li>-->
+      <!--<li class="knight"></li>-->
+      <!--<li class="knight"></li>-->
+      <!--<li class="knight"></li>-->
+      <!--<li class="siege"></li>-->
+      <!--<li class="siege"></li>-->
+      <!--<li class="siege"></li>-->
+      <!--<li class="siege"></li>-->
+    <!--</ul>-->
     {{yield}}
     <button {{action 'contract'}} class="toggle-trigger on-right">&#10094;</button>
   </section>

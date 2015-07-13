@@ -22,7 +22,12 @@ export default Ember.Component.extend(Droppable, {
     this.element.appendChild(draggedElement);
 
     obj.setProperties({ territory: this.territory, x: x, y: y });
-    obj.save();
+    console.log("to save:", obj.get("id"));
+
+    obj.save().then(function (unit) {
+      console.log("saved id:", unit.get("id"));
+      obj = unit;
+    });
 
     console.log(obj.get("type") + ' was dropped into ' + this.territory.id +
                 ' at x: ' + obj.get("x") + ' , y: ' + obj.get("y"));

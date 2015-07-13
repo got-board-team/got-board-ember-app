@@ -4,46 +4,14 @@ let attr = DS.attr;
 
 let Unit = DS.Model.extend({
   territory: DS.belongsTo(),
+  board: DS.belongsTo(),
+  player: DS.belongsTo(),
   type: attr(),
-  house: attr(),
   x: attr("number"),
   y: attr("number"),
+  house: function() {
+    return this.get("player.house").toLowerCase();
+  }.property("player")
 });
 
-Unit.reopenClass({
-  FIXTURES: [
-    {
-      id: 111,
-      territory: 11,
-      type: "footmen",
-      house: "stark",
-      positionX: 695,
-      positionY: 548,
-    },
-    {
-      id: 222,
-      territory: 11,
-      type: "knight",
-      house: "stark",
-      positionX: 675,
-      positionY: 648,
-    },
-    {
-      id: 333,
-      territory: 22,
-      type: "ship",
-      house: "stark",
-      positionX: 380,
-      positionY: 475,
-    },
-    {
-      id: 444,
-      territory: 11,
-      type: "siege",
-      house: "stark",
-      positionX: 806,
-      positionY: 568,
-    },
-  ]
-});
 export default Unit;

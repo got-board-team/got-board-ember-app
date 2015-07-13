@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 var isNotDragging = function (d) {
-  console.log(d.classed('dragging'));
   return !d.classed('dragging');
 };
 

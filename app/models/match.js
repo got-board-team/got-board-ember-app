@@ -5,13 +5,4 @@ let Match = DS.Model.extend({
   board: DS.belongsTo("board"),
 });
 
-Match.reopenClass({
-  FIXTURES: [
-    {
-      id: 1,
-      territories: [11, 22],
-    },
-  ]
-});
-
 export default Match;
