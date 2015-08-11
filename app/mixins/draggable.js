@@ -21,6 +21,7 @@ export default Ember.Mixin.create({
     window.dragging = true;
     d3.select(this).attr('pointer-events', 'none');
     d3.select(this).classed('dragging', true);
+    this.ownerSVGElement.appendChild(this);
   },
   drag: function() {
     var d = d3.select(this);
