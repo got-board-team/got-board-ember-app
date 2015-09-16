@@ -3,33 +3,28 @@ import Droppable from '../mixins/droppable';
 
 export default Ember.Component.extend(Droppable, {
   tagName: "g",
+  classNames: ['territory'],
+
   territory: Ember.computed("territory", function () {
     return this.territory;
   }),
-  svgdragover: function () {
-    d3.select(this.element).select(".territory").classed("drop-actived", true);
-  },
-  svgdragleave: function () {
-    d3.select(this.element).select(".territory").classed("drop-actived", false);
-  },
-  svgdrop: function (event) {
-    d3.select(this.element).select(".territory").classed("drop-actived", false);
-    var draggedElement = event.draggedElement;
-    var x = draggedElement.getAttribute("x");
-    var y = draggedElement.getAttribute("y");
-    var obj = event.draggedObject;
 
-    this.element.appendChild(draggedElement);
+  drop: function () {
+    var self = this;
 
-    obj.setProperties({ territory: this.territory, x: x, y: y });
-    console.log("to save:", obj.get("id"));
+    var draggedElement = window.draggedElement;
+    var x = window.offset.left;
+    var y = window.offset.top;
+    var obj = window.draggedObject;
+
+    //$(this.element).find(".container").append(draggedElement);
+    obj.setProperties({ territory: self.territory, x: x, y: y });
 
     obj.save().then(function (unit) {
-      console.log("saved id:", unit.get("id"));
-      obj = unit;
+      var player = unit.get("player");
+      console.log(unit.get("type") + ' was dropped into ' + self.territory.id +
+                ' at x: ' + unit.get("x") + ' , y: ' + unit.get("y"));
     });
 
-    console.log(obj.get("type") + ' was dropped into ' + this.territory.id +
-                ' at x: ' + obj.get("x") + ' , y: ' + obj.get("y"));
   },
 });

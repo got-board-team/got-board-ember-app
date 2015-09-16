@@ -1,8 +1,8 @@
 {{#if isExpanded}}
   <section class="player-dock">
-    <h1>House Of {{player.house}} {{units.length}} </h1>
-    <strong>Avaiable Units: {{units.length}}</strong>
-    {{#each unit in units}}
+    <h1>House Of {{player.house}} {{player.units.length}} </h1>
+    <strong>Avaiable Units: {{player.availableUnits.length}}</strong>
+    {{#each player.availableUnits as |unit|}}
       {{unit-component unit=unit}}
     {{/each}}
     <ul class="stark orders">

@@ -9,53 +9,46 @@ var updatePosition = function (d, position, diff) {
   d.attr(position, currentPos + diff);
 };
 
+var LEFT_BUTTON = 1;
+
 export default Ember.Mixin.create({
   attributeBindings: ['draggable'],
   draggable: true,
 
-  start: function() {
-    var e = d3.event.sourceEvent;
-    if (e.buttons === 2) {
-      return;
-    }
-    window.dragging = true;
-    d3.select(this).attr('pointer-events', 'none');
-    d3.select(this).classed('dragging', true);
-    this.ownerSVGElement.appendChild(this);
-  },
-  drag: function() {
-    var d = d3.select(this);
-    if (isNotDragging(d)) { return; }
-    var event = d3.event;
-    updatePosition(d, "x", event.dx);
-    updatePosition(d, "y", event.dy);
-  },
-  draggedObject: function () {
-   return this;
-  },
-  end: function(self) {
-    window.dragging = false;
-    var element = self.element;
-    d3.select(element).attr('pointer-events', null);
-
-    if (window.droppable) {
-      var event = document.createEvent('SVGEvents');
-      event.initEvent('svgdrop', true, true);
-      event.draggedElement = element;
-      event.draggedObject = self.draggedObject();
-      window.droppable.dispatchEvent(event);
-    }
-
-    d3.select(element).classed('dragging', false);
-  },
-
   initialize: function () {
     var self = this;
-    var dragBehavior = d3.behavior.drag()
-      .on("dragstart", this.start)
-      .on("drag", this.drag)
-      .on("dragend", function () { self.end(self); });
+    var $draggable = $(this.element).draggabilly({ });
 
-    d3.select(this.element).call(dragBehavior);
+    $draggable.on("dragStart", function () {
+      window.dragging = true;
+      window.draggedElement = self.element;
+      window.draggedObject = self.draggedObject();
+
+      var elm = $(this);
+      window.offset = elm.offset();
+      elm.css('pointer-events', "none");
+      $("body").append(elm);
+
+      //fix position of object on the screen
+      elm.offset(window.offset);
+    });
+
+    $draggable.on("dragMove", function () {
+      var elm = $(this);
+      window.offset = elm.offset();
+    });
+
+    $draggable.on("dragEnd", function () {
+      var elm = $(this);
+
+      //fix position of object on the screen
+      elm.offset(window.offset);
+
+      elm.css('pointer-events', "auto");
+
+      window.dragging = false;
+      window.draggedElement = null;
+      window.draggedObject = null;
+    });
   }.on("didInsertElement"),
 });

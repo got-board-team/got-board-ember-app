@@ -5,7 +5,6 @@ export default DS.Model.extend({
   units: DS.hasMany({ async: true }),
   house: DS.attr(),
   availableUnits: function() {
-    console.log("player.availableUnits");
-    return this.get("units").filterBy("territory", "");
-  }.property("units.@each"),
+    return this.get("units").filterBy("territory", null).toArray();
+  }.property("units.@each.territory"),
 });

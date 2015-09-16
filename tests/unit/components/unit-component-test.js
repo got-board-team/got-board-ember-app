@@ -6,13 +6,17 @@ import {
 moduleForComponent('unit-component', {
   // Specify the other units that are required for this test
   // needs: ['component:foo', 'helper:bar']
+  needs: ['model:unit']
 });
 
 test('it renders', function(assert) {
   assert.expect(2);
 
   // Creates the component instance
-  var component = this.subject();
+  var component = this.subject({
+    type: "footman",
+    unit: Ember.ObjectProxy.create({ id: 42 }),
+  });
   assert.equal(component._state, 'preRender');
 
   // Renders the component to the page

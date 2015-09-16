@@ -2,10 +2,10 @@ import Ember from 'ember';
 import Draggable from '../mixins/draggable';
 
 export default Ember.Component.extend(Draggable, {
-  tagName: "foreignObject",
+  tagName: "div",
   classNames: ["piece"],
-  classNameBindings: ['unit.house', 'type'],
-  attributeBindings: ["x", "y"],
+  classNameBindings: ["unit.house", "type"],
+  attributeBindings: ["style"],
 
   unit: function () {
     return this.get("unit");
@@ -15,13 +15,12 @@ export default Ember.Component.extend(Draggable, {
     return this.unit.get("type").toLowerCase();
   }.property("unit.type"),
 
-  x: function () {
-    return this.unit.get("x");
-  }.property("unit.x"),
-
-  y: function () {
-    return this.unit.get("y");
-  }.property("unit.y"),
+  style: function () {
+    // TODO refactor
+    console.log("style");
+    console.log(this.get("unit.id"));
+    return "top: " + this.unit.get("y") + "px; left: " + this.unit.get("x") + "px;";
+  }.property("unit.x", "unit.y"),
 
   draggedObject: function () {
     return this.unit;

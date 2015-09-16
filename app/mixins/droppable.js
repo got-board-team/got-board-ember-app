@@ -1,35 +1,38 @@
 import Ember from 'ember';
 
 export default Ember.Mixin.create({
-  initialize: function () { 
+  d: function () {
+    return d3.select(this.element);
+  },
+
+  bindEvents: function () {
     var self = this;
+    var d = this.d();
 
-    d3.select(this.element).on("mouseout", function(){
+    d.on("mouseout", function(){
       if (!window.dragging) { return; }
-      var event = document.createEvent('SVGEvents');
-      event.initEvent('svgdragleave', true, true);
-      this.dispatchEvent(event);
+      d.classed("drop-actived", false);
     });
 
-    d3.select(this.element).on("mouseover", function(){
+    d.on("mouseover", function(){
       if (!window.dragging) { return; }
-      var event = document.createEvent('SVGEvents');
-      event.initEvent('svgdragover', true, true);
-      this.dispatchEvent(event);
+      d.classed("drop-actived", true);
+      window.droppableElement = self.element;
     });
 
-    d3.select(this.element).on("svgdragover", function(){
-      window.droppable = this;
-      self.svgdragover(d3.event);
-    });
-
-    d3.select(this.element).on("svgdragleave", function(){
-      self.svgdragleave(d3.event);
-    });
-
-    d3.select(this.element).on("svgdrop", function(){
-      window.droppable = null;
-      self.svgdrop(d3.event);
+    d.on("mouseup", function(){
+      if (!window.dragging) { return; }
+      self._drop();
     });
   }.on("didInsertElement"),
+
+  _drop: function () {
+    window.droppableElement = null;
+    this.d().classed("drop-actived", false);
+
+    var event = document.createEvent("SVGEvents");
+    event.initEvent("drop", true, true);
+    this.element.dispatchEvent(event);
+  },
+
 });

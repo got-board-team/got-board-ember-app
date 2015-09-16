@@ -3,6 +3,7 @@
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 var app = new EmberApp();
+var isProduction = EmberApp.env() === 'production';
 
 // Use `app.import` to add additional libraries to the generated
 // output files.
@@ -16,7 +17,12 @@ var app = new EmberApp();
 // modules that you would like to import into your application
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
-app.import("bower_components/d3/d3.js");
+app.import(app.bowerDirectory + "/d3/d3.js");
+app.import(app.bowerDirectory + "/draggabilly/dist/draggabilly.pkgd.min.js");
+
+if (!isProduction) {
+  app.import(app.bowerDirectory + "/sinon/lib/sinon.js", { type: "test" });
+}
 app.hinting = false;
 
 module.exports = app.toTree();
