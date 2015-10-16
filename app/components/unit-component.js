@@ -17,12 +17,19 @@ export default Ember.Component.extend(Draggable, {
 
   style: function () {
     // TODO refactor
-    console.log("style");
-    console.log(this.get("unit.id"));
     return "top: " + this.unit.get("y") + "px; left: " + this.unit.get("x") + "px;";
   }.property("unit.x", "unit.y"),
 
   draggedObject: function () {
     return this.unit;
+  },
+
+  unitUpdate: function (a, b, c) {
+    console.log("unitUpdate");
+    var data = this.$().data("pusher");
+    data.territory_id = data.territory;
+    delete data.territory;
+    this.unit.setProperties(data);
+    (data.territory_id == null) ? this.$().hide() : this.$().show();
   },
 });

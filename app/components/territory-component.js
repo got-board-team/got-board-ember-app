@@ -9,6 +9,10 @@ export default Ember.Component.extend(Droppable, {
     return this.territory;
   }),
 
+  unitsDidChange: Ember.observer("territory.units.@each", function () {
+    this.rerender();
+  }),
+
   drop: function () {
     var self = this;
 
@@ -17,7 +21,6 @@ export default Ember.Component.extend(Droppable, {
     var y = window.offset.top;
     var obj = window.draggedObject;
 
-    //$(this.element).find(".container").append(draggedElement);
     obj.setProperties({ territory: self.territory, x: x, y: y });
 
     obj.save().then(function (unit) {

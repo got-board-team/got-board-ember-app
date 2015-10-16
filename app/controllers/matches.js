@@ -8,10 +8,14 @@ export default Ember.Controller.extend(Bindings, {
   },
 
   unitUpdate: function(data) {
+    var self = this;
+    data.territory_id = data.territory;
+    delete data.territory;
     this.store.find("unit", data.id).then(function (unit) {
-      data.territory_id = data.territory;
-      delete data.territory;
       unit.setProperties(data);
+      self.store.find("territory", data.territory_id).then(function (t) {
+        t.get("units").addObject(unit);
+      });
     });
   },
 
