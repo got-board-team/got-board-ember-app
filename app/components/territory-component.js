@@ -9,10 +9,6 @@ export default Ember.Component.extend(Droppable, {
     return this.territory;
   }),
 
-  unitsDidChange: Ember.observer("territory.units.@each", function () {
-    this.rerender();
-  }),
-
   drop: function () {
     var self = this;
 

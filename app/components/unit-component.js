@@ -8,6 +8,7 @@ export default Ember.Component.extend(Draggable, {
   attributeBindings: ["style"],
 
   unit: function () {
+    console.log("u");
     return this.get("unit");
   }.property("unit"),
 
@@ -17,6 +18,7 @@ export default Ember.Component.extend(Draggable, {
 
   style: function () {
     // TODO refactor
+    console.log("s");
     return "top: " + this.unit.get("y") + "px; left: " + this.unit.get("x") + "px;";
   }.property("unit.x", "unit.y"),
 

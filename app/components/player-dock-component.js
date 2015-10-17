@@ -22,16 +22,13 @@ export default Ember.Component.extend(Droppable, {
   },
 
   drop: function () {
-    console.log("DROP");
     var self = this;
     var obj = window.draggedObject;
     var $elm = $(window.draggedElement);
 
     obj.setProperties({ territory: null, x: 0, y: 0 });
-    //$(this.element).append(window.draggedElement);
 
     obj.save().then(function (unit) {
-      var au = self.get("au");
       console.log(unit.get("type") + ' was dropped into the player dock' +
                   ' at x: ' + unit.get("x") + ' , y: ' + unit.get("y"));
     });
