@@ -2,9 +2,7 @@
   <section class="player-dock">
     <h1>House Of {{player.house}} {{player.units.length}} </h1>
     <strong>Avaiable Units: {{player.availableUnits.length}}</strong>
-    {{#each player.availableUnits as |unit|}}
-      {{unit-component unit=unit}}
-    {{/each}}
+
     <ul class="stark orders">
       <li class="taken"><img src="assets/images/tokens/consolidate.png"></li>
       <li><img src="assets/images/tokens/consolidate.png"></li>
@@ -31,24 +29,13 @@
       <li class="stark"></li>
     </ul>
 
-
+    {{#each player.availableUnits as |unit|}}
+      {{unit-component unit=unit}}
+    {{/each}}
 
     <!--<ul class="stark units">-->
       <!--<li class="footman"></li>-->
-      <!--<li class="footman"></li>-->
-      <!--<li class="footman"></li>-->
-      <!--<li class="footman"></li>-->
-      <!--<li class="footman"></li>-->
-      <!--<li class="footman"></li>-->
       <!--<li class="knight"></li>-->
-      <!--<li class="knight"></li>-->
-      <!--<li class="knight"></li>-->
-      <!--<li class="knight"></li>-->
-      <!--<li class="knight"></li>-->
-      <!--<li class="knight"></li>-->
-      <!--<li class="siege"></li>-->
-      <!--<li class="siege"></li>-->
-      <!--<li class="siege"></li>-->
       <!--<li class="siege"></li>-->
     <!--</ul>-->
     {{yield}}

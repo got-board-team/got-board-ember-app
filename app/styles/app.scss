@@ -273,6 +273,14 @@ button {
   width: 11em;
   height: 100%;
   color: white;
+
+  .footman, .knight, .ship, .siege {
+    float: left;
+    position: static;
+    width: 44px;
+    height: 52px;
+    background-size: 100%;
+  }
 }
 
 .toggable-panel {
@@ -281,13 +289,14 @@ button {
   top: 0;
   text-align: center;
   z-index: 900;
+  height: 100%;
 
   .toggle-trigger {
-    background: rgba(107, 107, 107, 1);
+    background: rgba(255, 255, 255, 1);
     border: 0;
-    width: 3em;
+    width: 1.5em;
     position: absolute;
-    top: 40%;
+    top: 45%;
     height: 5em;
 
     &.on-right {
