@@ -1,6 +1,8 @@
+import { ActiveModelSerializer } from 'active-model-adapter';
 import DS from 'ember-data';
 
-export default DS.ActiveModelSerializer.extend(DS.EmbeddedRecordsMixin, {
+export default ActiveModelSerializer.extend(DS.EmbeddedRecordsMixin, {
+  isNewSerializerAPI: true,
   attrs: {
     units: { embedded: 'always' },
   }

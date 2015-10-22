@@ -14,7 +14,8 @@
     "qunit": "~1.17.1",
     "d3": "~3.5.6",
     "ember-pusher": "~0.1.1",
-    "draggabilly": "~1.2.4"
+    "draggabilly": "~1.2.4",
+    "active-model-adapter": "~2.0.2"
   },
   "devDependencies": {
     "sinon": "~1.16.1"

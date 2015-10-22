@@ -16,8 +16,13 @@ export default Ember.Component.extend(Draggable, {
   }.property("unit.type"),
 
   style: function () {
-    // TODO refactor
-    return "top: " + this.unit.get("y") + "px; left: " + this.unit.get("x") + "px;";
+    var top = this.unit.get("y");
+    var left = this.unit.get("x");
+    var style = "top: ${top}px; left: ${left}px;"
+    //TODO refactor removing the line bellow when possible to use es6
+    //(babel? https://github.com/babel/ember-cli-babel)
+    style = style.replace("${top}", top).replace("${left}", left);
+    return new Ember.Handlebars.SafeString(style);
   }.property("unit.x", "unit.y"),
 
   draggedObject: function () {

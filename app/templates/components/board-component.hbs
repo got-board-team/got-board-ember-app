@@ -1,6 +1,6 @@
 <svg id="board">
-  {{#each territory in board.territories}}
-  {{territory-component elementId=territory.id territory=territory}}
+  {{#each board.territories as |territory|}}
+    {{territory-component elementId=territory.id territory=territory}}
   {{/each}}
 </svg>
 

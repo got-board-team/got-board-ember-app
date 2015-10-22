@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  match: DS.belongsTo("match"),
+  match: DS.belongsTo("match", { async: false }),
   units: DS.hasMany({ async: true }),
   house: DS.attr(),
   availableUnits: function() {
