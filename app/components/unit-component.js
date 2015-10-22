@@ -8,7 +8,6 @@ export default Ember.Component.extend(Draggable, {
   attributeBindings: ["style"],
 
   unit: function () {
-    console.log("u");
     return this.get("unit");
   }.property("unit"),
 
@@ -18,7 +17,6 @@ export default Ember.Component.extend(Draggable, {
 
   style: function () {
     // TODO refactor
-    console.log("s");
     return "top: " + this.unit.get("y") + "px; left: " + this.unit.get("x") + "px;";
   }.property("unit.x", "unit.y"),
 
@@ -27,7 +25,6 @@ export default Ember.Component.extend(Draggable, {
   },
 
   unitUpdate: function (a, b, c) {
-    console.log("unitUpdate");
     var data = this.$().data("pusher");
     data.territory_id = data.territory;
     delete data.territory;
