@@ -6,5 +6,5 @@ var Router = Ember.Router.extend({
 });
 
 export default Router.map(function() {
-  this.resource('matches', { path: "/matches/:id" });
+  this.route('matches', { path: "/matches/:id" });
 });

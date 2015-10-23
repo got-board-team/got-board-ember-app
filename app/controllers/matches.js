@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import { Bindings } from 'ember-pusher/bindings';
+import EmberPusher from 'ember-pusher';
 
-export default Ember.Controller.extend(Bindings, {
+export default Ember.Controller.extend(EmberPusher.Bindings, {
   logPusherEvents: true,
   PUSHER_SUBSCRIPTIONS: {
     unit: ["footman.update", "knight.update", "boat.update", "siege_engine.update"]
@@ -15,22 +15,18 @@ export default Ember.Controller.extend(Bindings, {
     this.store.find("unit", data.id).then(function (unit) {
       if (unit.get("isDeleted")) { unit.rollback(); }
 
-      if(data.territory_id == null) {
-        if (self.house() != unit.get("player.house")) {
-          console.log("R");
-          unit.deleteRecord()
-        }
-      } else {
-        self.store.find("territory", data.territory_id).then(function (t) {
-          console.log("T");
-          t.get("units").addObject(unit);
-        });
+      var territory = self.store.peekRecord("territory", data.territory_id);
+      if(territory) {
+        territory.get("units").addObject(unit);
+      } else if (self.house() !== unit.get("player.house")) {
+        unit.deleteRecord();
       }
 
+      // HACK: wait to see css transition animation
       setTimeout(function () {
         unit.setProperties(data);
-      }, 100)
-    })
+      }, 100);
+    });
   },
 
   currentPlayer: function() {

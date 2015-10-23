@@ -8,6 +8,7 @@ module.exports = function(defaults) {
 
   app.import(app.bowerDirectory + '/d3/d3.js');
   app.import(app.bowerDirectory + '/draggabilly/dist/draggabilly.pkgd.min.js');
+  app.import(app.bowerDirectory + '/pusher/dist/pusher.min.js');
 
   if (EmberApp.env() === 'test') {
     app.import(app.bowerDirectory + "/sinon/lib/sinon.js", { type: "test" });

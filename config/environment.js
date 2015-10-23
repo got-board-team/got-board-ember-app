@@ -13,16 +13,10 @@ module.exports = function(environment) {
       }
     },
 
-    APP: {
-      // Here you can pass flags/options to your application instance
-      // when it is created
-      PUSHER_OPTS: {
-        key: 'cfdf3c0b0c4a559c3dfe',
-        connection: {},
-        logAllEvents: false
-      }
-    }
+    APP: {}
   };
+
+  ENV.APP.PUSHER_KEY = 'cfdf3c0b0c4a559c3dfe';
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
