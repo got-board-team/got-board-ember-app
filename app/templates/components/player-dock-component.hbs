@@ -3,34 +3,38 @@
     <h1>House Of {{player.house}} {{player.units.length}} </h1>
     <strong>Avaiable Units: {{player.availableUnits.length}}</strong>
 
-    <ul class="stark orders">
-      <li class="taken"><img src="assets/images/tokens/consolidate.png"></li>
-      <li><img src="assets/images/tokens/consolidate.png"></li>
-      <li><img src="assets/images/tokens/consolidatep.png"></li>
-      <li><img src="assets/images/tokens/defend.png"></li>
-      <li><img src="assets/images/tokens/defend.png"></li>
-      <li><img src="assets/images/tokens/defendp.png"></li>
-      <li><img src="assets/images/tokens/raid.png"></li>
-      <li><img src="assets/images/tokens/raid.png"></li>
-      <li><img src="assets/images/tokens/raidp.png"></li>
-      <li><img src="assets/images/tokens/support.png"></li>
-      <li><img src="assets/images/tokens/support.png"></li>
-      <li><img src="assets/images/tokens/supportp.png"></li>
-      <li><img src="assets/images/tokens/march.png"></li>
-      <li><img src="assets/images/tokens/marchm.png"></li>
-      <li><img src="assets/images/tokens/marchp.png"></li>
-    </ul>
+    <!-- <ul class="stark orders"> -->
+    <!--   <li class="taken"><img src="assets/images/tokens/consolidate.png"></li> -->
+    <!--   <li><img src="assets/images/tokens/consolidate.png"></li> -->
+    <!--   <li><img src="assets/images/tokens/consolidatep.png"></li> -->
+    <!--   <li><img src="assets/images/tokens/defend.png"></li> -->
+    <!--   <li><img src="assets/images/tokens/defend.png"></li> -->
+    <!--   <li><img src="assets/images/tokens/defendp.png"></li> -->
+    <!--   <li><img src="assets/images/tokens/raid.png"></li> -->
+    <!--   <li><img src="assets/images/tokens/raid.png"></li> -->
+    <!--   <li><img src="assets/images/tokens/raidp.png"></li> -->
+    <!--   <li><img src="assets/images/tokens/support.png"></li> -->
+    <!--   <li><img src="assets/images/tokens/support.png"></li> -->
+    <!--   <li><img src="assets/images/tokens/supportp.png"></li> -->
+    <!--   <li><img src="assets/images/tokens/march.png"></li> -->
+    <!--   <li><img src="assets/images/tokens/marchm.png"></li> -->
+    <!--   <li><img src="assets/images/tokens/marchp.png"></li> -->
+    <!-- </ul> -->
 
-    <ul class="power-tokens">
-      <li class="stark"></li>
-      <li class="stark"></li>
-      <li class="stark"></li>
-      <li class="stark"></li>
-      <li class="stark"></li>
-    </ul>
+    <!-- <ul class="power-tokens"> -->
+    <!--   <li class="stark"></li> -->
+    <!--   <li class="stark"></li> -->
+    <!--   <li class="stark"></li> -->
+    <!--   <li class="stark"></li> -->
+    <!--   <li class="stark"></li> -->
+    <!-- </ul> -->
 
     {{#each player.availableUnits as |unit|}}
       {{unit-component unit=unit}}
+    {{/each}}
+
+    {{#each player.availableOrderTokens as |orderToken|}}
+      {{order-tokens-component orderToken=orderToken}}
     {{/each}}
 
     <!--<ul class="stark units">-->
