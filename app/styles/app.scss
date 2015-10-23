@@ -1,6 +1,7 @@
 body {
   padding: 0;
   margin: 0;
+  font-family: Verdana, Georgia, Serif;
 }
 
 button {
@@ -13,7 +14,7 @@ button {
   pointer-events: none;
 }
 
-.b  {
+.b {
   width: 1980px;
   height: 2975px;
   background-image: url("images/board.jpg");
@@ -79,6 +80,11 @@ button {
   transition-property: top, left;
   transition-duration: 1s;
   pointer-events: auto;
+
+  .march, .marchm, .marchp {
+    background-repeat: no-repeat;
+    background-position: left top;
+  }
 }
 
 .unit:active, .piece:active {
@@ -265,21 +271,55 @@ button {
   background-image: url("images/units/greyjoy-knight.png");
 }
 
+.piece {
+  .march {
+    background-image: url("images/tokens/march.png");
+  }
+
+  .marchm {
+    background-image: url("images/tokens/marchm.png");
+  }
+
+  .marchp {
+    background-image: url("images/tokens/marchp.png");
+  }
+}
+
 .player-dock {
-  background: rgba(0, 0, 0, 0.7);
   display: block;
   overflow: auto;
   position: relative;
-  width: 11em;
+  width: 17em;
   height: 100%;
-  color: white;
+  font-size: .7em;
 
-  .footman, .knight, .ship, .siege {
+  section {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    overflow: auto;
+    margin-bottom: 1px;
+    padding: .5em .5em 0;
+
+    h1, h2, p {
+      margin: 0 0 .5em;
+    }
+
+    h1 {
+      font-size: 1.2em;
+    }
+
+    h2 {
+      font-size: 1em;
+    }
+  }
+
+  .footman, .knight, .ship, .siege,
+  .march, .marchm, .marchp {
+    background-size: 100%;
     float: left;
     position: static;
     width: 44px;
     height: 52px;
-    background-size: 100%;
   }
 }
 
