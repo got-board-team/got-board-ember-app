@@ -18,7 +18,6 @@ export default Ember.Component.extend(Draggable, {
 
   style: function () {
     // TODO refactor
-    console.log("orderToken style");
     return "top: " + this.orderToken.get("y") + "px; left: " + this.orderToken.get("x") + "px;";
   }.property("orderToken.x", "orderToken.y"),
 

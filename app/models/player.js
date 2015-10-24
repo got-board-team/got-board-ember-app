@@ -9,8 +9,6 @@ export default DS.Model.extend({
     return this.get("units").filterBy("territory", null).toArray();
   }.property("units.@each.territory"),
   availableOrderTokens: function() {
-    console.log('call availableOrderTokens');
-    console.log(this.get("orderTokens").toArray());
     return this.get("orderTokens").filterBy("territory", null).toArray();
   }.property("orderTokens.@each.territory"),
 });
