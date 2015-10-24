@@ -7,6 +7,7 @@ let Territory = DS.Model.extend({
   slug: attr(),
   path: attr(),
   units: DS.hasMany({ async: true }),
+  orderTokens: DS.hasMany({ async: true }),
 });
 
 export default Territory;
