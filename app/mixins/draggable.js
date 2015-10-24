@@ -1,16 +1,5 @@
 import Ember from 'ember';
 
-var isNotDragging = function (d) {
-  return !d.classed('dragging');
-};
-
-var updatePosition = function (d, position, diff) {
-  var currentPos = parseFloat(d.attr(position)) || 0;
-  d.attr(position, currentPos + diff);
-};
-
-var LEFT_BUTTON = 1;
-
 export default Ember.Mixin.create({
   attributeBindings: ['draggable'],
   draggable: true,

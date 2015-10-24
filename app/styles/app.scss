@@ -8,44 +8,15 @@ button {
   cursor: pointer;
 }
 
-.container {
-  stroke: red;
-  stroke-width: 2;
-  pointer-events: none;
-}
-
-.b {
-  width: 1980px;
-  height: 2975px;
-  background-image: url("images/board.jpg");
-}
-
-.t{
-  width: 100%;
-  height: 100%;
-  path {
-    fill: none;
-    stroke: red;
-    pointer-events: all;
-
-      fill: orange;
-      opacity: 0.7;
-    &:hover {
-      fill: orange;
-      opacity: 0.7;
-    }
-
-    &.drop-actived {
-      fill: white;
-      opacity: 0.7;
-    }
-  }
-}
-
 #board {
   width: 1980px;
   height: 2975px;
   background-image: url("images/board.jpg");
+}
+
+.drop-actived {
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
 }
 
 .drop-actived {
@@ -72,31 +43,42 @@ button {
 }
 
 .piece {
-  z-index: 999;
-  position: absolute;
   background-repeat: no-repeat;
-  transition-property: top, left;
-  transition-duration: 1s;
   pointer-events: auto;
+  position: absolute;
+  transition-duration: 1s;
+  transition-property: top, left;
+  z-index: 999;
+
+  &:hover {
+    cursor: grab;
+    cursor: -webkit-grab;
+  }
+
+  &.is-dragging, &.is-pointer-down {
+    cursor: grabbing;
+    cursor: -webkit-grabbing;
+    transition: none;
+  }
 
   .march, .marchm, .marchp {
-    background-repeat: no-repeat;
     background-position: left top;
+    background-repeat: no-repeat;
+    height: 80px;
+    width: 82px;
   }
-}
 
-.unit:active, .piece:active {
-  cursor: grabbing;
-  cursor: -webkit-grabbing;
-}
+  .march {
+    background-image: url("images/tokens/march.png");
+  }
 
-.unit:hover, .piece:hover {
-  cursor: grab;
-  cursor: -webkit-grab;
-}
+  .marchm {
+    background-image: url("images/tokens/marchm.png");
+  }
 
-.dragging {
-  transition: none;
+  .marchp {
+    background-image: url("images/tokens/marchp.png");
+  }
 }
 
 .unit {
@@ -213,7 +195,7 @@ button {
   height: 97px;
 }
 
-.martell-footmen{
+.martell-footman{
   background-image: url("images/units/martell-footman.png");
   width: 80px;
   height: 89px;
@@ -269,17 +251,11 @@ button {
   background-image: url("images/units/greyjoy-knight.png");
 }
 
-.piece {
-  .march {
-    background-image: url("images/tokens/march.png");
-  }
-
-  .marchm {
-    background-image: url("images/tokens/marchm.png");
-  }
-
-  .marchp {
-    background-image: url("images/tokens/marchp.png");
+#main-player-dock  {
+  &.drop-actived {
+    section {
+      background: rgba(0, 0, 0, 0.5);
+    }
   }
 }
 
