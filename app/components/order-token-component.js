@@ -4,17 +4,30 @@ import Draggable from '../mixins/draggable';
 export default Ember.Component.extend(Draggable, {
   tagName: "div",
   classNames: ["piece"],
-  classNameBindings: ["order-token.house", "type"],
-  attributeBindings: ["style"],
+  classNameBindings: ["orderToken.house", "orderClass"],
+  attributeBindings: ["id", "style"],
 
-  orderToken: function () {
-    console.log("o");
+  id: Ember.computed("orderToken.id", function () {
+    return "order-token-" + this.get("orderToken.id");
+  }),
+
+  orderToken: Ember.computed("orderToken", function () {
     return this.get("orderToken");
-  }.property("orderToken"),
+  }),
 
-  type: function () {
-    return this.orderToken.get("type").toLowerCase();
-  }.property("orderToken.type"),
+  orderClass: Ember.computed("orderToken.faceup", function () {
+    let orderType = this.get("orderToken.type");
+    orderType = Ember.String.dasherize(orderType);
+    let cssClass = this.isFaceup() ? orderType : "order-cover";
+    return cssClass;
+  }),
+
+  isFaceup: function () {
+    // TODO refactor o get house from session
+    var house = window.location.search.split("=")[1] || "Greyjoy";
+    house = house.toLowerCase();
+    return house === this.get("orderToken.house") || this.get("orderToken.faceup");
+  },
 
   style: function () {
     return "top: " + this.orderToken.get("y") + "px; left: " + this.orderToken.get("x") + "px;";
@@ -25,7 +38,7 @@ export default Ember.Component.extend(Draggable, {
     return this.orderToken;
   },
 
-  orderTokenUpdate: function (a, b, c) {
+  orderTokenUpdate: function () {
     console.log("orderTokenUpdate");
     var data = this.$().data("pusher");
     data.territory_id = data.territory;

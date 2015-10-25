@@ -9,6 +9,7 @@ let OrderToken = DS.Model.extend({
   type: attr(),
   x: attr("number"),
   y: attr("number"),
+  faceup: attr("boolean"),
   house: function() {
     return this.get("player.house").toLowerCase();
   }.property("player")

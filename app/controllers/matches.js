@@ -37,7 +37,9 @@ export default Ember.Controller.extend(EmberPusher.Bindings, {
   }.property(),
 
   house: function () {
-    return window.location.search.split("=")[1] || "Greyjoy";
+    var house = window.location.search.split("=")[1] || "Greyjoy";
+    window.house = house;
+    return house;
   },
 
   actions: {

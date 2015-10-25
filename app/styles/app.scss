@@ -61,26 +61,81 @@ button {
     transition: none;
   }
 
-  .march, .marchm, .marchp {
-    background-position: left top;
-    background-repeat: no-repeat;
-    height: 80px;
-    width: 82px;
-  }
+}
 
-  .march {
-    background-image: url("images/tokens/march.png");
-  }
+/* Orders */
+@mixin order-token {
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 83px;
+  width: 83px;
+}
 
-  .marchm {
-    background-image: url("images/tokens/marchm.png");
-  }
+@mixin order-cover {
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 103px;
+  width: 103px;
+}
 
-  .marchp {
-    background-image: url("images/tokens/marchp.png");
+.march {
+  @include order-token;
+  background-image: url("images/orders/march.png");
+}
+
+.march-m {
+  @include order-token;
+  background-image: url("images/orders/marchm.png");
+}
+
+.march-p {
+  @include order-token;
+  background-image: url("images/orders/marchp.png");
+}
+
+.baratheon {
+  &.order-cover {
+    @include order-cover;
+    background-image: url("images/order-covers/baratheon.png");
   }
 }
 
+.greyjoy {
+  &.order-cover {
+    @include order-cover;
+    background-image: url("images/order-covers/greyjoy.png");
+  }
+}
+
+.lannister {
+  &.order-cover {
+    @include order-cover;
+    background-image: url("images/order-covers/lannister.png");
+  }
+}
+
+.martell {
+  &.order-cover {
+    @include order-cover;
+    background-image: url("images/order-covers/martell.png");
+  }
+}
+
+.stark {
+  &.order-cover {
+    @include order-cover;
+    background-image: url("images/order-covers/stark.png");
+  }
+}
+
+.tyrell {
+  &.order-cover {
+    @include order-cover;
+    background-image: url("images/order-covers/tyrell.png");
+  }
+}
+
+/* Units */
 .unit {
   background-repeat: no-repeat;
   height: 70px;
@@ -288,7 +343,7 @@ button {
   }
 
   .footman, .knight, .ship, .siege,
-  .march, .marchm, .marchp {
+  .march, .march-m, .march-p {
     background-size: 100%;
     float: left;
     position: static;
