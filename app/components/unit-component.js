@@ -8,7 +8,6 @@ export default Ember.Component.extend(Draggable, {
   attributeBindings: ["style"],
 
   unit: function () {
-    console.log("u");
     return this.get("unit");
   }.property("unit"),
 
@@ -17,9 +16,13 @@ export default Ember.Component.extend(Draggable, {
   }.property("unit.type"),
 
   style: function () {
-    // TODO refactor
-    console.log("s");
-    return "top: " + this.unit.get("y") + "px; left: " + this.unit.get("x") + "px;";
+    var top = this.unit.get("y");
+    var left = this.unit.get("x");
+    var style = "top: ${top}px; left: ${left}px;"
+    //TODO refactor removing the line bellow when possible to use es6
+    //(babel? https://github.com/babel/ember-cli-babel)
+    style = style.replace("${top}", top).replace("${left}", left);
+    return new Ember.Handlebars.SafeString(style);
   }.property("unit.x", "unit.y"),
 
   draggedObject: function () {
@@ -27,7 +30,6 @@ export default Ember.Component.extend(Draggable, {
   },
 
   unitUpdate: function (a, b, c) {
-    console.log("unitUpdate");
     var data = this.$().data("pusher");
     data.territory_id = data.territory;
     delete data.territory;

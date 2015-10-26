@@ -1,6 +1,6 @@
 <path class="territory" d="{{territory.path}}" />
 <foreignObject class="container">
-  {{#each unit in territory.units}}
+  {{#each territory.units as |unit|}}
     {{unit-component unit=unit}}
   {{/each}}
 </foreignObject>
