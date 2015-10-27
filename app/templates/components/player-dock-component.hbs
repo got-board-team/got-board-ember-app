@@ -15,7 +15,7 @@
     <section id="player-order-tokens">
       <h2>Avaiable Order Tokens: {{player.availableOrderTokens.length}}</h2>
       {{#each player.availableOrderTokens as |orderToken|}}
-        {{order-tokens-component orderToken=orderToken}}
+        {{order-token-component orderToken=orderToken}}
       {{/each}}
     </section>
 
