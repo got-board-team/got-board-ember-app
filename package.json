@@ -20,7 +20,7 @@
   "author": "Leandro Thimóteo, Rafael Tauil, Wanderson Policarpo, Rodrigo Tassinari",
   "license": "MIT",
   "devDependencies": {
-    "active-model-adapter": "2.0.2",
+    "active-model-adapter": "2.0.1",
     "bower": "~1.6.3",
     "broccoli-asset-rev": "^2.0.2",
     "ember-cli-app-version": "0.3.3",

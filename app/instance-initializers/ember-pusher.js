@@ -1,7 +1,9 @@
 import config from '../config/environment';
 
 export function initialize(instance) {
-  let pusherService = instance.lookup('service:pusher');
+  // TODO When update to Ember 2.1.0 change this!
+  let pusherService = instance.container.lookup('service:pusher');
+  //let pusherService = instance.lookup('service:pusher');
   let extraPusherOptions = {};
   pusherService.setup(config.APP.PUSHER_KEY, extraPusherOptions);
 }
