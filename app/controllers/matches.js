@@ -4,31 +4,36 @@ import EmberPusher from 'ember-pusher';
 export default Ember.Controller.extend(EmberPusher.Bindings, {
   logPusherEvents: true,
   PUSHER_SUBSCRIPTIONS: {
-    unit: ["footman.update", "knight.update", "boat.update", "siege_engine.update"]
+    unit: ["footman.update", "knight.update", "boat.update", "siege_engine.update"],
+    order_token: ["march_m.update", "reveal"]
   },
 
-  unitUpdate: function(data) {
+  pieceUpdate: function(modelName, data) {
     var self = this;
     let id = data.id;
     data.territory_id = data.territory;
     delete data.territory;
     delete data.id;
-    console.log("unitUpdate");
-    this.store.find("unit", id).then(function (unit) {
-      if (unit.get("isDeleted")) { unit.rollback(); }
+    this.store.find(modelName, id).then(function (unit) {
+      //if (unit.get("isDeleted")) { unit.rollback(); }
 
-      var territory = self.store.peekRecord("territory", data.territory_id);
+      let collection = Ember.String.pluralize(modelName);
+      let territory = self.store.peekRecord("territory", data.territory_id);
+
       if(territory) {
-        territory.get("units").addObject(unit);
+        territory.get(collection).addObject(unit);
+        //HACK: wait to see css transition animation
+        setTimeout(function () {
+          unit.setProperties(data);
+        }, 100);
       } else if (self.house() !== unit.get("player.house")) {
-        unit.deleteRecord();
+        unit.get("territory." + collection).removeObject(unit);
       }
-
-      // HACK: wait to see css transition animation
-      setTimeout(function () {
-        unit.setProperties(data);
-      }, 100);
     });
+  },
+
+  unitUpdate: function(data) {
+    this.pieceUpdate("unit", data);
   },
 
   currentPlayer: function() {
@@ -57,9 +62,16 @@ export default Ember.Controller.extend(EmberPusher.Bindings, {
     siegeEngineUpdate: function (data) {
       this.unitUpdate(data);
     },
-    buildUnits: function () {
-      var units = [];
-      return units;
+    reveal: function (data) {
+      let playerId = data.player_id;
+      let player = this.store.peekRecord("player", playerId);
+      player.get("orderTokens").forEach(function (orderToken) {
+        orderToken.set("faceup", true);
+      });
+    },
+    marchMUpdate: function (data) {
+      console.log("playerController#marchMUpdate");
+      this.pieceUpdate("orderToken", data);
     },
   },
 });
