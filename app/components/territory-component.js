@@ -18,6 +18,8 @@ export default Ember.Component.extend(Droppable, {
     var obj = window.draggedObject;
 
     obj.setProperties({ territory: self.territory, x: x, y: y });
+    //console.log(territory.get("units").toArray());
+    //console.log(territory.get("orderTokens").toArray());
 
     obj.save().then(function (unit) {
       var player = unit.get("player");

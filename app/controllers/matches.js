@@ -9,10 +9,12 @@ export default Ember.Controller.extend(EmberPusher.Bindings, {
 
   unitUpdate: function(data) {
     var self = this;
+    let id = data.id;
     data.territory_id = data.territory;
     delete data.territory;
+    delete data.id;
     console.log("unitUpdate");
-    this.store.find("unit", data.id).then(function (unit) {
+    this.store.find("unit", id).then(function (unit) {
       if (unit.get("isDeleted")) { unit.rollback(); }
 
       var territory = self.store.peekRecord("territory", data.territory_id);

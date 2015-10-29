@@ -6,6 +6,8 @@ export default Ember.Component.extend(Droppable, {
   classNames: ["toggable-panel"],
   isExpanded: true,
 
+  orderService: Ember.inject.service("order-service"),
+
   player: Ember.computed("player", function () {
     return this.player;
   }),
@@ -19,6 +21,12 @@ export default Ember.Component.extend(Droppable, {
       this.set('isExpanded', false);
     },
 
+    revealOrders: function () {
+      console.log("player-dock-component#revealOrders");
+      this.get("orderService").revealOrders(this.player).then(function () {
+        console.log("reload orders");
+      });
+    },
   },
 
   drop: function () {
@@ -32,7 +40,6 @@ export default Ember.Component.extend(Droppable, {
       console.log(unit.get("type") + ' was dropped into the player dock' +
                   ' at x: ' + unit.get("x") + ' , y: ' + unit.get("y"));
     });
-
   },
 
 });

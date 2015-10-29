@@ -1,14 +1,17 @@
+/* global Ember:false */
 import DS from 'ember-data';
+
+let computed = Ember.computed;
 
 export default DS.Model.extend({
   match: DS.belongsTo("match", { async: false }),
-  units: DS.hasMany({ async: true }),
-  orderTokens: DS.hasMany({ async: true }),
+  units: DS.hasMany(),
+  orderTokens: DS.hasMany(),
   house: DS.attr(),
-  availableUnits: function() {
+  availableUnits: computed("units.@each.territory", function() {
     return this.get("units").filterBy("territory", null).toArray();
-  }.property("units.@each.territory"),
-  availableOrderTokens: function() {
+  }),
+  availableOrderTokens: computed("orderTokens.@each.territory", function() {
     return this.get("orderTokens").filterBy("territory", null).toArray();
-  }.property("orderTokens.@each.territory"),
+  }),
 });

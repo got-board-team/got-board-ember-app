@@ -18,6 +18,7 @@
         {{order-token-component orderToken=orderToken}}
       {{/each}}
     </section>
+    <button {{action 'revealOrders'}}>Reveal Orders</button>
 
     {{yield}}
     <button {{action 'contract'}} class="toggle-trigger on-right">&#10094;</button>

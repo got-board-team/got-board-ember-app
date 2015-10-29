@@ -29,10 +29,15 @@ export default Ember.Component.extend(Draggable, {
     return house === this.get("orderToken.house") || this.get("orderToken.faceup");
   },
 
-  style: function () {
-    return "top: " + this.orderToken.get("y") + "px; left: " + this.orderToken.get("x") + "px;";
-    // TODO refactor
-  }.property("orderToken.x", "orderToken.y"),
+  style: Ember.computed("orderToken.x", "orderToken.y", function () {
+    var top = this.get("orderToken.y");
+    var left = this.get("orderToken.x");
+    var style = "top: ${top}px; left: ${left}px;";
+    //TODO refactor removing the line bellow when possible to use es6
+    //(babel? https://github.com/babel/ember-cli-babel)
+    style = style.replace("${top}", top).replace("${left}", left);
+    return new Ember.Handlebars.SafeString(style);
+  }),
 
   draggedObject: function () {
     return this.orderToken;
