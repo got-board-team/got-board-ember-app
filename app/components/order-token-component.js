@@ -1,21 +1,29 @@
 import Ember from 'ember';
 import Draggable from '../mixins/draggable';
 
+const { computed, observer } = Ember;
+
 export default Ember.Component.extend(Draggable, {
   tagName: "div",
   classNames: ["piece"],
   classNameBindings: ["orderToken.house", "orderClass"],
   attributeBindings: ["id", "style"],
 
-  id: Ember.computed("orderToken.id", function () {
+  id: computed(function () {
+    //TODO Add some logic to generate a different id when order is facedown to
+    //avoid others players to find out which is the order
     return "order-token-" + this.get("orderToken.id");
   }),
 
-  orderToken: Ember.computed("orderToken", function () {
+  draggedObject: function () {
+    return this.orderToken;
+  },
+
+  orderToken: computed("orderToken", function () {
     return this.get("orderToken");
   }),
 
-  orderClass: Ember.computed("orderToken.faceup", function () {
+  orderClass: computed("orderToken.faceup", function () {
     let orderType = this.get("orderToken.type");
     orderType = Ember.String.dasherize(orderType);
     let cssClass = this.isFaceup() ? orderType : "order-cover";
@@ -29,7 +37,7 @@ export default Ember.Component.extend(Draggable, {
     return house === this.get("orderToken.house") || this.get("orderToken.faceup");
   },
 
-  style: Ember.computed("orderToken.x", "orderToken.y", function () {
+  style: computed("orderToken.x", "orderToken.y", function () {
     var top = this.get("orderToken.y");
     var left = this.get("orderToken.x");
     var style = "top: ${top}px; left: ${left}px;";
@@ -39,16 +47,9 @@ export default Ember.Component.extend(Draggable, {
     return new Ember.Handlebars.SafeString(style);
   }),
 
-  draggedObject: function () {
-    return this.orderToken;
-  },
-
-  orderTokenUpdate: function () {
-    console.log("orderTokenUpdate");
-    var data = this.$().data("pusher");
-    data.territory_id = data.territory;
-    delete data.territory;
-    this.orderToken.setProperties(data);
-    (data.territory_id == null) ? this.$().hide() : this.$().show();
-  },
+  facedown: observer("orderToken.territory", function (attribute) {
+    if (this.get("orderToken.territory") == null) {
+      this.set("orderToken.faceup", false);
+    }
+  }),
 });

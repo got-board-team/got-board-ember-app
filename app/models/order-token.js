@@ -1,18 +1,16 @@
 import DS from 'ember-data';
 
-let attr = DS.attr;
+const { Model, attr, belongsTo } = DS;
 
-let OrderToken = DS.Model.extend({
-  territory: DS.belongsTo("territory", { async: false }),
-  board: DS.belongsTo({ async: false }),
-  player: DS.belongsTo({ async: false }),
+export default Model.extend({
+  territory: belongsTo("territory", { async: false }),
+  board: belongsTo({ async: false }),
+  player: belongsTo({ async: false }),
   type: attr(),
   x: attr("number"),
   y: attr("number"),
   faceup: attr("boolean"),
-  house: function() {
+  house: Ember.computed("player", function() {
     return this.get("player.house").toLowerCase();
-  }.property("player")
+  }),
 });
-
-export default OrderToken;

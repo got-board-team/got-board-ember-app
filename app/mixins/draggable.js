@@ -10,7 +10,6 @@ export default Ember.Mixin.create({
 
     $draggable.on("dragStart", function () {
       window.dragging = true;
-      window.draggedElement = self.element;
       window.draggedObject = self.draggedObject();
 
       var elm = $(this);
@@ -36,7 +35,6 @@ export default Ember.Mixin.create({
       elm.css('pointer-events', "auto");
 
       window.dragging = false;
-      window.draggedElement = null;
       window.draggedObject = null;
     });
   }.on("didInsertElement"),

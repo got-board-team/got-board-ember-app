@@ -19,11 +19,7 @@ button {
   cursor: -webkit-grabbing;
 }
 
-.drop-actived {
-  cursor: grabbing;
-  cursor: -webkit-grabbing;
-}
-
+/* Territory */
 .territory {
   fill: none;
   stroke: none;
@@ -42,13 +38,83 @@ button {
   }
 }
 
+/* Player Dock */
+.player-dock {
+  position: fixed;
+  left: 0;
+  top: 0;
+  text-align: center;
+  z-index: 900;
+
+  &.drop-actived {
+    section {
+      background: rgba(255, 255, 255, 0.7);
+      color: black;
+    }
+  }
+
+  aside {
+    display: block;
+    font-size: .7em;
+    overflow: auto;
+    position: relative;
+    width: 17em;
+
+    section {
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      overflow: auto;
+      margin-bottom: 1px;
+      padding: .5em .5em 0;
+
+      h1, h2, p {
+        margin: 0 0 .5em;
+      }
+
+      h1 {
+        font-size: 1.2em;
+      }
+
+      h2 {
+        font-size: 1em;
+      }
+    }
+
+    .footman, .knight, .ship, .siege,
+    .march, .march-m, .march-p {
+      background-size: 100%;
+      float: left;
+      position: static;
+      width: 44px;
+      height: 52px;
+    }
+  }
+
+  .toggle-trigger {
+    background: rgba(255, 255, 255, 1);
+    border: 0;
+    width: 1.5em;
+    position: absolute;
+    top: 0;
+    height: 5em;
+
+    &.on-right {
+      right: 0;
+    }
+
+    &.on-left {
+      left: 0;
+    }
+  }
+}
+
+/* Pieces */
 .piece {
   background-repeat: no-repeat;
   pointer-events: auto;
   position: absolute;
   transition-duration: 1s;
   transition-property: top, left;
-  z-index: 999;
 
   &:hover {
     cursor: grab;
@@ -59,6 +125,7 @@ button {
     cursor: grabbing;
     cursor: -webkit-grabbing;
     transition: none;
+    z-index: 999;
   }
 
 }
@@ -306,77 +373,6 @@ button {
   background-image: url("images/units/greyjoy-knight.png");
 }
 
-#main-player-dock  {
-  &.drop-actived {
-    section {
-      background: rgba(0, 0, 0, 0.5);
-    }
-  }
-}
-
-.player-dock {
-  display: block;
-  overflow: auto;
-  position: relative;
-  width: 17em;
-  height: 2975px;
-  font-size: .7em;
-
-  section {
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    overflow: auto;
-    margin-bottom: 1px;
-    padding: .5em .5em 0;
-
-    h1, h2, p {
-      margin: 0 0 .5em;
-    }
-
-    h1 {
-      font-size: 1.2em;
-    }
-
-    h2 {
-      font-size: 1em;
-    }
-  }
-
-  .footman, .knight, .ship, .siege,
-  .march, .march-m, .march-p {
-    background-size: 100%;
-    float: left;
-    position: static;
-    width: 44px;
-    height: 52px;
-  }
-}
-
-.toggable-panel {
-  position: fixed;
-  left: 0;
-  top: 0;
-  text-align: center;
-  z-index: 900;
-  height: 100%;
-
-  .toggle-trigger {
-    background: rgba(255, 255, 255, 1);
-    border: 0;
-    width: 1.5em;
-    position: absolute;
-    top: 45%;
-    height: 5em;
-
-    &.on-right {
-      right: 0;
-    }
-
-    &.on-left {
-      left: 0;
-    }
-  }
-}
 
 .cards {
   padding: 0;

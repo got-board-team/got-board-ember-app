@@ -17,22 +17,12 @@ export default Ember.Mixin.create({
     d.on("mouseover", function(){
       if (!window.dragging) { return; }
       d.classed("drop-actived", true);
-      window.droppableElement = self.element;
     });
 
     d.on("mouseup", function(){
       if (!window.dragging) { return; }
-      self._drop();
+      d.classed("drop-actived", false);
+      self.drop();
     });
   }.on("didInsertElement"),
-
-  _drop: function () {
-    window.droppableElement = null;
-    this.d().classed("drop-actived", false);
-
-    var event = document.createEvent("SVGEvents");
-    event.initEvent("drop", true, true);
-    this.element.dispatchEvent(event);
-  },
-
 });

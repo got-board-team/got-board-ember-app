@@ -3,31 +3,33 @@ import EmberPusher from 'ember-pusher';
 
 export default Ember.Controller.extend(EmberPusher.Bindings, {
   logPusherEvents: true,
+
   PUSHER_SUBSCRIPTIONS: {
     unit: ["footman.update", "knight.update", "boat.update", "siege_engine.update"],
     order_token: ["march_m.update", "reveal"]
   },
 
   pieceUpdate: function(modelName, data) {
-    var self = this;
+    let self = this;
     let id = data.id;
     data.territory_id = data.territory;
-    delete data.territory;
     delete data.id;
-    this.store.find(modelName, id).then(function (unit) {
-      //if (unit.get("isDeleted")) { unit.rollback(); }
-
-      let collection = Ember.String.pluralize(modelName);
+    delete data.territory;
+    this.store.find(modelName, id).then(function (piece) {
+      let collectionName = Ember.String.pluralize(modelName);
       let territory = self.store.peekRecord("territory", data.territory_id);
 
       if(territory) {
-        territory.get(collection).addObject(unit);
+        territory.get(collectionName).addObject(piece);
         //HACK: wait to see css transition animation
         setTimeout(function () {
-          unit.setProperties(data);
+          piece.setProperties(data);
         }, 100);
-      } else if (self.house() !== unit.get("player.house")) {
-        unit.get("territory." + collection).removeObject(unit);
+      } else {
+        let pieces = piece.get("territory." + collectionName);
+        if (!pieces) { return; }
+        pieces.removeObject(piece);
+        piece.setProperties(data);
       }
     });
   },
