@@ -1,5 +1,5 @@
 <path class="territory" d="{{territory.path}}" />
-<foreignObject class="container">
+<foreignObject class="container" data-territory="{{territory.id}}">
   {{#each territory.units as |unit|}}
     {{unit-component unit=unit}}
   {{/each}}

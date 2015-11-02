@@ -30,7 +30,7 @@ export default Ember.Mixin.create({
       var elm = $(this);
 
       //fix position of object on the screen
-      elm.offset(window.offset);
+      //elm.offset(window.offset);
 
       elm.css('pointer-events', "auto");
 

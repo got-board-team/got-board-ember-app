@@ -5,8 +5,8 @@ const { computed, observer } = Ember;
 
 export default Ember.Component.extend(Draggable, {
   tagName: "div",
-  classNames: ["piece"],
-  classNameBindings: ["orderToken.house", "orderClass"],
+  classNames: ["piece", "flippable"],
+  classNameBindings: ["orderToken.house", "flippedCssClass"],
   attributeBindings: ["id", "style"],
 
   id: computed(function () {
@@ -28,6 +28,14 @@ export default Ember.Component.extend(Draggable, {
     orderType = Ember.String.dasherize(orderType);
     let cssClass = this.isFaceup() ? orderType : "order-cover";
     return cssClass;
+  }),
+
+  flippedCssClass: computed("orderToken.faceup", function () {
+    return this.isFaceup() ? "flipped" : "";
+  }),
+
+  isFlipperEnabled: computed("orderToken.territory", function () {
+    return this.get("orderToken.territory.id") !== null;
   }),
 
   isFaceup: function () {

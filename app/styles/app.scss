@@ -80,11 +80,14 @@ button {
       }
     }
 
-    .footman, .knight, .ship, .siege,
+    .piece {
+      position: static !important;
+    }
+
+    .piece, .footman, .knight, .ship, .siege,
     .march, .march-m, .march-p {
       background-size: 100%;
       float: left;
-      position: static;
       width: 44px;
       height: 52px;
     }
@@ -134,15 +137,8 @@ button {
 @mixin order-token {
   background-position: center center;
   background-repeat: no-repeat;
-  height: 83px;
-  width: 83px;
-}
-
-@mixin order-cover {
-  background-position: center center;
-  background-repeat: no-repeat;
-  height: 103px;
-  width: 103px;
+  height: 80px;
+  width: 80px;
 }
 
 .march {
@@ -161,43 +157,43 @@ button {
 }
 
 .baratheon {
-  &.order-cover {
-    @include order-cover;
+  .order-cover {
+    @include order-token;
     background-image: url("images/order-covers/baratheon.png");
   }
 }
 
 .greyjoy {
-  &.order-cover {
-    @include order-cover;
+  .order-cover {
+    @include order-token;
     background-image: url("images/order-covers/greyjoy.png");
   }
 }
 
 .lannister {
-  &.order-cover {
-    @include order-cover;
+  .order-cover {
+    @include order-token;
     background-image: url("images/order-covers/lannister.png");
   }
 }
 
 .martell {
-  &.order-cover {
-    @include order-cover;
+  .order-cover {
+    @include order-token;
     background-image: url("images/order-covers/martell.png");
   }
 }
 
 .stark {
-  &.order-cover {
-    @include order-cover;
+  .order-cover {
+    @include order-token;
     background-image: url("images/order-covers/stark.png");
   }
 }
 
 .tyrell {
   &.order-cover {
-    @include order-cover;
+    @include order-token;
     background-image: url("images/order-covers/tyrell.png");
   }
 }
@@ -476,3 +472,41 @@ button {
   }
 }
 
+/* entire container, keeps perspective */
+.flippable {
+  perspective: 1000;
+
+  /* flip the pane when add the class */
+  &.flipped .flipper {
+    transform: rotateY(180deg);
+  }
+
+  /* flip speed goes here */
+  .flipper {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+  }
+
+  /* hide back of pane during swap */
+  .back, .front {
+    backface-visibility: hidden;
+
+    top: 0;
+    left: 0;
+  }
+
+  /* back pane, placed above back */
+  .back {
+    z-index: 2;
+    /* for firefox 31 */
+    transform: rotateY(0deg);
+  }
+
+  /* back, initially hidden pane */
+  .front {
+    transform: rotateY(180deg);
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
