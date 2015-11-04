@@ -6,7 +6,7 @@ export default Ember.Controller.extend(EmberPusher.Bindings, {
 
   PUSHER_SUBSCRIPTIONS: {
     unit: ["footman.update", "knight.update", "boat.update", "siege_engine.update"],
-    order_token: ["march_m.update", "reveal"]
+    order_token: ["march.update", "march_p.update", "march_m.update", "reveal"]
   },
 
   pieceUpdate: function(modelName, data) {
@@ -71,8 +71,13 @@ export default Ember.Controller.extend(EmberPusher.Bindings, {
         orderToken.set("faceup", true);
       });
     },
+    marchUpdate: function (data) {
+      this.pieceUpdate("orderToken", data);
+    },
+    marchPUpdate: function (data) {
+      this.pieceUpdate("orderToken", data);
+    },
     marchMUpdate: function (data) {
-      console.log("playerController#marchMUpdate");
       this.pieceUpdate("orderToken", data);
     },
   },
