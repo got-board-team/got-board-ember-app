@@ -1,4 +1,6 @@
+import DS from 'ember-data';
 import config from '../config/environment';
+import Pusherable from '../services/pusherable';
 
 export function initialize(instance) {
   // TODO When update to Ember 2.1.0 change this!

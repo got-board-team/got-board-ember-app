@@ -1,11 +1,13 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model: function(params) {
+
+  model(params) {
     var match = this.store.find("match", params.id);
     return match;
   },
-  serialize: function(model) {
+
+  serialize(model) {
     return { id: model.get("id") };
   },
 });

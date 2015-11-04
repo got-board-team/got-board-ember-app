@@ -15,6 +15,7 @@ export default Ember.Mixin.create({
       var elm = $(this);
       window.offset = elm.offset();
       elm.css('pointer-events', "none");
+      elm.css('position', "absolute");
       $("body").append(elm);
 
       //fix position of object on the screen
@@ -28,9 +29,6 @@ export default Ember.Mixin.create({
 
     $draggable.on("dragEnd", function () {
       var elm = $(this);
-
-      //fix position of object on the screen
-      //elm.offset(window.offset);
 
       elm.css('pointer-events', "auto");
 

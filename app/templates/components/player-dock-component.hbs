@@ -13,7 +13,7 @@
     </section>
 
     <section id="player-order-tokens">
-      <h2>Avaiable Order Tokens: {{player.availableOrderTokens.length}}</h2>
+      <h2>Order Tokens: {{player.availableOrderTokens.length}}</h2>
       <button {{action 'revealOrders'}}>Reveal Orders</button>
       <br />
       <br />
@@ -22,7 +22,13 @@
       {{/each}}
     </section>
 
-    {{yield}}
+    <section id="player-power-tokens">
+      <h2>Power Tokens: {{player.availablePowerTokens.length}}</h2>
+      {{#each player.availablePowerTokens as |powerToken|}}
+        {{power-token-component powerToken=powerToken}}
+      {{/each}}
+    </section>
+
     <button {{action 'contract'}} class="toggle-trigger on-right">&#10094;</button>
   </aside>
 {{else}}

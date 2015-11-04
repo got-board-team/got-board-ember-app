@@ -13,4 +13,15 @@ export default Model.extend({
   house: Ember.computed("player", function() {
     return this.get("player.house").toLowerCase();
   }),
-});
+})
+.pusherable("order_token", [
+  "consolidate",
+  "consolidate_p",
+  "defend",
+  "defend_p",
+  "march",
+  "march_p",
+  "march_m",
+  "support",
+  "support_p",
+]);

@@ -29,17 +29,16 @@ export default Ember.Component.extend(Droppable, {
     },
 
     revealOrders: function () {
-      console.log("player-dock-component#revealOrders");
-      this.get("orderService").revealOrders(this.player)
+      let ids = this.get("player.orderTokens").mapBy("id");
+      this.get("orderService").revealOrders(ids);
     },
   },
 
   drop: function () {
-    console.log("DROP");
     var obj = window.draggedObject;
     obj.setProperties({ territory: null, x: 0, y: 0 });
     obj.save().then(function (piece) {
-      console.log(piece.get("type") + ' was dropped into the player dock' +
+      console.log(piece.toString() + ' was dropped into the player dock' +
                   ' at x: ' + piece.get("x") + ' , y: ' + piece.get("y"));
     });
   },
