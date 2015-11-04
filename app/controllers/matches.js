@@ -6,7 +6,14 @@ export default Ember.Controller.extend(EmberPusher.Bindings, {
 
   PUSHER_SUBSCRIPTIONS: {
     unit: ["footman.update", "knight.update", "boat.update", "siege_engine.update"],
-    order_token: ["march.update", "march_p.update", "march_m.update", "reveal"]
+    order_token: [ "consolidate.update",
+                   "consolidate_p.update",
+                   "defend.update",
+                   "defend_p.update",
+                   "march.update",
+                   "march_p.update",
+                   "march_m.update",
+                   "reveal" ]
   },
 
   pieceUpdate: function(modelName, data) {
@@ -78,6 +85,18 @@ export default Ember.Controller.extend(EmberPusher.Bindings, {
       this.pieceUpdate("orderToken", data);
     },
     marchMUpdate: function (data) {
+      this.pieceUpdate("orderToken", data);
+    },
+    consolidateUpdate: function (data) {
+      this.pieceUpdate("orderToken", data);
+    },
+    consolidatePUpdate: function (data) {
+      this.pieceUpdate("orderToken", data);
+    },
+    defendUpdate: function (data) {
+      this.pieceUpdate("orderToken", data);
+    },
+    defendPUpdate: function (data) {
       this.pieceUpdate("orderToken", data);
     },
   },

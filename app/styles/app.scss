@@ -85,7 +85,11 @@ button {
     }
 
     .piece, .footman, .knight, .ship, .siege,
-    .march, .march-m, .march-p {
+    .march, .march-m, .march-p,
+    .consolidate, .consolidate-p,
+    .defend, .defend-p,
+    .raid, .raid-p,
+    .support, .support-p {
       background-size: 100%;
       float: left;
       width: 44px;
@@ -154,6 +158,46 @@ button {
 .march-p {
   @include order-token;
   background-image: url("images/orders/marchp.png");
+}
+
+.consolidate-p {
+  @include order-token;
+  background-image: url("images/orders/consolidatep.png");
+}
+
+.consolidate {
+  @include order-token;
+  background-image: url("images/orders/consolidate.png");
+}
+
+.defend-p {
+  @include order-token;
+  background-image: url("images/orders/defendp.png");
+}
+
+.defend {
+  @include order-token;
+  background-image: url("images/orders/defend.png");
+}
+
+.raid-p {
+  @include order-token;
+  background-image: url("images/orders/raidp.png");
+}
+
+.raid {
+  @include order-token;
+  background-image: url("images/orders/raid.png");
+}
+
+.support-p {
+  @include order-token;
+  background-image: url("images/orders/supportp.png");
+}
+
+.support {
+  @include order-token;
+  background-image: url("images/orders/support.png");
 }
 
 .baratheon {
