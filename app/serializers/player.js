@@ -5,5 +5,7 @@ export default ActiveModelSerializer.extend(DS.EmbeddedRecordsMixin, {
   isNewSerializerAPI: true,
   attrs: {
     units: { embedded: 'always' },
+    orderTokens: { embedded: 'always' },
+    powerTokens: { embedded: 'always' },
   }
 });

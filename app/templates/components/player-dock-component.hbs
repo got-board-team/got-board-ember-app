@@ -1,59 +1,36 @@
 {{#if isExpanded}}
-  <section class="player-dock">
-    <h1>House Of {{player.house}} {{player.units.length}} </h1>
-    <strong>Avaiable Units: {{player.availableUnits.length}}</strong>
-    {{#each player.availableUnits as |unit|}}
-      {{unit-component unit=unit}}
-    {{/each}}
-    <ul class="stark orders">
-      <li class="taken"><img src="assets/images/tokens/consolidate.png"></li>
-      <li><img src="assets/images/tokens/consolidate.png"></li>
-      <li><img src="assets/images/tokens/consolidatep.png"></li>
-      <li><img src="assets/images/tokens/defend.png"></li>
-      <li><img src="assets/images/tokens/defend.png"></li>
-      <li><img src="assets/images/tokens/defendp.png"></li>
-      <li><img src="assets/images/tokens/raid.png"></li>
-      <li><img src="assets/images/tokens/raid.png"></li>
-      <li><img src="assets/images/tokens/raidp.png"></li>
-      <li><img src="assets/images/tokens/support.png"></li>
-      <li><img src="assets/images/tokens/support.png"></li>
-      <li><img src="assets/images/tokens/supportp.png"></li>
-      <li><img src="assets/images/tokens/march.png"></li>
-      <li><img src="assets/images/tokens/marchm.png"></li>
-      <li><img src="assets/images/tokens/marchp.png"></li>
-    </ul>
+  <aside>
+    <section id="player-main-info">
+      <h1>House of {{player.house}}</h1>
+      <p>Total player units: {{player.units.length}}</p>
+    </section>
 
-    <ul class="power-tokens">
-      <li class="stark"></li>
-      <li class="stark"></li>
-      <li class="stark"></li>
-      <li class="stark"></li>
-      <li class="stark"></li>
-    </ul>
+    <section id="player-units">
+      <h2>Avaiable Units: {{player.availableUnits.length}}</h2>
+      {{#each player.availableUnits as |unit|}}
+        {{unit-component unit=unit}}
+      {{/each}}
+    </section>
 
+    <section id="player-order-tokens">
+      <h2>Order Tokens: {{player.availableOrderTokens.length}}</h2>
+      <button {{action 'revealOrders'}}>Reveal Orders</button>
+      <br />
+      <br />
+      {{#each player.availableOrderTokens as |orderToken|}}
+        {{order-token-component orderToken=orderToken}}
+      {{/each}}
+    </section>
 
+    <section id="player-power-tokens">
+      <h2>Power Tokens: {{player.availablePowerTokens.length}}</h2>
+      {{#each player.availablePowerTokens as |powerToken|}}
+        {{power-token-component powerToken=powerToken}}
+      {{/each}}
+    </section>
 
-    <!--<ul class="stark units">-->
-      <!--<li class="footman"></li>-->
-      <!--<li class="footman"></li>-->
-      <!--<li class="footman"></li>-->
-      <!--<li class="footman"></li>-->
-      <!--<li class="footman"></li>-->
-      <!--<li class="footman"></li>-->
-      <!--<li class="knight"></li>-->
-      <!--<li class="knight"></li>-->
-      <!--<li class="knight"></li>-->
-      <!--<li class="knight"></li>-->
-      <!--<li class="knight"></li>-->
-      <!--<li class="knight"></li>-->
-      <!--<li class="siege"></li>-->
-      <!--<li class="siege"></li>-->
-      <!--<li class="siege"></li>-->
-      <!--<li class="siege"></li>-->
-    <!--</ul>-->
-    {{yield}}
     <button {{action 'contract'}} class="toggle-trigger on-right">&#10094;</button>
-  </section>
+  </aside>
 {{else}}
   <button {{action 'expand'}} class="toggle-trigger on-left">&#10095;</button>
 {{/if}}

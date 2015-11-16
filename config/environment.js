@@ -44,8 +44,8 @@ module.exports = function(environment) {
 
   ENV['contentSecurityPolicy'] = {
     'default-src': "'none'",
-    'script-src': "'self' http://stats.pusher.com/",
-    'connect-src': "'self' ws://ws.pusherapp.com/ http://localhost:3000",
+    'script-src': "'self' http://stats.pusher.com/ https://stats.pusher.com/",
+    'connect-src': "'self' ws://ws.pusherapp.com/ wss://ws.pusherapp.com http://localhost:3000",
     'img-src': "'self'",
     'style-src': "'self' 'unsafe-inline'",
     'media-src': "'self'",

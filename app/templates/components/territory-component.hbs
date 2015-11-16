@@ -1,6 +1,14 @@
 <path class="territory" d="{{territory.path}}" />
-<foreignObject class="container">
+<foreignObject class="container" data-territory="{{territory.id}}">
   {{#each territory.units as |unit|}}
     {{unit-component unit=unit}}
+  {{/each}}
+
+  {{#each territory.orderTokens as |orderToken|}}
+    {{order-token-component orderToken=orderToken}}
+  {{/each}}
+
+  {{#each territory.powerTokens as |powerToken|}}
+    {{power-token-component powerToken=powerToken}}
   {{/each}}
 </foreignObject>

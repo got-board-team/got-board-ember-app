@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 
 let attr = DS.attr;
@@ -9,9 +10,10 @@ let Unit = DS.Model.extend({
   type: attr(),
   x: attr("number"),
   y: attr("number"),
-  house: function() {
+  house: Ember.computed("player", function() {
     return this.get("player.house").toLowerCase();
-  }.property("player")
-});
+  }),
+})
+.pusherable("unit", ["footman", "boats", "knights", "siege_engines"]);
 
 export default Unit;

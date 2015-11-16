@@ -1,12 +1,21 @@
 import Ember from 'ember';
 import Droppable from '../mixins/droppable';
 
+const { computed }  = Ember;
+
 export default Ember.Component.extend(Droppable, {
   tagName: "article",
-  classNames: ["toggable-panel"],
+  attributeBindings: ["id"],
+  classNames: ["player-dock"],
   isExpanded: true,
 
-  player: Ember.computed("player", function () {
+  orderService: Ember.inject.service("order-service"),
+
+  id: computed(function () {
+     return "player-dock-" + this.player.id;
+  }),
+
+  player: computed("player", function () {
     return this.player;
   }),
 
@@ -19,20 +28,19 @@ export default Ember.Component.extend(Droppable, {
       this.set('isExpanded', false);
     },
 
+    revealOrders: function () {
+      let ids = this.get("player.orderTokens").mapBy("id");
+      this.get("orderService").revealOrders(ids);
+    },
   },
 
   drop: function () {
-    var self = this;
     var obj = window.draggedObject;
-    var $elm = $(window.draggedElement);
-
     obj.setProperties({ territory: null, x: 0, y: 0 });
-
-    obj.save().then(function (unit) {
-      console.log(unit.get("type") + ' was dropped into the player dock' +
-                  ' at x: ' + unit.get("x") + ' , y: ' + unit.get("y"));
+    obj.save().then(function (piece) {
+      console.log(piece.toString() + ' was dropped into the player dock' +
+                  ' at x: ' + piece.get("x") + ' , y: ' + piece.get("y"));
     });
-
   },
 
 });

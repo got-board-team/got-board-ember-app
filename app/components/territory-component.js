@@ -10,20 +10,20 @@ export default Ember.Component.extend(Droppable, {
   }),
 
   drop: function () {
-    var self = this;
-
-    var draggedElement = window.draggedElement;
-    var x = window.offset.left;
-    var y = window.offset.top;
-    var obj = window.draggedObject;
+    let self = this;
+    let obj = window.draggedObject;
+    let x = window.offset.left;
+    let y = window.offset.top;
 
     obj.setProperties({ territory: self.territory, x: x, y: y });
 
-    obj.save().then(function (unit) {
-      var player = unit.get("player");
-      console.log(unit.get("type") + ' was dropped into ' + self.territory.id +
-                ' at x: ' + unit.get("x") + ' , y: ' + unit.get("y"));
+    obj.save().then(function (piece) {
+      console.log(piece.toString() + ' was dropped into ' + self.territory.id +
+                ' at x: ' + piece.get("x") + ' , y: ' + piece.get("y"));
     });
-
   },
+
+  addPowerToken: Ember.observer("territory.powerTokens.[]", function () {
+    console.log("added");
+  }),
 });

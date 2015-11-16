@@ -1,12 +1,11 @@
 import DS from 'ember-data';
 
-let attr = DS.attr;
+const { belongsTo, hasMany, attr } = DS;
 
-let Territory = DS.Model.extend({
-  map: DS.belongsTo("board", { async: false }),
-  slug: attr(),
+export default DS.Model.extend({
+  board: belongsTo("board", { async: false }),
   path: attr(),
-  units: DS.hasMany({ async: true }),
+  units: DS.hasMany(),
+  orderTokens: hasMany(),
+  powerTokens: hasMany(),
 });
-
-export default Territory;

@@ -1,7 +1,7 @@
 {
   "name": "got-board-game",
   "dependencies": {
-    "ember": "~2.1.0",
+    "ember": "~2.0.2",
     "ember-data": "2.1.0",
     "loader.js": "ember-cli/loader.js#3.4.0",
     "ember-cli-shims": "~0.0.6",
@@ -17,5 +17,14 @@
   },
   "devDependencies": {
     "sinon": "~1.16.1"
+  },
+  "resolutions": {
+    "ember": "~2.0.2",
+    "ember-qunit": "~0.3.0",
+    "qunit": "~1.17.1",
+    "loader.js": "3.4.0",
+    "ember-cli-shims": "~0.0.6",
+    "ember-load-initializers": "0.1.7",
+    "ember-data": "2.1.0"
   }
 }
