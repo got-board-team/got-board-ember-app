@@ -1,2 +1,60 @@
+<section id="status-bar">
+  <div id="status-stark" class="status-house current">
+    <h3>Stark</h3>
+    <h4>John (john@gotboard.com)</h4>
+    <div class="status-items">
+      <em class="supply marker">1</em>
+      <em class="victory marker">2</em>
+    </div>
+  </div>
+
+  <div id="status-greyjoy" class="status-house">
+    <h3>Greyjoy</h3>
+    <h4>Bob (bob@gotboard.com)</h4>
+    <div class="status-items">
+      <em class="supply marker">2</em>
+      <em class="victory marker">3</em>
+      <em id="blade-token" class="special-token">Blade</em>
+    </div>
+  </div>
+
+  <div id="status-baratheon" class="status-house">
+    <h3>Baratheon</h3>
+    <h4>Maria (maria@gotboard.com)</h4>
+    <div class="status-items">
+      <em class="supply marker">2</em>
+      <em class="victory marker">2</em>
+      <em id="throne-token" class="special-token">Throne</em>
+    </div>
+  </div>
+
+  <div id="status-lannister" class="status-house">
+    <h3>Lannister</h3>
+    <h4>Christian (christian@gotboard.com)</h4>
+    <div class="status-items">
+      <em class="supply marker">2</em>
+      <em class="victory marker">3</em>
+      <em id="raven-token" class="special-token">Raven</em>
+    </div>
+  </div>
+
+  <div id="status-tyrell" class="status-house">
+    <h3>Tyrell</h3>
+    <h4>Trevor (trevor@gotboard.com)</h4>
+    <div class="status-items">
+      <em class="supply marker">3</em>
+      <em class="victory marker">3</em>
+    </div>
+  </div>
+
+  <div id="status-martell" class="status-house empty">
+    <h3>Martell</h3>
+    <h4>no player</h4>
+    <div class="status-items">
+      <em class="supply marker">0</em>
+      <em class="victory marker">0</em>
+    </div>
+  </div>
+</section>
 {{board-component board=model.board}}
 {{player-dock-component player=currentPlayer}}

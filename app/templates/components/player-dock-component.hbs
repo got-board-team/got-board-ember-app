@@ -1,12 +1,8 @@
 {{#if isExpanded}}
   <aside>
-    <section id="player-main-info">
-      <h1>House of {{player.house}}</h1>
-      <p>Total player units: {{player.units.length}}</p>
-    </section>
-
     <section id="player-units">
       <h2>Avaiable Units: {{player.availableUnits.length}}</h2>
+      <p>Total player units: {{player.units.length}}</p>
       {{#each player.availableUnits as |unit|}}
         {{unit-component unit=unit}}
       {{/each}}
