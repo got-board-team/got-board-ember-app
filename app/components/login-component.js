@@ -5,7 +5,6 @@ export default Ember.Component.extend({
 
   actions: {
     authenticate() {
-      //const { login, password } = this.getProperties('login', 'password');
       this.get('session').authenticate('authenticator:torii', 'google-oauth2').then(() => {
         alert('Success! Click the top link!');
       }, (err) => {
