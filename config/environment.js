@@ -28,6 +28,15 @@ module.exports = function(environment) {
       authenticationRoute: 'login',
       serverTokenEndpoint: '/xxx',
     };
+
+    ENV.torii = {
+      providers: {
+        'google-oauth2': {
+          apiKey: "866943291177-90h4ribrqase40q5udthhceobgntkhlv.apps.googleusercontent.com",
+          redirectUri: "http://localhost:4200/oauth2callback"
+        }
+      }
+    };
   }
 
   if (environment === 'test') {
