@@ -10,9 +10,6 @@ export default Ember.Component.extend({
       }, (err) => {
         alert('Error obtaining token: ' + err.responseText);
       });
-    },
-    invalidate() {
-      this.get('session').invalidate();
     }
   }
 });
