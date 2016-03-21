@@ -11,8 +11,22 @@ export default Torii.extend({
   authenticate(options) {
     return this._super(options).then((data) => {
       console.log(`authorizationCode:\n${data.authorizationCode}\nprovider: ${data.provider}\nredirectUri: ${data.redirectUri}`);
-      this.makeRequest(data);
+      this.makeRequest(data).then((response) => {
+        this.trigger("sessionDataUpdated", response);
+      });
     });
+  },
+
+  restore: function(data) {
+    var resolveData = data || {};
+    this.provider = resolveData.provider;
+    return new Ember.RSVP.Promise(function(resolve) { resolve(resolveData); });
+  },
+
+  invalidate: function(data) {
+    var resolveData = data || {};
+    this.provider = resolveData.provider;
+    return new Ember.RSVP.Promise(function(resolve) { resolve(resolveData); });
   },
 
   makeRequest: function (data) {
