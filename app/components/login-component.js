@@ -7,6 +7,7 @@ export default Ember.Component.extend({
     authenticate() {
       this.get('session').authenticate('authenticator:torii', 'google-oauth2').then((data) => {
         alert('Success! Click the top link!');
+        console.log("login-component ", data);
       }, (err) => {
         alert('Error obtaining token: ' + err.responseText);
       });
