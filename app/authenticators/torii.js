@@ -13,6 +13,7 @@ export default Torii.extend({
       console.log(`authorizationCode:\n${data.authorizationCode}\nprovider: ${data.provider}\nredirectUri: ${data.redirectUri}`);
       this.makeRequest(data).then((response) => {
         this.trigger("sessionDataUpdated", response);
+        this.get("session").setUser(response.user_id);
       });
     });
   },
@@ -20,6 +21,7 @@ export default Torii.extend({
   restore: function(data) {
     var resolveData = data || {};
     this.provider = resolveData.provider;
+    this.get("session").setUser(data.user_id);
     return new Ember.RSVP.Promise(function(resolve) { resolve(resolveData); });
   },
 
