@@ -24,6 +24,19 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV['ember-simple-auth'] = {
+      serverTokenEndpoint: "http://localhost:3000/api/v1/users/authenticate",
+      authenticationRoute: 'login',
+    };
+
+    ENV.torii = {
+      providers: {
+        'google-oauth2': {
+          apiKey: "866943291177-90h4ribrqase40q5udthhceobgntkhlv.apps.googleusercontent.com",
+          redirectUri: "http://localhost:4200/oauth2callback"
+        }
+      }
+    };
   }
 
   if (environment === 'test') {

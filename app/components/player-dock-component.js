@@ -15,10 +15,6 @@ export default Ember.Component.extend(Droppable, {
      return "player-dock-" + this.player.id;
   }),
 
-  player: computed("player", function () {
-    return this.player;
-  }),
-
   actions: {
     expand: function() {
       this.set('isExpanded', true);

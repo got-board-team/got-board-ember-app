@@ -6,4 +6,3 @@ export default ApplicationAdapter.extend({
     return this.ajax(url + "/reveal", "GET", { data: { ids: ids } });
   },
 });
-
