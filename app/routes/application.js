@@ -8,7 +8,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     },
 
     error(error) {
-      alert(error);
-    }
+      alert(`Error: ${error}\nCheck your console for details.`);
+    },
   }
 });
