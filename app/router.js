@@ -6,7 +6,7 @@ var Router = Ember.Router.extend({
 });
 
 export default Router.map(function() {
-  this.resource('matches', function() {
+  this.route('matches', function() {
     this.route('show', { path: "/:id" });
   });
   this.route('login');
