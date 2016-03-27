@@ -9,15 +9,13 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   },
 
   model(params) {
-    console.log(1);
     modelHookRun = true;
-    var match = this.store.find("match", params.id);
+    let match = this.store.find("match", params.id);
     return match;
   },
 
   afterModel(model) {
     if (!modelHookRun) {
-      console.log(2);
       return model.reload();
     }
   },
@@ -25,4 +23,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   serialize(model) {
     return { id: model.get("id") };
   },
+
+  actions: {
+  },
+
 });
