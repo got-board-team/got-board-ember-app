@@ -13,7 +13,8 @@
     "qunit": "~1.17.1",
     "d3": "~3.5.6",
     "draggabilly": "~1.2.4",
-    "pusher": "~3.0.0"
+    "pusher": "~3.0.0",
+    "jquery": "1.11.3"
   },
   "devDependencies": {
     "sinon": "~1.16.1"
