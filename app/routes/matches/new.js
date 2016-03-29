@@ -4,9 +4,13 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
 
   model() {
-    return this.store.findAll("match");
+    return this.store.createRecord('match');
   },
 
-  serialize(model) {
-  },
+  actions: {
+    createMatch: function() {
+      this.currentModel.save();
+    }
+  }
+
 });

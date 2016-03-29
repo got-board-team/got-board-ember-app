@@ -1,8 +1,11 @@
-import DS from 'ember-data';
+import Model from 'ember-data/model';
+import { hasMany, belongsTo } from 'ember-data/relationships';
+import attr from 'ember-data/attr';
 
-let Match = DS.Model.extend({
-  players: DS.hasMany({ async: true }),
-  board: DS.belongsTo("board", { async: false }),
+let Match = Model.extend({
+  players: hasMany({ async: true }),
+  board: belongsTo("board", { async: false }),
+  playersCount: attr("number"),
 });
 
 export default Match;
