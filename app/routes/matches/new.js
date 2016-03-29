@@ -9,7 +9,10 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 
   actions: {
     createMatch: function() {
-      this.currentModel.save();
+      let match = this.currentModel;
+      match.save().then(() => {
+        this.transitionTo("matches.show", match);
+      });
     }
   }
 

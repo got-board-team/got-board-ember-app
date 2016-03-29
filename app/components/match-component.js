@@ -18,4 +18,8 @@ export default Ember.Component.extend({
     return player;
   }),
 
+  isPlayer: computed(function() {
+    return this.get("currentPlayer") != null;
+  }),
+
 });
