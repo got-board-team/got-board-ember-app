@@ -17,6 +17,7 @@ module.exports = function(environment) {
   };
 
   ENV.APP.PUSHER_KEY = 'cfdf3c0b0c4a559c3dfe';
+  ENV.APP.API_HOST = 'http://localhost:3000';
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
@@ -25,7 +26,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV['ember-simple-auth'] = {
-      serverTokenEndpoint: "http://localhost:3000/api/v1/users/authenticate",
+      serverTokenEndpoint: `${ENV.APP.API_HOST}/api/v1/users/authenticate`,
       authenticationRoute: "login",
     };
 
@@ -58,7 +59,7 @@ module.exports = function(environment) {
   ENV['contentSecurityPolicy'] = {
     'default-src': "'none'",
     'script-src': "'self' http://stats.pusher.com/ https://stats.pusher.com/",
-    'connect-src': "'self' ws://ws.pusherapp.com/ wss://ws.pusherapp.com http://localhost:3000",
+    'connect-src': `'self' ws://ws.pusherapp.com/ wss://ws.pusherapp.com ${ENV.APP.API_HOST}`,
     'img-src': "'self'",
     'style-src': "'self' 'unsafe-inline'",
     'media-src': "'self'",
