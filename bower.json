@@ -18,6 +18,8 @@
     "sinon": "~1.16.1"
   },
   "resolutions": {
-    "ember": "~2.4.3"
+    "ember": "~2.4.3",
+    "ember-cli-shims": "~0.1.1",
+    "ember-qunit": "~0.4.20"
   }
 }
