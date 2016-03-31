@@ -7,8 +7,12 @@ export default Ember.Component.extend({
 
   session: Ember.inject.service(),
 
-  playersSlots: Ember.computed("match.players@each.userId", function() {
+  playersSlots: Ember.computed("match.players.@each.userId", function() {
     return this.get("match.players").filterBy("userId", null).toArray();
+  }),
+
+  ob: Ember.observer("match.players.@each.userId", function() {
+    console.log("Estamos de olho!");
   }),
 
   actions: {
