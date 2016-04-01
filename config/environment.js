@@ -17,7 +17,8 @@ module.exports = function(environment) {
   };
 
   ENV.APP.PUSHER_KEY = 'cfdf3c0b0c4a559c3dfe';
-  ENV.APP.API_HOST = 'http://localhost:3000';
+  console.log("api host: ", process.env.API_HOST);
+  ENV.APP.API_HOST = process.env.API_HOST ||'http://localhost:3000';
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
