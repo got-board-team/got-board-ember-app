@@ -11,10 +11,6 @@ export default Ember.Component.extend({
     return this.get("match.players").filterBy("userId", null).toArray();
   }),
 
-  ob: Ember.observer("match.players.@each.userId", function() {
-    console.log("Estamos de olho!");
-  }),
-
   actions: {
     chooseHouse(player) {
       let userId = this.get("session.userId");

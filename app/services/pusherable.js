@@ -1,11 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Object.extend({
-  store: Ember.inject.service("store"),
-
   init() {
     let self = this;
     this.get("types").forEach(function (type) {
+      console.log(type);
       self.bindEvents(type);
     });
   },
@@ -51,24 +50,34 @@ export default Ember.Object.extend({
     let record = store.peekRecord(modelName, data.id);
 
     delete data.id;
-    data.territory_id = data.territory;
-    delete data.territory;
 
-    let collectionName = Ember.String.camelize(modelName);
-    collectionName = Ember.String.pluralize(collectionName);
-    console.log(collectionName);
-    let territory = store.peekRecord("territory", data.territory_id);
+    //TODO refactor
+    if (modelName == "unit") {
+      data.territory_id = data.territory;
+      delete data.territory;
 
-    if(territory) {
-      territory.get(collectionName).addObject(record);
-      //HACK: wait to see css transition animation
-      setTimeout(function () { record.setProperties(data); }, 100);
-    } else {
-      let records = record.get("territory." + collectionName);
-      if (!records) { return; }
-      records.removeObject(record);
-      record.setProperties(data);
+      let collectionName = Ember.String.camelize(modelName);
+      collectionName = Ember.String.pluralize(collectionName);
+      console.log(collectionName);
+      let territory = store.peekRecord("territory", data.territory_id);
+
+      if(territory) {
+        territory.get(collectionName).addObject(record);
+        //HACK: wait to see css transition animation
+        setTimeout(function () { record.setProperties(data); }, 100);
+      } else {
+        let records = record.get("territory." + collectionName);
+        if (!records) { return; }
+        records.removeObject(record);
+        record.setProperties(data);
+      }
+      return;
     }
+
+    let serializer = this.store.serializerFor(modelName);
+    data.links = {};
+    let normalized = serializer.normalize(this.model, data);
+    record.setProperties(normalized.data.attributes);
   },
 
   onBulkUpdate(bulk) {

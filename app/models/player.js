@@ -20,4 +20,5 @@ export default DS.Model.extend({
   availablePowerTokens: computed("powerTokens.@each.territory", function() {
     return this.get("powerTokens").filterBy("territory", null).toArray();
   }),
-});
+})
+.pusherable("player");
