@@ -19,12 +19,8 @@ export default Ember.Component.extend(Draggable, {
   }),
 
   type: computed(function() {
-    return this.get("unit.type").toLowerCase();
-  }),
-
-  house: computed(function () {
-    let house =this.get("unit.house");
-    return Ember.String.dasherize(house);
+    let type = this.get("unit.type");
+    return Ember.String.dasherize(type).toLowerCase();
   }),
 
   style: function () {
