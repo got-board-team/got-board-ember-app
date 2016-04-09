@@ -9,6 +9,8 @@ export default Ember.Component.extend(Draggable, {
   classNameBindings: ["houseCard.house", "flippedCssClass"],
   attributeBindings: ["id", "style"],
 
+  session: Ember.inject.service(),
+
   id: computed(function () {
     //TODO Add some logic to generate a different id when order is facedown to
     //avoid others players to find out which is the order
@@ -39,10 +41,12 @@ export default Ember.Component.extend(Draggable, {
   }),
 
   isFaceup: function () {
-    // TODO refactor o get house from session
-    var house = window.location.search.split("=")[1] || "Greyjoy";
-    house = house.toLowerCase();
-    return house === this.get("orderToken.house") || this.get("orderToken.faceup");
+    let playerUser = this.get("houseCard.player.userId");
+    let currentPlayer = this.get("session.userId");
+    console.log("P ", playerUser);
+    console.log("C ", currentPlayer);
+    let isCurrentPlayer = (playerUser == currentPlayer)
+    return isCurrentPlayer || this.get("houseCard.faceup");
   },
 
   style: computed("houseCard.x", "houseCard.y", function () {

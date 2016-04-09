@@ -40,10 +40,13 @@ button {
 
 /* PLAYER DOCK */
 .player-dock {
-  position: fixed;
+  height: 95%;
   left: 0;
-  top: 20px;
+  overflow: auto;
+  position: fixed;
   text-align: center;
+  top: 20px;
+  width: 250px;
   z-index: 900;
 
   &.drop-actived {
@@ -58,7 +61,6 @@ button {
     font-size: .7em;
     overflow: auto;
     position: relative;
-    width: 17em;
 
     section {
       background: rgba(0, 0, 0, 0.7);
@@ -66,6 +68,10 @@ button {
       overflow: auto;
       margin-bottom: 1px;
       padding: .5em .5em 0;
+
+      &:not(:first-child) {
+        min-height: 300px;
+      }
 
       h1, h2, p {
         margin: 0 0 .5em;
@@ -109,12 +115,12 @@ button {
     background: rgba(255, 255, 255, 1);
     border: 0;
     width: 1.5em;
-    position: absolute;
-    top: 0;
+    position: fixed;
+    top: 50%;
     height: 5em;
 
     &.on-right {
-      right: 0;
+      left: 215px;
     }
 
     &.on-left {
@@ -216,6 +222,15 @@ button {
 }
 
 /* HOUSES */
+
+@mixin house-card {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 149px;
+  width: 95px;
+}
+
 .baratheon {
   .order-cover {
     @include order-token;
@@ -268,6 +283,37 @@ button {
   &.power-token {
     @include power-token;
     background-image: url("images/power-tokens/stark.png");
+  }
+  .house-card-cover {
+    background-image: url("images/cards/stark-back.png");
+  }
+  .eddard-stark {
+    @include house-card;
+    background-image: url("images/cards/stark-eddard-stark.png");
+  }
+  .robb-stark {
+    @include house-card;
+    background-image: url("images/cards/stark-robb-stark.png");
+  }
+  .roose-bolton {
+    @include house-card;
+    background-image: url("images/cards/stark-roose-bolton.png");
+  }
+  .greatjon-umber {
+    @include house-card;
+    background-image: url("images/cards/stark-greatjon-umber.png");
+  }
+  .the-blackfish {
+    @include house-card;
+    background-image: url("images/cards/stark-the-blackfish.png");
+  }
+  .ser-rodrick-cassel {
+    @include house-card;
+    background-image: url("images/cards/stark-ser-rodrick-cassel.png");
+  }
+  .catelyn-stark {
+    @include house-card;
+    background-image: url("images/cards/stark-catelyn-stark.png");
   }
 }
 
@@ -433,4 +479,30 @@ button {
     top: 0;
     left: 0;
   }
+}
+/* Turn on custom 8px wide scrollbar */
+::-webkit-scrollbar {
+  width: 10px; /* 1px wider than Lion. */
+  /* This is more usable for users trying to click it. */
+  background-color: rgba(0,0,0,0);
+  -webkit-border-radius: 100px;
+}
+/* hover effect for both scrollbar area, and scrollbar 'thumb' */
+::-webkit-scrollbar:hover {
+  background-color: rgba(0, 0, 0, 0.09);
+}
+ 
+/* The scrollbar 'thumb' ...that marque oval shape in a scrollbar */
+::-webkit-scrollbar-thumb:vertical {
+  /* This is the EXACT color of Mac OS scrollbars. 
+     Yes, I pulled out digital color meter */
+  background: rgba(0,0,0,0.5);
+  -webkit-border-radius: 100px;
+  background-clip: padding-box;
+  border: 2px solid rgba(0, 0, 0, 0);
+  min-height: 10px; /*Prevent it from getting too small */
+}
+::-webkit-scrollbar-thumb:vertical:active {
+  background: rgba(0,0,0,0.61); /* Some darker color when you click it */
+  -webkit-border-radius: 100px;
 }
