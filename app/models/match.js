@@ -5,7 +5,7 @@ import attr from 'ember-data/attr';
 let Match = Model.extend({
   players: hasMany({ async: true }),
   board: belongsTo("board", { async: false }),
-  playersCount: attr("number"),
+  numberOfPlayers: attr("number"),
 });
 
 export default Match;

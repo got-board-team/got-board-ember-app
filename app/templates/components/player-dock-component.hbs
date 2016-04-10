@@ -31,9 +31,13 @@
 
     <section id="player-cards">
       <h2>Player Cards: {{player.houseCards.length}}</h2>
-      {{#each player.houseCards as |houseCard|}}
-        {{house-card-component houseCard=houseCard}}
-      {{/each}}
+      <ul>
+        {{#each player.houseCards as |houseCard|}}
+          <li>
+            {{house-card-component houseCard=houseCard}}
+          </li>
+        {{/each}}
+      </ul>
     </section>
 
     <button {{action 'contract'}} class="toggle-trigger on-right">&#10094;</button>
