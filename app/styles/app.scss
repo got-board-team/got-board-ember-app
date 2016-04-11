@@ -223,15 +223,30 @@ button {
 
 /* HOUSES */
 
-@mixin house-card {
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: 100%;
-  height: 149px;
-  width: 95px;
+@mixin house-cards($house, $names) {
+  @each $name in $names {
+    .#{$name} {
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      height: 149px;
+      width: 95px;
+      background-image: url("images/cards/#{$house}-#{$name}.png");
+    }
+  }
 }
 
 .baratheon {
+  @include house-cards("baratheon",
+  "patchface"
+  "melisandre"
+  "salladhor"
+  "brienne"
+  "davos"
+  "renly"
+  "stannis"
+  );
+
   .order-cover {
     @include order-token;
     background-image: url("images/order-covers/baratheon.png");
@@ -243,6 +258,16 @@ button {
 }
 
 .greyjoy {
+  @include house-cards("greyjoy",
+  "aeron"
+  "asha"
+  "dagmar"
+  "balon"
+  "theon"
+  "victorian"
+  "euron"
+  );
+
   .order-cover {
     @include order-token;
     background-image: url("images/order-covers/greyjoy.png");
@@ -254,6 +279,15 @@ button {
 }
 
 .lannister {
+  @include house-cards("lannister",
+  "cersei"
+  "tyrion"
+  "hound"
+  "jaime"
+  "gregor"
+  "tywin"
+  );
+
   .order-cover {
     @include order-token;
     background-image: url("images/order-covers/lannister.png");
@@ -265,6 +299,16 @@ button {
 }
 
 .martell {
+  @include house-cards("martell",
+  "doran"
+  "arianne"
+  "nymeria"
+  "darkstar"
+  "obara"
+  "areo"
+  "redviper"
+  );
+
   .order-cover {
     @include order-token;
     background-image: url("images/order-covers/martell.png");
@@ -276,6 +320,16 @@ button {
 }
 
 .stark {
+  @include house-cards("stark",
+  "eddard-stark"
+  "robb-stark"
+  "roose-bolton"
+  "greatjon-umber"
+  "the-blackfish"
+  "ser-rodrick-cassel"
+  "catelyn-stark"
+  );
+
   .order-cover {
     @include order-token;
     background-image: url("images/order-covers/stark.png");
@@ -284,40 +338,19 @@ button {
     @include power-token;
     background-image: url("images/power-tokens/stark.png");
   }
-  .house-card-cover {
-    background-image: url("images/cards/stark-back.png");
-  }
-  .eddard-stark {
-    @include house-card;
-    background-image: url("images/cards/stark-eddard-stark.png");
-  }
-  .robb-stark {
-    @include house-card;
-    background-image: url("images/cards/stark-robb-stark.png");
-  }
-  .roose-bolton {
-    @include house-card;
-    background-image: url("images/cards/stark-roose-bolton.png");
-  }
-  .greatjon-umber {
-    @include house-card;
-    background-image: url("images/cards/stark-greatjon-umber.png");
-  }
-  .the-blackfish {
-    @include house-card;
-    background-image: url("images/cards/stark-the-blackfish.png");
-  }
-  .ser-rodrick-cassel {
-    @include house-card;
-    background-image: url("images/cards/stark-ser-rodrick-cassel.png");
-  }
-  .catelyn-stark {
-    @include house-card;
-    background-image: url("images/cards/stark-catelyn-stark.png");
-  }
 }
 
 .tyrell {
+  @include house-cards("tyrell",
+  "queen"
+  "alester"
+  "margaery"
+  "garlan"
+  "randyll"
+  "loras"
+  "mace"
+  );
+
   .order-cover {
     @include order-token;
     background-image: url("images/order-covers/tyrell.png");
@@ -491,11 +524,11 @@ button {
 ::-webkit-scrollbar:hover {
   background-color: rgba(0, 0, 0, 0.09);
 }
- 
+
 /* The scrollbar 'thumb' ...that marque oval shape in a scrollbar */
 ::-webkit-scrollbar-thumb:vertical {
-  /* This is the EXACT color of Mac OS scrollbars. 
-     Yes, I pulled out digital color meter */
+  /* This is the EXACT color of Mac OS scrollbars.
+  Yes, I pulled out digital color meter */
   background: rgba(0,0,0,0.5);
   -webkit-border-radius: 100px;
   background-clip: padding-box;
