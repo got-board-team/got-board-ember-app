@@ -57,38 +57,12 @@ export default Ember.Object.extend({
 
     delete data.id;
 
-    //TODO refactor please!
-    if (modelName == "unit") {
-      data.territory_id = data.territory;
-      delete data.territory;
-
-      let collectionName = Ember.String.camelize(modelName);
-      collectionName = Ember.String.pluralize(collectionName);
-      console.log(collectionName);
-      let territory = store.peekRecord("territory", data.territory_id);
-
-      if(territory) {
-        territory.get(collectionName).addObject(record);
-        //HACK: wait to see css transition animation
-        setTimeout(function () { record.setProperties(data); }, 100);
-      } else {
-        let records = record.get("territory." + collectionName);
-        if (!records) { return; }
-        records.removeObject(record);
-        record.setProperties(data);
-      }
-      return;
-    }
-
     let serializer = this.store.serializerFor(modelName);
     data.links = {};
     let normalized = serializer.normalize(this.model, data);
-    console.log("attrs");
-    console.log(normalized.data.attributes);
     let attrs = normalized.data.attributes
     let territory = store.peekRecord("territory", data.territory);
     attrs.territory = territory
-    console.log(attrs);
     record.setProperties(attrs);
   },
 
