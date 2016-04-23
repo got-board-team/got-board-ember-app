@@ -9,7 +9,6 @@ export function initialize(instance) {
     pusherable(channelName, messageTypes) {
       let pusher = new Pusher(ENV.APP.PUSHER_KEY, { encrypted: true });
 
-      console.log(channelName);
       Pusherable.create({
         store: instance.lookup("service:store"),
         pusher: pusher,

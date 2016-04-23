@@ -43,8 +43,6 @@ export default Ember.Component.extend(Draggable, {
   isFaceup: function () {
     let playerUser = this.get("houseCard.player.userId");
     let currentPlayer = this.get("session.userId");
-    console.log("P ", playerUser);
-    console.log("C ", currentPlayer);
     let isCurrentPlayer = (playerUser == currentPlayer)
     return isCurrentPlayer || this.get("houseCard.faceup");
   },

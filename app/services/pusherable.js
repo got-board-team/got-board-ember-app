@@ -4,7 +4,6 @@ export default Ember.Object.extend({
   init() {
     let self = this;
     this.get("types").forEach(function (type) {
-      console.log(type);
       self.bindEvents(type);
     });
   },
@@ -47,11 +46,18 @@ export default Ember.Object.extend({
     console.log("pusherable#update", data);
     let store = this.get("store");
     let modelName = this.get("modelName");
+    let hasRecord = store.hasRecordForId(modelName, data.id);
+
+    if(!hasRecord) {
+      this.onCreate(data);
+      return;
+    }
+
     let record = store.peekRecord(modelName, data.id);
 
     delete data.id;
 
-    //TODO refactor
+    //TODO refactor please!
     if (modelName == "unit") {
       data.territory_id = data.territory;
       delete data.territory;
@@ -77,7 +83,13 @@ export default Ember.Object.extend({
     let serializer = this.store.serializerFor(modelName);
     data.links = {};
     let normalized = serializer.normalize(this.model, data);
-    record.setProperties(normalized.data.attributes);
+    console.log("attrs");
+    console.log(normalized.data.attributes);
+    let attrs = normalized.data.attributes
+    let territory = store.peekRecord("territory", data.territory);
+    attrs.territory = territory
+    console.log(attrs);
+    record.setProperties(attrs);
   },
 
   onBulkUpdate(bulk) {
