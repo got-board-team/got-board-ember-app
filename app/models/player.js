@@ -9,6 +9,7 @@ export default DS.Model.extend({
   orderTokens: DS.hasMany(),
   powerTokens: DS.hasMany(),
   house: DS.attr(),
+  userId: DS.attr(),
 
   availableUnits: computed("units.@each.territory", function() {
     return this.get("units").filterBy("territory", null).toArray();
