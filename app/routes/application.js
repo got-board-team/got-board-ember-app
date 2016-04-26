@@ -4,7 +4,11 @@ import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mi
 export default Ember.Route.extend(ApplicationRouteMixin, {
   actions: {
     invalidateSession() {
-      this.get('session').invalidate();
-    }
+      this.get("session").invalidate();
+    },
+
+    error(error) {
+      alert(`Error: ${error}\nCheck your console for details.`);
+    },
   }
 });

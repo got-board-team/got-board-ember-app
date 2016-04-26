@@ -1,0 +1,13 @@
+<aside>
+  <section id="player-main-info">
+    <h1>Choose a House</h1>
+    <ul>
+      {{#each playersSlots as |player|}}
+      <li>
+        <button {{action "chooseHouse" player}}>{{player.house}}</button>
+      </li>
+      {{/each}}
+    </ul>
+  </section>
+</aside>
+

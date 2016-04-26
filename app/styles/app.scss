@@ -331,6 +331,7 @@ button {
 @mixin order-token {
   background-position: center center;
   background-repeat: no-repeat;
+  background-size: 100%;
   height: 80px;
   width: 80px;
 }
@@ -464,174 +465,116 @@ button {
 }
 
 /* UNITS */
-.unit {
-  background-repeat: no-repeat;
-  height: 70px;
-  width: 70px;
+.footman {
+  height: 90px;
+  width: 80px;
+
+  @mixin footman-image($house) {
+    background-image: url("images/units/" + $house + "-footman.png");
+  }
+
+  &.baratheon {
+    @include footman-image("baratheon");
+  }
+  &.lannister {
+    @include footman-image("lannister");
+  }
+  &.stark {
+    @include footman-image("stark");
+  }
+  &.greyjoy {
+    @include footman-image("greyjoy");
+  }
+  &.tyrell {
+    @include footman-image("tyrell");
+  }
+  &.martell {
+    @include footman-image("martell");
+  }
 }
 
 .knight {
-  background-repeat: no-repeat;
   height: 90px;
   width: 80px;
+
+  @mixin knight-image($house) {
+    background-image: url("images/units/" + $house + "-knight.png");
+  }
+
+  &.baratheon {
+    @include knight-image("baratheon");
+  }
+  &.lannister {
+    @include knight-image("lannister");
+  }
+  &.stark {
+    @include knight-image("stark");
+  }
+  &.greyjoy {
+    @include knight-image("greyjoy");
+  }
+  &.tyrell {
+    @include knight-image("tyrell");
+  }
+  &.martell {
+    @include knight-image("martell");
+  }
 }
 
-.footman {
-  background-repeat: no-repeat;
-  height: 90px;
-  width: 80px;
-}
-
-.stark .footman{
-  background-image: url("images/units/stark-footman.png");
-  width: 80px;
-  height: 89px;
-}
-
-.stark .knight{
-  background-image: url("images/units/stark-knight.png");
-  height: 93px;
-  width: 80px;
-}
-
-.stark-ship{
-  background-image: url("images/units/stark-ship.png");
+.boat {
   width: 100px;
   height: 83px;
+
+  @mixin boat-image($house) {
+    background-image: url("images/units/" + $house + "-boat.png");
+  }
+
+  &.baratheon {
+    @include boat-image("baratheon");
+  }
+  &.lannister {
+    @include boat-image("lannister");
+  }
+  &.stark {
+    @include boat-image("stark");
+  }
+  &.greyjoy {
+    @include boat-image("greyjoy");
+  }
+  &.tyrell {
+    @include boat-image("tyrell");
+  }
+  &.martell {
+    @include boat-image("martell");
+  }
 }
 
-.stark-siege{
-  background-image: url("images/units/stark-siege.png");
+.siege-engine {
   width: 80px;
   height: 97px;
-}
 
-.lannister-footmen{
-  background-image: url("images/units/lannister-footman.png");
-  width: 80px;
-  height: 89px;
-}
+  @mixin siege-engine-image($house) {
+    background-image: url("images/units/" + $house + "-siege-engine.png");
+  }
 
-.lannister-knight{
-  background-image: url("images/units/lannister-knight.png");
-  height: 93px;
-  width: 80px;
-}
-
-.lannister-ship{
-  background-image: url("images/units/lannister-ship.png");
-  width: 100px;
-  height: 83px;
-}
-
-.lannister-siege{
-  background-image: url("images/units/lannister-siege.png");
-  width: 80px;
-  height: 97px;
-}
-
-.baratheon-footmen{
-  background-image: url("images/units/baratheon-footman.png");
-  width: 80px;
-  height: 89px;
-}
-
-.baratheon-knight{
-  background-image: url("images/units/baratheon-knight.png");
-  height: 93px;
-  width: 80px;
-}
-
-.baratheon-ship{
-  background-image: url("images/units/baratheon-ship.png");
-  width: 100px;
-  height: 83px;
-}
-
-.baratheon-siege{
-  background-image: url("images/units/baratheon-siege.png");
-  width: 80px;
-  height: 97px;
-}
-
-.greyjoy-footmen{
-  background-image: url("images/units/greyjoy-footman.png");
-  width: 80px;
-  height: 89px;
-}
-
-.greyjoy-knight{
-  background-image: url("images/units/greyjoy-knight.png");
-  height: 93px;
-  width: 80px;
-}
-
-.greyjoy-ship{
-  background-image: url("images/units/greyjoy-ship.png");
-  width: 100px;
-  height: 83px;
-}
-
-.greyjoy-siege{
-  background-image: url("images/units/greyjoy-siege.png");
-  width: 80px;
-  height: 97px;
-}
-
-.martell-footman{
-  background-image: url("images/units/martell-footman.png");
-  width: 80px;
-  height: 89px;
-}
-
-.martell-knight{
-  background-image: url("images/units/martell-knight.png");
-  height: 93px;
-  width: 80px;
-}
-
-.martell-ship{
-  background-image: url("images/units/martell-ship.png");
-  width: 100px;
-  height: 83px;
-}
-
-.martell-siege{
-  background-image: url("images/units/martell-siege.png");
-  width: 80px;
-  height: 97px;
-}
-
-.tyrell-footmen{
-  background-image: url("images/units/tyrell-footman.png");
-  width: 80px;
-  height: 89px;
-}
-
-.tyrell-knight{
-  background-image: url("images/units/tyrell-knight.png");
-  height: 93px;
-  width: 80px;
-}
-
-.tyrell-ship{
-  background-image: url("images/units/tyrell-ship.png");
-  width: 100px;
-  height: 83px;
-}
-
-.tyrell-siege{
-  background-image: url("images/units/tyrell-siege.png");
-  width: 80px;
-  height: 97px;
-}
-
-.greyjoy .footman{
-  background-image: url("images/units/greyjoy-footman.png");
-}
-
-.greyjoy .knight{
-  background-image: url("images/units/greyjoy-knight.png");
+  &.baratheon {
+    @include siege-engine-image("baratheon");
+  }
+  &.lannister {
+    @include siege-engine-image("lannister");
+  }
+  &.stark {
+    @include siege-engine-image("stark");
+  }
+  &.greyjoy {
+    @include siege-engine-image("greyjoy");
+  }
+  &.tyrell {
+    @include siege-engine-image("tyrell");
+  }
+  &.martell {
+    @include siege-engine-image("martell");
+  }
 }
 
 /* FLIPPABLE */

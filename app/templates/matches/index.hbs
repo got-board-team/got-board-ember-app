@@ -1,1 +1,11 @@
 <h1>Matches</h1>
+
+{{#link-to "matches.new"}}New match{{/link-to}}
+
+<ul>
+  {{#each model as |match|}}
+  <li>
+    {{#link-to "matches.show" match}}Match #{{match.id}}{{/link-to}}
+  </li>
+  {{/each}}
+</ul>

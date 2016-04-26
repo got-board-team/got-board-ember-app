@@ -1,0 +1,8 @@
+<h1>New match</h1>
+
+<form {{action 'createMatch' model on='submit'}}>
+  <label>Players count:</label>
+  {{input type="text" value=model.playersCount}}
+
+  {{input type="submit" value="Create match"}}
+</form>

@@ -57,4 +57,9 @@
   </div>
 </section>
 {{board-component board=board}}
-{{player-dock-component player=currentPlayer}}
+
+{{#if isPlayer}}
+  {{player-dock-component player=currentPlayer}}
+{{else}}
+  {{join-match-component match=match}}
+{{/if}}

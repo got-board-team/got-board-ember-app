@@ -1,19 +1,27 @@
 import Ember from 'ember';
 import Draggable from '../mixins/draggable';
 
+const { computed } = Ember;
+
 export default Ember.Component.extend(Draggable, {
   tagName: "div",
   classNames: ["piece"],
   classNameBindings: ["unit.house", "type"],
-  attributeBindings: ["style"],
+  attributeBindings: ["id", "style"],
 
-  unit: function () {
+  id: computed(function() {
+    let id = this.get("unit.id");
+    return `unit-${id}`;
+  }),
+
+  unit: computed(function() {
     return this.get("unit");
-  }.property("unit"),
+  }),
 
-  type: function () {
-    return this.unit.get("type").toLowerCase();
-  }.property("unit.type"),
+  type: computed(function() {
+    let type = this.get("unit.type");
+    return Ember.String.dasherize(type).toLowerCase();
+  }),
 
   style: function () {
     var top = this.unit.get("y");
