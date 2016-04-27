@@ -6,6 +6,7 @@ let Match = Model.extend({
   players: hasMany({ async: true }),
   board: belongsTo("board", { async: false }),
   playersCount: attr("number"),
+  round: attr("number"),
 });
 
 export default Match;

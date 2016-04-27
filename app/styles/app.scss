@@ -127,16 +127,16 @@ button {
   }
 }
 
-/* STATUS BAR */
-#status-bar {
+/* TRACKS BAR */
+#tracks-bar {
   position: fixed;
   left: 0;
   top: 0;
   width: 100%;
   z-index: 900;
 
-  .status-house {
-    background: rgba(0, 0, 0, 0.7);
+  .track {
+    background: rgba(0, 0, 0, 1);
     color: #ccc;
     overflow: auto;
     font-size: 0.65em;
@@ -168,6 +168,10 @@ button {
       font-weight: normal;
       overflow: hidden;
     }
+  }
+
+  #round-marker {
+    font-size: 3em;
   }
 
   #status-stark {
