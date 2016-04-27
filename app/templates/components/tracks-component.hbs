@@ -4,4 +4,9 @@
     <button {{action 'increaseRound'}}>+</button>
     <button {{action 'decreaseRound'}}>-</button>
   </div>
+
+  <div id="user-menu" class="track">
+    {{#link-to 'matches'}}Exit match{{/link-to}}
+    <a id="logout" href="#"{{ action 'invalidateSession' }}>Logout</a>
+  </div>
 </section>
