@@ -2,6 +2,8 @@ body {
   padding: 0;
   margin: 0;
   font-family: Verdana, Georgia, Serif;
+  background: Black;
+  color: White;
 }
 
 button {
@@ -10,7 +12,9 @@ button {
 
 #board {
   width: 1980px;
+  width: 1500px; /* Striping out tracks */
   height: 2975px;
+  margin-top: 3em;
   background-image: url("images/board.jpg");
 }
 
