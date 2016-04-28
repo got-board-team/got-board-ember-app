@@ -10,6 +10,7 @@ export default DS.Model.extend({
   powerTokens: DS.hasMany(),
   house: DS.attr(),
   userId: DS.attr(),
+  supplyPosition: DS.attr(),
 
   availableUnits: computed("units.@each.territory", function() {
     return this.get("units").filterBy("territory", null).toArray();

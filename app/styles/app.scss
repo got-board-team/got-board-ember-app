@@ -14,7 +14,7 @@ button {
   width: 1980px;
   width: 1500px; /* Striping out tracks */
   height: 2975px;
-  margin-top: 3em;
+  margin-top: 4.5em;
   position: relative;
   background-image: url("images/board.jpg");
 }
@@ -173,23 +173,90 @@ button {
 
   #round-marker {
     font-size: 3em;
+    width: 6%;
+
+    #round-controls {
+      float: right;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      margin: .7em 0;
+    }
+  }
+
+  .position-track {
+    .house {
+      background-position: center 15px;
+      background-repeat: no-repeat;
+      background-size: auto 67%;
+      width: 33px;
+      height: 58px;
+      float: left;
+      text-align: center;
+    }
+  }
+
+  #supply-position-track {
+    .house {
+      &#stark {
+        background-image: url("images/markers/stark-supply.png");
+      }
+
+      &#greyjoy {
+        background-image: url("images/markers/greyjoy-supply.png");
+      }
+
+      &#baratheon {
+        background-image: url("images/markers/baratheon-supply.png");
+      }
+
+      &#lannister {
+        background-image: url("images/markers/lannister-supply.png");
+      }
+
+      &#tyrell {
+        background-image: url("images/markers/tyrell-supply.png");
+      }
+
+      &#martell {
+        background-image: url("images/markers/martell-supply.png");
+      }
+    }
+  }
+
+  #victory-position-track {
+    .house {
+      &#stark {
+        background-image: url("images/markers/stark-victory.png");
+      }
+
+      &#greyjoy {
+        background-image: url("images/markers/greyjoy-victory.png");
+      }
+
+      &#baratheon {
+        background-image: url("images/markers/baratheon-victory.png");
+      }
+
+      &#lannister {
+        background-image: url("images/markers/lannister-victory.png");
+      }
+
+      &#tyrell {
+        background-image: url("images/markers/tyrell-victory.png");
+      }
+
+      &#martell {
+        background-image: url("images/markers/martell-victory.png");
+      }
+    }
   }
 
   #status-stark {
     h3 {
       background-image: url("images/order-covers/stark.png");
-    }
-
-    .status-items {
-      .marker {
-        &.supply {
-          background-image: url("images/markers/stark-supply.png");
-        }
-
-        &.victory {
-          background-image: url("images/markers/stark-victory.png");
-        }
-      }
     }
   }
 
@@ -197,35 +264,11 @@ button {
     h3 {
       background-image: url("images/order-covers/greyjoy.png");
     }
-
-    .status-items {
-      .marker {
-        &.supply {
-          background-image: url("images/markers/greyjoy-supply.png");
-        }
-
-        &.victory {
-          background-image: url("images/markers/greyjoy-victory.png");
-        }
-      }
-    }
   }
 
   #status-baratheon {
     h3 {
       background-image: url("images/order-covers/baratheon.png");
-    }
-
-    .status-items {
-      .marker {
-        &.supply {
-          background-image: url("images/markers/baratheon-supply.png");
-        }
-
-        &.victory {
-          background-image: url("images/markers/baratheon-victory.png");
-        }
-      }
     }
   }
 
@@ -233,35 +276,11 @@ button {
     h3 {
       background-image: url("images/order-covers/lannister.png");
     }
-
-    .status-items {
-      .marker {
-        &.supply {
-          background-image: url("images/markers/lannister-supply.png");
-        }
-
-        &.victory {
-          background-image: url("images/markers/lannister-victory.png");
-        }
-      }
-    }
   }
 
   #status-tyrell {
     h3 {
       background-image: url("images/order-covers/tyrell.png");
-    }
-
-    .status-items {
-      .marker {
-        &.supply {
-          background-image: url("images/markers/tyrell-supply.png");
-        }
-
-        &.victory {
-          background-image: url("images/markers/tyrell-victory.png");
-        }
-      }
     }
   }
 
@@ -269,17 +288,19 @@ button {
     h3 {
       background-image: url("images/order-covers/martell.png");
     }
+  }
 
-    .status-items {
-      .marker {
-        &.supply {
-          background-image: url("images/markers/martell-supply.png");
-        }
+  #user-menu {
+    float: right;
+    width: 7%;
+    text-align: right;
 
-        &.victory {
-          background-image: url("images/markers/martell-victory.png");
-        }
-      }
+    a, a:visited, a:link {
+      color: White;
+      display: block;
+      margin: .5em 0;
+      font-size: 1.2em;
+      text-decoration: none;
     }
   }
 

@@ -1,0 +1,9 @@
+{{#each players as |player|}}
+  <div id="{{dasherize player.house}}" class="house">
+    {{#if supply}}
+      <span class="count">{{player.supplyPosition}}</span>
+    {{else}}
+      <span class="count">{{player.victoryPosition}}</span>
+    {{/if}}
+  </div>
+{{/each}}

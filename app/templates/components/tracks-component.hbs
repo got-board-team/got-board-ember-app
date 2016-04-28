@@ -1,9 +1,15 @@
 <section id="tracks-bar">
   <div id="round-marker" class="track">
     {{match.round}}
-    <button {{action 'increaseRound'}}>+</button>
-    <button {{action 'decreaseRound'}}>-</button>
+    <div id="round-controls">
+      <button {{action 'increaseRound'}}>+</button>
+      <button {{action 'decreaseRound'}}>-</button>
+    </div>
   </div>
+
+  {{position-track-component type='supply' players=match.players}}
+
+  {{position-track-component type='victory' players=match.players}}
 
   <div id="user-menu" class="track">
     {{#link-to 'matches'}}Exit match{{/link-to}}
