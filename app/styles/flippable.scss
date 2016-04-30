@@ -1,0 +1,38 @@
+/* entire container, keeps perspective */
+.flippable {
+  perspective: 1000;
+
+  /* flip the pane when add the class */
+  &.flipped .flipper {
+    transform: rotateY(180deg);
+  }
+
+  /* flip speed goes here */
+  .flipper {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+  }
+
+  /* hide back of pane during swap */
+  .back, .front {
+    backface-visibility: hidden;
+
+    top: 0;
+    left: 0;
+  }
+
+  /* back pane, placed above back */
+  .back {
+    z-index: 2;
+    /* for firefox 31 */
+    transform: rotateY(0deg);
+  }
+
+  /* back, initially hidden pane */
+  .front {
+    transform: rotateY(180deg);
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

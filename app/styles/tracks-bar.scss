@@ -1,0 +1,215 @@
+#tracks-bar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 900;
+
+  .track {
+    background: rgba(0, 0, 0, 1);
+    color: #ccc;
+    overflow: auto;
+    font-size: 0.65em;
+    padding: .5%;
+    float: left;
+    margin: 0 1px 0 0;
+    width: 16.58%;
+    box-sizing: border-box;
+
+    &.current {
+      color: white;
+    }
+
+    &.empty {
+      opacity: .5;
+    }
+
+    h3 {
+      background-position: left center;
+      background-repeat: no-repeat;
+      background-size: 16px 16px;
+      text-indent: 20px;
+      margin: 0;
+    }
+
+    h4 {
+      margin: .5em .5em .5em 20px;
+      white-space: nowrap;
+      font-weight: normal;
+      overflow: hidden;
+    }
+  }
+
+  #round-marker {
+    font-size: 3em;
+    width: 6%;
+
+    .position-control {
+      display: inline;
+
+      button {
+        display: block;
+        width: 100%;
+        margin: .7em 0;
+      }
+    }
+  }
+
+  .position-track {
+    .house {
+      background-position: center 15px;
+      background-repeat: no-repeat;
+      background-size: auto 67%;
+      width: 32px;
+      height: 58px;
+      float: left;
+      text-align: center;
+    }
+  }
+
+  .position-control {
+    .controls {
+      display: none;
+
+      &.active {
+        display: block;
+      }
+    }
+  }
+
+  #supply-position-track {
+    .house {
+      &#stark {
+        background-image: url("images/markers/stark-supply.png");
+      }
+
+      &#greyjoy {
+        background-image: url("images/markers/greyjoy-supply.png");
+      }
+
+      &#baratheon {
+        background-image: url("images/markers/baratheon-supply.png");
+      }
+
+      &#lannister {
+        background-image: url("images/markers/lannister-supply.png");
+      }
+
+      &#tyrell {
+        background-image: url("images/markers/tyrell-supply.png");
+      }
+
+      &#martell {
+        background-image: url("images/markers/martell-supply.png");
+      }
+    }
+  }
+
+  #victory-position-track {
+    .house {
+      &#stark {
+        background-image: url("images/markers/stark-victory.png");
+      }
+
+      &#greyjoy {
+        background-image: url("images/markers/greyjoy-victory.png");
+      }
+
+      &#baratheon {
+        background-image: url("images/markers/baratheon-victory.png");
+      }
+
+      &#lannister {
+        background-image: url("images/markers/lannister-victory.png");
+      }
+
+      &#tyrell {
+        background-image: url("images/markers/tyrell-victory.png");
+      }
+
+      &#martell {
+        background-image: url("images/markers/martell-victory.png");
+      }
+    }
+  }
+
+  #status-stark {
+    h3 {
+      background-image: url("images/order-covers/stark.png");
+    }
+  }
+
+  #status-greyjoy {
+    h3 {
+      background-image: url("images/order-covers/greyjoy.png");
+    }
+  }
+
+  #status-baratheon {
+    h3 {
+      background-image: url("images/order-covers/baratheon.png");
+    }
+  }
+
+  #status-lannister {
+    h3 {
+      background-image: url("images/order-covers/lannister.png");
+    }
+  }
+
+  #status-tyrell {
+    h3 {
+      background-image: url("images/order-covers/tyrell.png");
+    }
+  }
+
+  #status-martell {
+    h3 {
+      background-image: url("images/order-covers/martell.png");
+    }
+  }
+
+  #user-menu {
+    float: right;
+    width: 7%;
+    text-align: right;
+
+    a, a:visited, a:link {
+      color: White;
+      display: block;
+      margin: .5em 0;
+      font-size: 1.2em;
+      text-decoration: none;
+    }
+  }
+
+  .status-items {
+    margin: .5em 0;
+
+    .marker, .special-token {
+      background-position: left center;
+      background-size: 24px;
+      background-repeat: no-repeat;
+      padding: 2%;
+      float: left;
+      width: 29.33%;
+      text-indent: 24px;
+    }
+
+    .special-token {
+      background-size: 16px;
+
+      &#throne-token {
+        background-image: url("images/special/throne.png");
+      }
+
+      &#blade-token {
+        background-image: url("images/special/blade.png");
+      }
+
+      &#raven-token {
+        background-image: url("images/special/raven.png");
+      }
+    }
+  }
+}

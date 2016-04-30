@@ -1,0 +1,84 @@
+@mixin house($house, $cards) {
+  .#{$house} {
+    @include order-token("order-cover", "covers/#{$house}");
+
+    &.power-token {
+      background-image: url("images/power-tokens/#{$house}.png");
+      background-position: center center;
+      background-repeat: no-repeat;
+      height: 82px;
+      width: 60px;
+    }
+
+    @each $card in $cards {
+      .#{$card} {
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        height: 149px;
+        width: 95px;
+        background-image: url("images/cards/#{$house}-#{$card}.png");
+      }
+    }
+  }
+}
+
+@include house("baratheon",
+"patchface"
+"melisandre"
+"salladhor"
+"brienne"
+"davos"
+"renly"
+"stannis"
+);
+
+@include house("lannister",
+"cersei"
+"kevan"
+"tyrion"
+"hound"
+"jaime"
+"gregor"
+"tywin"
+);
+
+@include house("stark",
+"eddard-stark"
+"robb-stark"
+"roose-bolton"
+"greatjon-umber"
+"the-blackfish"
+"ser-rodrick-cassel"
+"catelyn-stark"
+);
+
+@include house("greyjoy",
+"aeron"
+"asha"
+"dagmar"
+"balon"
+"theon"
+"victorian"
+"euron"
+);
+
+@include house("tyrell",
+"queen"
+"alester"
+"margaery"
+"garlan"
+"randyll"
+"loras"
+"mace"
+);
+
+@include house("martell",
+"doran"
+"arianne"
+"nymeria"
+"darkstar"
+"obara"
+"areo"
+"redviper"
+);

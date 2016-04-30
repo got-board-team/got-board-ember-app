@@ -1,0 +1,111 @@
+.footman {
+  height: 90px;
+  width: 80px;
+
+  @mixin footman-image($house) {
+    background-image: url("images/units/" + $house + "-footman.png");
+  }
+
+  &.baratheon {
+    @include footman-image("baratheon");
+  }
+  &.lannister {
+    @include footman-image("lannister");
+  }
+  &.stark {
+    @include footman-image("stark");
+  }
+  &.greyjoy {
+    @include footman-image("greyjoy");
+  }
+  &.tyrell {
+    @include footman-image("tyrell");
+  }
+  &.martell {
+    @include footman-image("martell");
+  }
+}
+
+.knight {
+  height: 90px;
+  width: 80px;
+
+  @mixin knight-image($house) {
+    background-image: url("images/units/" + $house + "-knight.png");
+  }
+
+  &.baratheon {
+    @include knight-image("baratheon");
+  }
+  &.lannister {
+    @include knight-image("lannister");
+  }
+  &.stark {
+    @include knight-image("stark");
+  }
+  &.greyjoy {
+    @include knight-image("greyjoy");
+  }
+  &.tyrell {
+    @include knight-image("tyrell");
+  }
+  &.martell {
+    @include knight-image("martell");
+  }
+}
+
+.boat {
+  width: 100px;
+  height: 83px;
+
+  @mixin boat-image($house) {
+    background-image: url("images/units/" + $house + "-boat.png");
+  }
+
+  &.baratheon {
+    @include boat-image("baratheon");
+  }
+  &.lannister {
+    @include boat-image("lannister");
+  }
+  &.stark {
+    @include boat-image("stark");
+  }
+  &.greyjoy {
+    @include boat-image("greyjoy");
+  }
+  &.tyrell {
+    @include boat-image("tyrell");
+  }
+  &.martell {
+    @include boat-image("martell");
+  }
+}
+
+.siege-engine {
+  width: 80px;
+  height: 97px;
+
+  @mixin siege-engine-image($house) {
+    background-image: url("images/units/" + $house + "-siege-engine.png");
+  }
+
+  &.baratheon {
+    @include siege-engine-image("baratheon");
+  }
+  &.lannister {
+    @include siege-engine-image("lannister");
+  }
+  &.stark {
+    @include siege-engine-image("stark");
+  }
+  &.greyjoy {
+    @include siege-engine-image("greyjoy");
+  }
+  &.tyrell {
+    @include siege-engine-image("tyrell");
+  }
+  &.martell {
+    @include siege-engine-image("martell");
+  }
+}
