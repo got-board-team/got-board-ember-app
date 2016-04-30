@@ -45,13 +45,10 @@ button {
 
 /* PLAYER DOCK */
 .player-dock {
-  height: 95%;
-  left: 0;
-  overflow: auto;
   position: fixed;
+  left: 0;
+  top: 4.45em;
   text-align: center;
-  top: 20px;
-  width: 250px;
   z-index: 900;
 
   &.drop-actived {
