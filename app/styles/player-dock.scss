@@ -33,10 +33,6 @@
       margin-bottom: 1px;
       padding: .5em .5em 0;
 
-      &:not(:first-child) {
-        min-height: 300px;
-      }
-
       h1, h2, p {
         margin: 0 0 .5em;
       }
@@ -47,6 +43,10 @@
 
       h2 {
         font-size: 1em;
+      }
+
+      li {
+        list-style: none;
       }
     }
 
