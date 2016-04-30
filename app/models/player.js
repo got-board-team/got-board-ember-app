@@ -8,6 +8,7 @@ export default DS.Model.extend({
   units: DS.hasMany(),
   orderTokens: DS.hasMany(),
   powerTokens: DS.hasMany(),
+  houseCards: DS.hasMany(),
   house: DS.attr(),
   userId: DS.attr(),
   supplyPosition: DS.attr(),

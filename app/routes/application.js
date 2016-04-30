@@ -7,8 +7,5 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
       this.get("session").invalidate();
     },
 
-    error(error) {
-      alert(`Error: ${error}\nCheck your console for details.`);
-    },
   }
 });
