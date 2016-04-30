@@ -12,7 +12,6 @@ export default Ember.Component.extend({
   }),
 
   currentPlayer: computed("match.players.@each.userId", function () {
-    console.log("currentPlayer");
     let players = this.get("match.players");
     let userId = this.get("session.userId");
     let player = players.filterBy("userId", userId).toArray()[0];

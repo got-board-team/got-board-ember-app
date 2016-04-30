@@ -1,8 +1,16 @@
 import Ember from 'ember';
 
+const { computed }  = Ember;
+
 export default Ember.Component.extend({
   classNames: ["position-control"],
   isActive: false,
+
+  init: function() {
+    this._super(...arguments);
+    let number = this.get('number') || 0;
+    this.set('number', number);
+  },
 
   update(number) {
     this.set('number', number);

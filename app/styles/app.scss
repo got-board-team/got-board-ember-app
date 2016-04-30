@@ -50,6 +50,7 @@ button {
   top: 4.45em;
   text-align: center;
   z-index: 900;
+  width: 232px;
 
   &.drop-actived {
     section {
@@ -194,7 +195,7 @@ button {
       background-position: center 15px;
       background-repeat: no-repeat;
       background-size: auto 67%;
-      width: 33px;
+      width: 32px;
       height: 58px;
       float: left;
       text-align: center;
