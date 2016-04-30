@@ -181,14 +181,14 @@ button {
     font-size: 3em;
     width: 6%;
 
-    #round-controls {
-      float: right;
-    }
+    .position-control {
+      display: inline;
 
-    button {
-      display: block;
-      width: 100%;
-      margin: .7em 0;
+      button {
+        display: block;
+        width: 100%;
+        margin: .7em 0;
+      }
     }
   }
 
@@ -201,6 +201,16 @@ button {
       height: 58px;
       float: left;
       text-align: center;
+    }
+  }
+
+  .position-control {
+    .controls {
+      display: none;
+
+      &.active {
+        display: block;
+      }
     }
   }
 

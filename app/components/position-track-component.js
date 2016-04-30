@@ -11,4 +11,9 @@ export default Ember.Component.extend({
   supply: computed(function () {
     return this.get('type') === 'supply';
   }),
+  actions: {
+    updatePlayer(player) {
+      player.save();
+    },
+  }
 });
