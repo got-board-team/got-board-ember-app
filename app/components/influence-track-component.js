@@ -2,14 +2,29 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 
+  swap(array, firstItem, secondItem) {
+    const firstIndex = array.indexOf(firstItem);
+    const secondIndex = array.indexOf(secondItem);
+    array.
+      replace(firstIndex, 1, secondItem).
+      replace(secondIndex, 1, firstItem);
+    return array;
+  },
+
   actions: {
     handleDragStart(house) {
-      //e.dataTransfer.setData('text/html', this.$.innerHTML);
-      console.log('click for: '+ playerId);
+      console.log('dragging: ', house);
+      this.set("dragged", house);
     },
-    handleDrop(house) {
-      
-    }
+    handleDragOver() {
+      return false;
+    },
+    handleDrop(track, house) {
+      let draggedHouse = this.get('dragged');
+      console.log('drop ', draggedHouse, ' at: ', house);
+      this.swap(track, house, draggedHouse);
+      return false;
+    },
   }
 
 });

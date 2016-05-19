@@ -1,5 +1,12 @@
 <div class="influence-track-component">
   {{#each match.ironThroneTrack as |house|}}
-    <div draggable="true" {{action "handleDragStart" house on="dragStart"}} {{action "handleDrop" house on="drop"}}>{{playerId}}</div>
+  <div draggable="true"
+    {{action "handleDragStart" house on="dragStart" preventDefault=false}}
+    {{action "handleDragOver" on="dragOver"}}
+    {{action "handleDrop" match.ironThroneTrack house on="drop"}}>
+    &nbsp;
+    {{house}}
+    &nbsp;
+  </div>
   {{/each}}
 </div>

@@ -9,9 +9,10 @@ let Match = Model.extend({
   numberOfPlayers: attr("number"),
   ironThroneTrack: attr('array', {
     defaultValue() {
-      return Ember.ArrayProxy.create({
-        content: Ember.A(['stark', 'lannister', 'baratheon'])
-      });
+      return ['stark', 'lannister', 'baratheon'];
+      //return Ember.ArrayProxy.create({
+        //content: Ember.A(['stark', 'lannister', 'baratheon'])
+      //});
     }
   }),
 });
