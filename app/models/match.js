@@ -7,6 +7,13 @@ let Match = Model.extend({
   board: belongsTo("board", { async: false }),
   round: attr("number"),
   numberOfPlayers: attr("number"),
+  ironThroneTrack: attr('array', {
+    defaultValue() {
+      return Ember.ArrayProxy.create({
+        content: Ember.A(['stark', 'lannister', 'baratheon'])
+      });
+    }
+  }),
 });
 
 export default Match;

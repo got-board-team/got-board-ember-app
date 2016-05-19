@@ -1,14 +1,13 @@
 <section id="tracks-bar">
-  <!--<h3>Round</h3>-->
   <div id="round-marker" class="track">
     {{position-control-component number=match.round onUpdate=(action 'updateMatch')}}
   </div>
 
-  <!--<h3>Supply</h3>-->
   {{position-track-component type='supply' players=match.players}}
 
-  <!--<h3>Victory</h3>-->
   {{position-track-component type='victory' players=match.players}}
+
+  {{influence-track-component match=match}}
 
   <div id="user-menu" class="track">
     {{#link-to 'matches'}}Exit match{{/link-to}}
