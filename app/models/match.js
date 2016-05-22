@@ -8,12 +8,13 @@ let Match = Model.extend({
   round: attr("number"),
   numberOfPlayers: attr("number"),
   ironThroneTrack: attr('array', {
-    defaultValue() {
-      return ['stark', 'lannister', 'baratheon'];
-      //return Ember.ArrayProxy.create({
-        //content: Ember.A(['stark', 'lannister', 'baratheon'])
-      //});
-    }
+    defaultValue() { return ['baratheon', 'lannister', 'stark']; }
+  }),
+  fiefdomsTrack: attr('array', {
+    defaultValue() { return ['stark', 'baratheon', 'stark']; }
+  }),
+  kingsCourtTrack: attr('array', {
+    defaultValue() { return ['lannister', 'baratheon', 'stark']; }
   }),
 });
 

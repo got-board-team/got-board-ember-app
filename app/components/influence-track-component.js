@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  attributeBindings: ["id", "track"],
 
   swap(array, firstItem, secondItem) {
     const firstIndex = array.indexOf(firstItem);
@@ -13,18 +14,19 @@ export default Ember.Component.extend({
 
   actions: {
     handleDragStart(house) {
-      console.log('dragging: ', house);
+      console.log("dragging: ", house);
       this.set("dragged", house);
     },
     handleDragOver() {
       return false;
     },
-    handleDrop(track, house) {
+    handleDrop(house) {
+      let track = this.get("track");
       let draggedHouse = this.get('dragged');
-      console.log('drop ', draggedHouse, ' at: ', house);
+      console.log("drop ", draggedHouse, " at: ", house);
       this.swap(track, house, draggedHouse);
+      this.get("onChange")();
       return false;
     },
   }
-
 });
