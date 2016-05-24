@@ -8,13 +8,13 @@ let Match = Model.extend({
   round: attr("number"),
   numberOfPlayers: attr("number"),
   ironThroneTrack: attr('array', {
-    defaultValue() { return ['baratheon', 'lannister', 'stark']; }
+    defaultValue() { return ['baratheon', 'lannister', 'stark', 'greyjoy', 'tyrell', 'martell']; }
   }),
   fiefdomsTrack: attr('array', {
-    defaultValue() { return ['stark', 'baratheon', 'stark']; }
+    defaultValue() { return ['baratheon', 'lannister', 'stark', 'greyjoy', 'martell', 'tyrell']; }
   }),
   kingsCourtTrack: attr('array', {
-    defaultValue() { return ['lannister', 'baratheon', 'stark']; }
+    defaultValue() { return ['lannister', 'baratheon', 'stark', 'greyjoy', 'tyrell', 'martell']; }
   }),
 });
 

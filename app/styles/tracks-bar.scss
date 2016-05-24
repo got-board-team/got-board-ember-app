@@ -1,3 +1,83 @@
+#round-marker {
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-image: url("images/markers/round-marker.png");
+  font-size: 2.7em;
+  width: 7%;
+
+  .position-control {
+
+    .active {
+      display: inline-block;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      margin: .7em 0;
+    }
+  }
+}
+
+.track {
+  background: rgba(0, 0, 0, 0.7);
+  color: #ccc;
+  overflow: auto;
+  font-size: 0.65em;
+  padding: .5%;
+  float: left;
+  margin: 0 1px 0 0;
+  height: 75px;
+  box-sizing: border-box;
+  &.current {
+    color: white;
+  }
+
+  &.empty {
+    opacity: .5;
+  }
+
+  a {
+    color: white;
+  }
+
+  h3 {
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    text-indent: 20px;
+    margin: 0;
+  }
+
+  h4 {
+    margin: .5em .5em .5em 20px;
+    white-space: nowrap;
+    font-weight: normal;
+    overflow: hidden;
+  }
+}
+.position-track {
+  .house {
+    background-position: center 15px;
+    background-repeat: no-repeat;
+    background-size: auto 67%;
+    width: 32px;
+    height: 58px;
+    float: left;
+    text-align: center;
+  }
+}
+
+.position-control {
+  .controls {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+}
+
 #tracks-bar {
   position: fixed;
   left: 0;
@@ -6,82 +86,10 @@
   z-index: 900;
   background: #333;
 
-  .track {
-    background: rgba(0, 0, 0, 0.7);
-    color: #ccc;
-    overflow: auto;
-    font-size: 0.65em;
-    padding: .5%;
-    float: left;
-    margin: 0 1px 0 0;
-    width: 16.58%;
-    box-sizing: border-box;
-    &.current {
-      color: white;
-    }
-
-    &.empty {
-      opacity: .5;
-    }
-
-    a {
-      color: white;
-    }
-
-    h3 {
-      background-position: left center;
-      background-repeat: no-repeat;
-      background-size: 16px 16px;
-      text-indent: 20px;
-      margin: 0;
-    }
-
-    h4 {
-      margin: .5em .5em .5em 20px;
-      white-space: nowrap;
-      font-weight: normal;
-      overflow: hidden;
-    }
-  }
-
-  #round-marker {
-    font-size: 3em;
-    width: 6%;
-
-    .position-control {
-      display: inline;
-
-      button {
-        display: block;
-        width: 100%;
-        margin: .7em 0;
-      }
-    }
-  }
-
-  .position-track {
-    .house {
-      background-position: center 15px;
-      background-repeat: no-repeat;
-      background-size: auto 67%;
-      width: 32px;
-      height: 58px;
-      float: left;
-      text-align: center;
-    }
-  }
-
-  .position-control {
-    .controls {
-      display: none;
-
-      &.active {
-        display: block;
-      }
-    }
-  }
 
   #supply-position-track {
+    min-width: 15.20%;
+
     .house {
       &#stark {
         background-image: url("images/markers/stark-supply.png");
@@ -110,7 +118,11 @@
   }
 
   #victory-position-track {
+    min-width: 18.80%;
     .house {
+      height: 50px;
+      width: 40px;
+
       &#stark {
         background-image: url("images/markers/stark-victory.png");
       }
@@ -198,8 +210,8 @@
   }
 
   .influence-track-component {
-    overflow: auto;
-    width: 17.76%;
+    overflow: hidden;
+    min-width: 17.15%;
     padding: 2em .5em 2em 4em;
     background-position: 8px center;
     background-size: 24px;
