@@ -181,10 +181,20 @@
     a, a:visited, a:link {
       color: White;
       display: block;
-      margin: .5em 0;
+      margin: .7em 0;
       font-size: 1.2em;
       text-decoration: none;
     }
+  }
+
+  [draggable] {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    /* Required to make elements draggable in old WebKit */
+    -khtml-user-drag: element;
+    -webkit-user-drag: element;
   }
 
   .influence-track-component {
@@ -205,6 +215,10 @@
 
     &#kings-court-track {
       background-image: url("images/special/raven.png");
+    }
+
+    [draggable] {
+      float: left;
     }
   }
 
@@ -262,22 +276,6 @@
       &#martell {
         background-image: url("images/markers/martell-influence.png");
       }
-    }
-  }
-
-  [draggable] {
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
-    /* Required to make elements draggable in old WebKit */
-    -khtml-user-drag: element;
-    -webkit-user-drag: element;
-  }
-
-  .influence-track-component {
-    [draggable] {
-      float: left;
     }
   }
 }
