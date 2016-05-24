@@ -14,6 +14,6 @@ let Unit = DS.Model.extend({
     return this.get("player.house").toLowerCase();
   }),
 })
-.pusherable("unit", ["footman", "boats", "knight", "siege_engines"]);
+.pusherable("unit", ["footman", "boat", "knight", "siege_engine"]);
 
 export default Unit;

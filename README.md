@@ -25,6 +25,22 @@ You will need the following things properly installed on your computer.
 * `ember server`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 
+### Using with localtunnel
+
+#### Make sure you have installed localtunnel module
+
+'''
+npm install -g localtunnel
+'''
+
+'''
+lt --port 4200 --subdomain gotboardhackzin
+lt --port 3000 --subdomain apigotboardhackzin
+'''
+
+#### Running the server with localtunnel
+* `$ LOCAL_TUNNEL_DOMAIN=gotboardhackzin npm start`
+
 ### Code Generators
 
 Make use of the many generators for code, try `ember help generate` for more details

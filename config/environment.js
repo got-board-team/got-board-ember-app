@@ -17,8 +17,15 @@ module.exports = function(environment) {
   };
 
   ENV.APP.PUSHER_KEY = 'cfdf3c0b0c4a559c3dfe';
-  console.log("api host: ", process.env.API_HOST);
-  ENV.APP.API_HOST = process.env.API_HOST ||'http://localhost:3000';
+
+  const LOCAL_TUNNEL_DOMAIN = process.env.LOCAL_TUNNEL_DOMAIN;
+  console.log("localtunnel: ", LOCAL_TUNNEL_DOMAIN);
+
+  ENV.APP.API_HOST = LOCAL_TUNNEL_DOMAIN ?
+    `https://api${LOCAL_TUNNEL_DOMAIN}.localtunnel.me` : "http://localhost:3000";
+
+  ENV.APP.OAUTH_CALLBACK_HOST = LOCAL_TUNNEL_DOMAIN ?
+    `https://${LOCAL_TUNNEL_DOMAIN}.localtunnel.me` : "http://localhost:4200";
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
@@ -35,7 +42,7 @@ module.exports = function(environment) {
       providers: {
         'google-oauth2': {
           apiKey: "866943291177-90h4ribrqase40q5udthhceobgntkhlv.apps.googleusercontent.com",
-          redirectUri: "http://localhost:4200/oauth2callback"
+          redirectUri: `${ENV.APP.OAUTH_CALLBACK_HOST}/oauth2callback`
         }
       }
     };
