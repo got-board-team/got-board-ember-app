@@ -5,7 +5,7 @@ const { computed, observer } = Ember;
 
 export default Ember.Component.extend(Draggable, {
   tagName: "div",
-  classNames: ["flippable"],
+  classNames: ["flippable house-card"],
   classNameBindings: ["houseCard.house", "flippedCssClass"],
   attributeBindings: ["id", "style"],
 
