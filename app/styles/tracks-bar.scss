@@ -187,22 +187,38 @@
     }
   }
 
-  .status-items {
-    margin: .5em 0;
+  .influence-track-component {
+    overflow: auto;
+    width: 17.76%;
+    padding: 2em .5em 2em 4em;
+    background-position: 8px center;
+    background-size: 24px;
+    background-repeat: no-repeat;
 
+    &#iron-throne-track {
+      background-image: url("images/special/throne.png");
+    }
+
+    &#fiefdoms-track {
+      background-image: url("images/special/blade.png");
+    }
+
+    &#kings-court-track {
+      background-image: url("images/special/raven.png");
+    }
+  }
+
+  .status-items {
     .marker, .special-token {
       background-position: left center;
-      background-size: 24px;
+      background-size: 26px;
       background-repeat: no-repeat;
       padding: 2%;
       float: left;
-      width: 29.33%;
       text-indent: 24px;
     }
 
     .special-token {
-      background-size: 16px;
-
       &#throne-token {
         background-image: url("images/special/throne.png");
       }
@@ -213,6 +229,38 @@
 
       &#raven-token {
         background-image: url("images/special/raven.png");
+      }
+    }
+
+    .marker {
+      width: 26px;
+      height: 26px;
+      padding: 0;
+      margin: 1%;
+      text-indent: -15000px;
+
+      &#stark {
+        background-image: url("images/markers/stark-influence.png");
+      }
+
+      &#greyjoy {
+        background-image: url("images/markers/greyjoy-influence.png");
+      }
+
+      &#baratheon {
+        background-image: url("images/markers/baratheon-influence.png");
+      }
+
+      &#lannister {
+        background-image: url("images/markers/lannister-influence.png");
+      }
+
+      &#tyrell {
+        background-image: url("images/markers/tyrell-influence.png");
+      }
+
+      &#martell {
+        background-image: url("images/markers/martell-influence.png");
       }
     }
   }

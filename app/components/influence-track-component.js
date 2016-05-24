@@ -3,6 +3,8 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   attributeBindings: ["id", "track"],
 
+  classNames: ["influence-track-component track status-items"],
+
   swap(array, firstItem, secondItem) {
     const firstIndex = array.indexOf(firstItem);
     const secondIndex = array.indexOf(secondItem);
