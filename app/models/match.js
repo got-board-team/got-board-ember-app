@@ -7,15 +7,9 @@ let Match = Model.extend({
   board: belongsTo("board", { async: false }),
   round: attr("number"),
   numberOfPlayers: attr("number"),
-  ironThroneTrack: attr('array', {
-    defaultValue() { return ['baratheon', 'lannister', 'stark', 'greyjoy', 'tyrell', 'martell']; }
-  }),
-  fiefdomsTrack: attr('array', {
-    defaultValue() { return ['baratheon', 'lannister', 'stark', 'greyjoy', 'martell', 'tyrell']; }
-  }),
-  kingsCourtTrack: attr('array', {
-    defaultValue() { return ['lannister', 'baratheon', 'stark', 'greyjoy', 'tyrell', 'martell']; }
-  }),
-});
+  ironThroneTrack: attr('array'),
+  fiefdomsTrack: attr('array'),
+  kingsCourtTrack: attr('array'),
+}).pusherable("match");
 
 export default Match;
