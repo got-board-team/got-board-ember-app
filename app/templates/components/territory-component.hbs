@@ -1,4 +1,7 @@
-<path class="territory" d="{{territory.path}}" />
+<path class="territory" d="{{territory.path}}"
+{{action "handleDragOver" on="dragOver"}}
+{{action "handleDrop" on="drop"}}
+/>
 <foreignObject class="container" data-territory="{{territory.id}}">
   {{#each territory.units as |unit|}}
     {{unit-component unit=unit}}

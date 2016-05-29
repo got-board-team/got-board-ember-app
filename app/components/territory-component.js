@@ -9,7 +9,8 @@ export default Ember.Component.extend(Droppable, {
     return this.territory;
   }),
 
-  drop: function () {
+  drop: function (event) {
+    console.log("DROP ", event.dataTransfer.getData('dragged'));
     let self = this;
     let obj = window.draggedObject;
     let x = window.offset.left;
@@ -26,4 +27,15 @@ export default Ember.Component.extend(Droppable, {
   addPowerToken: Ember.observer("territory.powerTokens.[]", function () {
     console.log("added");
   }),
+
+  actions: {
+    handleDragOver() {
+      return false;
+    },
+    handleDrop(e) {
+      console.log("territory-component#drop");
+      console.log(arguments);
+      return false;
+    }
+  }
 });

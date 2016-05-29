@@ -8,11 +8,17 @@
 @import "order-tokens.scss";
 @import "houses.scss";
 @import "house-card-component.scss";
+@import "garrisons.scss";
+@import "neutral-forces.scss";
 
 body {
   padding: 0;
   margin: 0;
   font-family: Verdana, Georgia, Serif;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 button {

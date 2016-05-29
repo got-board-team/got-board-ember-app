@@ -3,10 +3,10 @@
 
 {{#if isPlayer}}
   {{player-dock-component player=currentPlayer}}
-  {{#dock-component}}
-    <div class="winterfell neutral-force-token">
-      winterfell
-    </div>
+  {{#dock-component id="board-dock" side="right" }}
+  <div class="garrison-winterfell" draggable="true"
+    >
+  </div>
   {{/dock-component}}
 {{else}}
   {{join-match-component match=match}}

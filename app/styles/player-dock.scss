@@ -1,3 +1,40 @@
+.dock {
+  background: rgba(0, 0, 0, 0.4);
+  height: 85%;
+  position: fixed;
+  top: 5.45em;
+  width: 235px;
+  z-index: 900;
+
+  &[side="right"] {
+    left: initial;
+    right: 0;
+  }
+
+  &[side="left"] {
+    left: 0;
+    right: initial;
+  }
+
+  &[collapsed="true"] {
+    background: none;
+    width: 20px;
+
+    .dock-container {
+      display: none;
+    }
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  &-switcher {
+    height: 100px;
+    width: 20px;
+  }
+}
+
 .player-dock {
   height: 85%;
   left: 0;

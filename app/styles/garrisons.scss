@@ -1,0 +1,48 @@
+/* glue: 0.11.1 hash: ab6b3adb45 */
+.garrison-winterfell,
+.garrison-pyke,
+.garrison-lannisport,
+.garrison-highgarden,
+.garrison-sunspear,
+.garrison-dragonstone {
+  background-image: url('images/garrisons.png');
+  background-repeat: no-repeat;
+  box-shadow: 10px 5px 5px black;
+  border-radius: 5px;
+}
+
+.garrison-winterfell {
+  background-position: 0 0;
+  width: 150px;
+  height: 88px;
+}
+
+.garrison-pyke {
+  background-position: -150px 0;
+  width: 150px;
+  height: 87px;
+}
+
+.garrison-lannisport {
+  background-position: 0 -88px;
+  width: 150px;
+  height: 90px;
+}
+
+.garrison-highgarden {
+  background-position: -150px -88px;
+  width: 150px;
+  height: 87px;
+}
+
+.garrison-sunspear {
+  background-position: 0 -178px;
+  width: 100px;
+  height: 59px;
+}
+
+.garrison-dragonstone {
+  background-position: -100px -178px;
+  width: 100px;
+  height: 58px;
+}

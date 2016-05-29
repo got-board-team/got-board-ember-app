@@ -21,5 +21,4 @@ export default Ember.Component.extend({
   isPlayer: computed("currentPlayer", function() {
     return this.get("currentPlayer") != null;
   }),
-
 });
