@@ -5,23 +5,37 @@ export default Ember.Component.extend(Droppable, {
   tagName: "g",
   classNames: ['territory'],
 
+  init() {
+    this._super(...arguments);
+    let territory = this.get("territory");
+    let store = territory.store;
+    store.createRecord("garrison", { name: "winterfell", territory: territory, y: 540, x: 655 } )
+  },
+
   territory: Ember.computed("territory", function () {
     return this.territory;
   }),
 
   drop: function (event) {
-    console.log("DROP ", event.dataTransfer.getData('dragged'));
-    let self = this;
-    let obj = window.draggedObject;
-    let x = window.offset.left;
-    let y = window.offset.top;
+    if (event) {
+      let object = event.dataTransfer.getData('object');
+      console.log("DROP ", event.dataTransfer.getData('object'));
+      let x = event.originalEvent.offsetX;
+      let y = event.originalEvent.offsetY;
+      console.log(x, y);
+    } else {
+      let self = this;
+      let obj = window.draggedObject;
+      let x = window.offset.left;
+      let y = window.offset.top;
 
-    obj.setProperties({ territory: self.territory, x: x, y: y });
+      obj.setProperties({ territory: self.territory, x: x, y: y });
 
-    obj.save().then(function (piece) {
-      console.log(piece.toString() + ' was dropped into ' + self.territory.id +
-                ' at x: ' + piece.get("x") + ' , y: ' + piece.get("y"));
-    });
+      obj.save().then(function (piece) {
+        console.log(piece.toString() + ' was dropped into ' + self.territory.id +
+                    ' at x: ' + piece.get("x") + ' , y: ' + piece.get("y"));
+      });
+    }
   },
 
   addPowerToken: Ember.observer("territory.powerTokens.[]", function () {
@@ -34,7 +48,6 @@ export default Ember.Component.extend(Droppable, {
     },
     handleDrop(e) {
       console.log("territory-component#drop");
-      console.log(arguments);
       return false;
     }
   }

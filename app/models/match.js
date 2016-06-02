@@ -5,6 +5,7 @@ import attr from 'ember-data/attr';
 let Match = Model.extend({
   players: hasMany({ async: true }),
   board: belongsTo("board", { async: false }),
+  garrisons: hasMany("garrison", { async: false }),
   round: attr("number"),
   numberOfPlayers: attr("number"),
   ironThroneTrack: attr('array'),

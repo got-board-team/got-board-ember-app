@@ -8,4 +8,5 @@ export default DS.Model.extend({
   units: DS.hasMany(),
   orderTokens: hasMany(),
   powerTokens: hasMany(),
+  garrison: belongsTo("garrison", { async: false }),
 });

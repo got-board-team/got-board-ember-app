@@ -7,6 +7,13 @@ export default Ember.Component.extend({
 
   session: Ember.inject.service(),
 
+  init() {
+    this._super(...arguments);
+    let match = this.get("match");
+    let store = match.store;
+    store.createRecord("garrison", { name: "pyke", match: match } )
+  },
+
   board: computed(function () {
     return this.get("match.board");
   }),

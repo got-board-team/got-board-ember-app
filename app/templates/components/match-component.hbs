@@ -4,9 +4,9 @@
 {{#if isPlayer}}
   {{player-dock-component player=currentPlayer}}
   {{#dock-component id="board-dock" side="right" }}
-  <div class="garrison-winterfell" draggable="true"
-    >
-  </div>
+    {{#each match.garrisons as |garrison|}}
+      {{draggable-component object=garrison class=(concat 'garrison-' garrison.name)}}
+    {{/each}}
   {{/dock-component}}
 {{else}}
   {{join-match-component match=match}}
