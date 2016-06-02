@@ -19,10 +19,15 @@ export default Ember.Component.extend(Droppable, {
   drop: function (event) {
     if (event) {
       let object = event.dataTransfer.getData('object');
+      let object_type = event.dataTransfer.getData('objectType');
+      console.log(object_type, object);
       console.log("DROP ", event.dataTransfer.getData('object'));
       let x = event.originalEvent.offsetX;
       let y = event.originalEvent.offsetY;
       console.log(x, y);
+      //let obj = this.store.peekRecord(object_type, object);
+      //self.territory.pushObject(obj);
+      //self.territory.save();
     } else {
       let self = this;
       let obj = window.draggedObject;

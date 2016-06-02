@@ -12,8 +12,9 @@ export default Ember.Component.extend({
 
   dragStart(event) {
     let object = this.get('object.name');
-    console.log(object);
-    return event.dataTransfer.setData('object', object);
+    let objectType = this.get('object.constructor.modelName');
+    event.dataTransfer.setData('object', object);
+    return event.dataTransfer.setData('objectType', objectType);
   },
 
   dragOver(event) {
