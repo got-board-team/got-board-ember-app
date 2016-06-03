@@ -5,11 +5,14 @@ export default Ember.Component.extend(Droppable, {
   tagName: "g",
   classNames: ['territory'],
 
+  //TODO: remove when api is ready for that
   init() {
     this._super(...arguments);
     let territory = this.get("territory");
     let store = territory.store;
-    store.createRecord("garrison", { name: "winterfell", territory: territory, y: 540, x: 655 } )
+    if (territory.get("id") == "winterfell") {
+      store.createRecord("garrison", { name: "winterfell", territory: territory, y: 540, x: 655 } )
+    }
   },
 
   territory: Ember.computed("territory", function () {
@@ -20,14 +23,14 @@ export default Ember.Component.extend(Droppable, {
     if (event) {
       let object = event.dataTransfer.getData('object');
       let object_type = event.dataTransfer.getData('objectType');
-      console.log(object_type, object);
       console.log("DROP ", event.dataTransfer.getData('object'));
+      console.log(object_type, object);
       let x = event.originalEvent.offsetX;
       let y = event.originalEvent.offsetY;
-      console.log(x, y);
-      //let obj = this.store.peekRecord(object_type, object);
-      //self.territory.pushObject(obj);
-      //self.territory.save();
+      let garrisons = this.territory.get("board.match.garrisons");
+      let obj = garrisons.filterBy("name", object)[0];
+      obj.setProperties({ territory: this.territory, x: x, y: y });
+      //this.territory.save();
     } else {
       let self = this;
       let obj = window.draggedObject;

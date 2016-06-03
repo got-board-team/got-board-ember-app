@@ -15,7 +15,9 @@
     {{power-token-component powerToken=powerToken}}
   {{/each}}
 
-  {{draggable-component
+  {{#if territory.garrison}}
+    {{draggable-component
     object=territory.garrison
     class=(concat 'piece garrison-' territory.garrison.name)}}
+  {{/if}}
 </foreignObject>
