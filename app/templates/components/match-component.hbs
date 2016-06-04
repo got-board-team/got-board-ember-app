@@ -4,7 +4,7 @@
 {{#if isPlayer}}
   {{player-dock-component player=currentPlayer}}
   {{#dock-component id="board-dock" side="right" }}
-    {{#each match.garrisons as |garrison|}}
+    {{#each match.availableGarrisons as |garrison|}}
       {{draggable-component object=garrison class=(concat 'garrison-' garrison.name)}}
     {{/each}}
   {{/dock-component}}

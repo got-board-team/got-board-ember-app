@@ -11,7 +11,7 @@ export default Ember.Component.extend(Droppable, {
     let territory = this.get("territory");
     let store = territory.store;
     if (territory.get("id") == "winterfell") {
-      store.createRecord("garrison", { name: "winterfell", territory: territory, y: 540, x: 655 } )
+      store.createRecord("garrison", { id: 1, name: "winterfell", territory: territory, y: 540, x: 655 } );
     }
   },
 
@@ -28,7 +28,8 @@ export default Ember.Component.extend(Droppable, {
       let x = event.originalEvent.offsetX;
       let y = event.originalEvent.offsetY;
       let garrisons = this.territory.get("board.match.garrisons");
-      let obj = garrisons.filterBy("name", object)[0];
+      let obj = this.territory.store.peekRecord(object_type, object);
+      console.log("object ", obj);
       obj.setProperties({ territory: this.territory, x: x, y: y });
       //this.territory.save();
     } else {

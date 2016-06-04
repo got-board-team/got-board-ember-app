@@ -11,7 +11,12 @@ export default Ember.Component.extend({
     this._super(...arguments);
     let match = this.get("match");
     let store = match.store;
-    store.createRecord("garrison", { name: "pyke", match: match } )
+    store.createRecord("garrison", { id: 2, name: "pyke", match: match } );
+  },
+
+  didInsertElement() {
+    //console.log("Recovering scroll position");
+    //window.scrollTo(130, 460);
   },
 
   board: computed(function () {

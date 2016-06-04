@@ -24,7 +24,4 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     return { id: model.get("id") };
   },
 
-  actions: {
-  },
-
 });
