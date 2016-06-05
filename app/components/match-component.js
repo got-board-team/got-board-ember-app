@@ -15,8 +15,8 @@ export default Ember.Component.extend({
   },
 
   didInsertElement() {
-    //console.log("Recovering scroll position");
-    //window.scrollTo(130, 460);
+    console.log("Recovering scroll position");
+    window.scrollTo(130, 460);
   },
 
   board: computed(function () {
