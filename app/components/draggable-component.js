@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import Draggable from '../mixins/droppable';
 
 export default Ember.Component.extend({
   attributeBindings : [ 'draggable', 'style' ],
@@ -11,13 +12,18 @@ export default Ember.Component.extend({
   }),
 
   dragStart(event) {
-    let object = this.get('object.id');
-    let objectType = this.get('object.constructor.modelName');
-    event.dataTransfer.setData('object', object);
-    return event.dataTransfer.setData('objectType', objectType);
+    console.log("draggable-component#dragStart");
+    let transferData = JSON.stringify({
+      id: this.object.id,
+      modelName: this.object.constructor.modelName,
+      offsetX: event.originalEvent.offsetX,
+      offsetY: event.originalEvent.offsetY
+    });
+    return event.dataTransfer.setData("application/json", transferData);
   },
 
-  dragOver(event) {
-    console.log("dragOver");
-  }
+  dragOver() {
+    //console.log('draggable-computed#dragOver');
+    return false;
+  },
 });

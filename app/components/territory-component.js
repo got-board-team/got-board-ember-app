@@ -1,31 +1,35 @@
 import Ember from 'ember';
 import Droppable from '../mixins/droppable';
 
+const { computed }  = Ember;
+
 export default Ember.Component.extend(Droppable, {
-  tagName: "g",
+  tagName: 'g',
   classNames: ['territory'],
 
-  //TODO: remove when api is ready for that
-  init() {
-    this._super(...arguments);
-    let territory = this.get("territory");
-    let store = territory.store;
-    if (territory.get("id") == "winterfell") {
-      store.createRecord("garrison", { id: 1, name: "winterfell", territory: territory, y: 540, x: 655 } );
-    }
-  },
-
-  territory: Ember.computed("territory", function () {
-    return this.territory;
+  id: computed(function () {
+    return Ember.String.dasherize(this.territory.id);
   }),
 
+
   didDropObject(piece) {
-    console.log("territory-component#didDropObject");
+    console.log('territory-component#didDropObject');
     let territory = this.territory;
     piece.set('territory', territory);
     piece.save().then(function (piece) {
-      console.log(piece.toString() + ' was dropped into ' + territory.id +
-                  ' at x: ' + piece.get("x") + ' , y: ' + piece.get("y"));
+      let modelName = piece.constructor.modelName;
+      let x = piece.get('x');
+      let y = piece.get('y');
+      console.log(`${modelName}#${piece.id} dropped into ${territory.id} at x: ${x}, y: ${y}`);
     });
   },
+
+  willSetDropData(data){
+    console.log("willSetDropData");
+    data.attributes.territory = this.territory;
+    let x = data.attributes.x;
+    let y = data.attributes.y;
+    console.log(`${data.modelName}#${data.id} dropped into ${this.territory.id} at x: ${x}, y: ${y}`);
+    return data;
+  }
 });

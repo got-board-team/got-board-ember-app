@@ -10,7 +10,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 
   model(params) {
     modelHookRun = true;
-    let match = this.store.find("match", params.id);
+    let match = this.store.find('match', params.id);
     return match;
   },
 
@@ -21,7 +21,15 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   },
 
   serialize(model) {
-    return { id: model.get("id") };
+    return { id: model.get('id') };
   },
 
+  actions: {
+    updatePiece(data){
+      console.log('matches/show#updatePiece', data);
+      let piece = this.store.peekRecord(data.modelName, data.id);
+      piece.setProperties(data.attributes);
+      piece.save();
+    }
+  }
 });

@@ -1,9 +1,13 @@
 {{tracks-component match=match}}
-{{board-component board=board}}
+<svg id="board">
+  {{#each match.board.territories as |territory|}}
+    {{territory-component territory=territory  onDrop=(route-action "updatePiece")}}
+  {{/each}}
+</svg>
 
 {{#if isPlayer}}
   {{player-dock-component player=currentPlayer}}
-  {{#dock-component id="board-dock" side="right" }}
+  {{#dock-component id="board-dock" side="right" onDrop=(route-action "updatePiece")}}
     {{#each match.availableGarrisons as |garrison|}}
       {{draggable-component object=garrison class=(concat 'garrison-' garrison.name)}}
     {{/each}}
