@@ -1,29 +1,35 @@
 import Ember from 'ember';
 import Droppable from '../mixins/droppable';
 
+const { computed }  = Ember;
+
 export default Ember.Component.extend(Droppable, {
-  tagName: "g",
+  tagName: 'g',
   classNames: ['territory'],
 
-  territory: Ember.computed("territory", function () {
-    return this.territory;
+  id: computed(function () {
+    return Ember.String.dasherize(this.territory.id);
   }),
 
-  drop: function () {
-    let self = this;
-    let obj = window.draggedObject;
-    let x = window.offset.left;
-    let y = window.offset.top;
 
-    obj.setProperties({ territory: self.territory, x: x, y: y });
-
-    obj.save().then(function (piece) {
-      console.log(piece.toString() + ' was dropped into ' + self.territory.id +
-                ' at x: ' + piece.get("x") + ' , y: ' + piece.get("y"));
+  didDropObject(piece) {
+    console.log('territory-component#didDropObject');
+    let territory = this.territory;
+    piece.set('territory', territory);
+    piece.save().then(function (piece) {
+      let modelName = piece.constructor.modelName;
+      let x = piece.get('x');
+      let y = piece.get('y');
+      console.log(`${modelName}#${piece.id} dropped into ${territory.id} at x: ${x}, y: ${y}`);
     });
   },
 
-  addPowerToken: Ember.observer("territory.powerTokens.[]", function () {
-    console.log("added");
-  }),
+  willSetDropData(data){
+    console.log("willSetDropData");
+    data.attributes.territory = this.territory;
+    let x = data.attributes.x;
+    let y = data.attributes.y;
+    console.log(`${data.modelName}#${data.id} dropped into ${this.territory.id} at x: ${x}, y: ${y}`);
+    return data;
+  }
 });

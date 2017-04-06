@@ -1,0 +1,131 @@
+.dock {
+  background: rgba(0, 0, 0, 0.4);
+  height: 85%;
+  position: fixed;
+  top: 5.45em;
+  width: 235px;
+  z-index: 900;
+
+  &[side="right"] {
+    left: initial;
+    right: 0;
+  }
+
+  &[side="left"] {
+    left: 0;
+    right: initial;
+  }
+
+  &[collapsed="true"] {
+    background: none;
+    width: 20px;
+
+    .dock-container {
+      display: none;
+    }
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  &-switcher {
+    height: 100px;
+    width: 20px;
+  }
+}
+
+.player-dock {
+  height: 85%;
+  left: 0;
+  position: fixed;
+  text-align: center;
+  top: 5.45em;
+  width: 235px;
+  z-index: 900;
+  overflow: hidden;
+
+  &:hover {
+    overflow: scroll;
+    width: 245px;
+  }
+
+  &.drop-actived {
+    section {
+      background: rgba(255, 255, 255, 0.7);
+      color: black;
+    }
+  }
+
+  aside {
+    display: block;
+    font-size: .7em;
+    overflow: auto;
+    position: relative;
+
+    section {
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      overflow: auto;
+      margin-bottom: 1px;
+      padding: .5em .5em 0;
+
+      h1, h2, p {
+        margin: 0 0 .5em;
+      }
+
+      h1 {
+        font-size: 1.2em;
+      }
+
+      h2 {
+        font-size: 1em;
+      }
+
+      li {
+        list-style: none;
+      }
+    }
+
+    .piece {
+      position: static;
+    }
+
+    .piece, .footman, .knight, .ship, .siege,
+    .march, .march-m, .march-p,
+    .consolidate, .consolidate-p,
+    .defend, .defend-p,
+    .raid, .raid-p,
+    .support, .support-p {
+      background-size: 100%;
+      float: left;
+      height: 52px;
+      width: 44px;
+    }
+
+    .power-token {
+      background-size: 100%;
+      float: left;
+      height: 52px;
+      width: 34px;
+      margin: 0px 2px;
+    }
+  }
+
+  .toggle-trigger {
+    background: rgba(255, 255, 255, 1);
+    border: 0;
+    width: 1.5em;
+    position: fixed;
+    top: 50%;
+    height: 5em;
+
+    &.on-right {
+      left: 215px;
+    }
+
+    &.on-left {
+      left: 0;
+    }
+  }
+}

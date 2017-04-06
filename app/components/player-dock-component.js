@@ -7,7 +7,7 @@ export default Ember.Component.extend(Droppable, {
   tagName: "article",
   attributeBindings: ["id"],
   classNames: ["player-dock"],
-  isExpanded: true,
+  isExpanded: false,
 
   orderService: Ember.inject.service("order-service"),
 

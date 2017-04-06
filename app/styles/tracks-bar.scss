@@ -1,0 +1,293 @@
+#round-marker {
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-image: url("images/markers/round-marker.png");
+  font-size: 2.7em;
+  width: 7%;
+
+  .position-control {
+
+    .active {
+      display: inline-block;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      margin: .7em 0;
+    }
+  }
+}
+
+.track {
+  background: rgba(0, 0, 0, 0.7);
+  color: #ccc;
+  overflow: auto;
+  font-size: 0.65em;
+  padding: .5%;
+  float: left;
+  margin: 0 1px 0 0;
+  height: 75px;
+  box-sizing: border-box;
+  &.current {
+    color: white;
+  }
+
+  &.empty {
+    opacity: .5;
+  }
+
+  a {
+    color: white;
+  }
+
+  h3 {
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    text-indent: 20px;
+    margin: 0;
+  }
+
+  h4 {
+    margin: .5em .5em .5em 20px;
+    white-space: nowrap;
+    font-weight: normal;
+    overflow: hidden;
+  }
+}
+.position-track {
+  .house {
+    background-position: center 15px;
+    background-repeat: no-repeat;
+    background-size: auto 67%;
+    width: 32px;
+    height: 58px;
+    float: left;
+    text-align: center;
+  }
+}
+
+.position-control {
+  .controls {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+}
+
+#tracks-bar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 900;
+  background: #333;
+
+
+  #supply-position-track {
+    min-width: 15.20%;
+
+    .house {
+      &#stark {
+        background-image: url("images/markers/stark-supply.png");
+      }
+
+      &#greyjoy {
+        background-image: url("images/markers/greyjoy-supply.png");
+      }
+
+      &#baratheon {
+        background-image: url("images/markers/baratheon-supply.png");
+      }
+
+      &#lannister {
+        background-image: url("images/markers/lannister-supply.png");
+      }
+
+      &#tyrell {
+        background-image: url("images/markers/tyrell-supply.png");
+      }
+
+      &#martell {
+        background-image: url("images/markers/martell-supply.png");
+      }
+    }
+  }
+
+  #victory-position-track {
+    min-width: 18.80%;
+    .house {
+      height: 50px;
+      width: 40px;
+
+      &#stark {
+        background-image: url("images/markers/stark-victory.png");
+      }
+
+      &#greyjoy {
+        background-image: url("images/markers/greyjoy-victory.png");
+      }
+
+      &#baratheon {
+        background-image: url("images/markers/baratheon-victory.png");
+      }
+
+      &#lannister {
+        background-image: url("images/markers/lannister-victory.png");
+      }
+
+      &#tyrell {
+        background-image: url("images/markers/tyrell-victory.png");
+      }
+
+      &#martell {
+        background-image: url("images/markers/martell-victory.png");
+      }
+    }
+  }
+
+  #status-stark {
+    h3 {
+      background-image: url("images/order-covers/stark.png");
+    }
+  }
+
+  #status-greyjoy {
+    h3 {
+      background-image: url("images/order-covers/greyjoy.png");
+    }
+  }
+
+  #status-baratheon {
+    h3 {
+      background-image: url("images/order-covers/baratheon.png");
+    }
+  }
+
+  #status-lannister {
+    h3 {
+      background-image: url("images/order-covers/lannister.png");
+    }
+  }
+
+  #status-tyrell {
+    h3 {
+      background-image: url("images/order-covers/tyrell.png");
+    }
+  }
+
+  #status-martell {
+    h3 {
+      background-image: url("images/order-covers/martell.png");
+    }
+  }
+
+  #user-menu {
+    float: right;
+    width: 7%;
+    text-align: right;
+
+    a, a:visited, a:link {
+      color: White;
+      display: block;
+      margin: .7em 0;
+      font-size: 1.2em;
+      text-decoration: none;
+    }
+  }
+
+  [draggable] {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    /* Required to make elements draggable in old WebKit */
+    -khtml-user-drag: element;
+    -webkit-user-drag: element;
+  }
+
+  .influence-track-component {
+    overflow: hidden;
+    min-width: 17.15%;
+    padding: 2em .5em 2em 4em;
+    background-position: 8px center;
+    background-size: 24px;
+    background-repeat: no-repeat;
+
+    &#iron-throne-track {
+      background-image: url("images/special/throne.png");
+    }
+
+    &#fiefdoms-track {
+      background-image: url("images/special/blade.png");
+    }
+
+    &#kings-court-track {
+      background-image: url("images/special/raven.png");
+    }
+
+    [draggable] {
+      float: left;
+    }
+  }
+
+  .status-items {
+    .marker, .special-token {
+      background-position: left center;
+      background-size: 26px;
+      background-repeat: no-repeat;
+      padding: 2%;
+      float: left;
+      text-indent: 24px;
+    }
+
+    .special-token {
+      &#throne-token {
+        background-image: url("images/special/throne.png");
+      }
+
+      &#blade-token {
+        background-image: url("images/special/blade.png");
+      }
+
+      &#raven-token {
+        background-image: url("images/special/raven.png");
+      }
+    }
+
+    .marker {
+      width: 26px;
+      height: 26px;
+      padding: 0;
+      margin: 1%;
+      text-indent: -15000px;
+
+      &#stark {
+        background-image: url("images/markers/stark-influence.png");
+      }
+
+      &#greyjoy {
+        background-image: url("images/markers/greyjoy-influence.png");
+      }
+
+      &#baratheon {
+        background-image: url("images/markers/baratheon-influence.png");
+      }
+
+      &#lannister {
+        background-image: url("images/markers/lannister-influence.png");
+      }
+
+      &#tyrell {
+        background-image: url("images/markers/tyrell-influence.png");
+      }
+
+      &#martell {
+        background-image: url("images/markers/martell-influence.png");
+      }
+    }
+  }
+}

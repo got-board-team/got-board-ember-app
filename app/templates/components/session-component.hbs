@@ -1,0 +1,6 @@
+{{#if session.isAuthenticated}}
+  Welcome logged in user!
+  If you like to logout click <a id="logout" href="#"{{ action 'invalidateSession' }}>here</a>
+{{else}}
+  Click here to {{#link-to 'login'}}login!{{/link-to}}
+{{/if}}

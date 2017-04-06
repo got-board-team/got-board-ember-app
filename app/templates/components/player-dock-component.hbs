@@ -1,12 +1,8 @@
 {{#if isExpanded}}
   <aside>
-    <section id="player-main-info">
-      <h1>House of {{player.house}}</h1>
-      <p>Total player units: {{player.units.length}}</p>
-    </section>
-
     <section id="player-units">
       <h2>Avaiable Units: {{player.availableUnits.length}}</h2>
+      <p>Total player units: {{player.units.length}}</p>
       {{#each player.availableUnits as |unit|}}
         {{unit-component unit=unit}}
       {{/each}}
@@ -31,13 +27,9 @@
 
     <section id="player-cards">
       <h2>Player Cards: {{player.houseCards.length}}</h2>
-      <ul>
-        {{#each player.houseCards as |houseCard|}}
-          <li>
-            {{house-card-component houseCard=houseCard}}
-          </li>
-        {{/each}}
-      </ul>
+      {{#each player.houseCards as |houseCard|}}
+        {{house-card-component houseCard=houseCard}}
+      {{/each}}
     </section>
 
     <button {{action 'contract'}} class="toggle-trigger on-right">&#10094;</button>

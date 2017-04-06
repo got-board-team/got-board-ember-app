@@ -1,0 +1,29 @@
+<section id="tracks-bar">
+  <div id="round-marker" class="track">
+    {{position-control-component number=match.round onUpdate=(action 'updateMatch')}}
+  </div>
+
+  {{position-track-component type='supply' players=match.players}}
+
+  {{position-track-component type='victory' players=match.players}}
+
+  {{influence-track-component
+    id='iron-throne-track'
+    track=match.ironThroneTrack
+    onChange=(action 'updateMatch')}}
+
+  {{influence-track-component
+    id='fiefdoms-track'
+    track=match.fiefdomsTrack
+    onChange=(action 'updateMatch')}}
+
+  {{influence-track-component
+    id='kings-court-track'
+    track=match.kingsCourtTrack
+    onChange=(action 'updateMatch')}}
+
+  <div id="user-menu" class="track">
+    {{#link-to 'matches'}}Exit match{{/link-to}}
+    <a id="logout" href="#" {{ action 'invalidateSession' }}>Logout</a>
+  </div>
+</section>

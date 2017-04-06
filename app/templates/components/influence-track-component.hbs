@@ -1,0 +1,8 @@
+{{#each track as |house|}}
+  <div id="{{dasherize house}}" class="marker" draggable="true"
+       {{action "handleDragStart" house on="dragStart" preventDefault=false}}
+       {{action "handleDragOver" on="dragOver"}}
+       {{action "handleDrop" house on="drop"}}>
+    {{house}}
+  </div>
+{{/each}}

@@ -1,0 +1,17 @@
+.territory {
+  fill: none;
+  stroke: none;
+  pointer-events: all;
+
+  &:hover {
+    fill: orange;
+    opacity: 0.7;
+  }
+
+  &.drop-actived {
+    path {
+      fill: white;
+      opacity: 0.7;
+    }
+  }
+}

@@ -1,5 +1,4 @@
-<path class="territory" d="{{territory.path}}" />
-<foreignObject class="container" data-territory="{{territory.id}}">
+<foreignObject class="container">
   {{#each territory.units as |unit|}}
     {{unit-component unit=unit}}
   {{/each}}
@@ -11,4 +10,14 @@
   {{#each territory.powerTokens as |powerToken|}}
     {{power-token-component powerToken=powerToken}}
   {{/each}}
+
+  {{#if territory.garrison}}
+    {{draggable-component
+    object=territory.garrison
+    class=(concat 'piece garrison-' territory.garrison.name)}}
+  {{/if}}
 </foreignObject>
+
+<path class="territory" d="{{territory.path}}"
+{{action "allowDrop" on="dragOver"}}
+/>

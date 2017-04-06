@@ -1,0 +1,9 @@
+{{#each players as |player|}}
+  <div id="{{dasherize player.house}}" class="house">
+    {{#if supply}}
+      {{position-control-component number=player.supplyPosition onUpdate=(action 'updatePlayer' player)}}
+    {{else}}
+      {{position-control-component number=player.victoryPosition onUpdate=(action 'updatePlayer' player)}}
+    {{/if}}
+  </div>
+{{/each}}

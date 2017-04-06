@@ -1,0 +1,22 @@
+@mixin order-token($klass, $image) {
+  .#{$klass} {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 80px;
+    width: 80px;
+    background-image: url("images/orders/#{$image}.png");
+  }
+}
+
+@include order-token("march", "march");
+@include order-token("march-p", "marchp");
+@include order-token("march-m", "marchm");
+@include order-token("consolidate", "consolidate");
+@include order-token("consolidate-p", "consolidatep");
+@include order-token("defend", "defend");
+@include order-token("defend-p", "defendp");
+@include order-token("raid", "raid");
+@include order-token("raid-p", "raidp");
+@include order-token("support", "support");
+@include order-token("support-p", "supportp");

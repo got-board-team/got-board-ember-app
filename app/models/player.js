@@ -11,6 +11,8 @@ export default DS.Model.extend({
   houseCards: DS.hasMany(),
   house: DS.attr(),
   userId: DS.attr(),
+  supplyPosition: DS.attr(),
+  victoryPosition: DS.attr(),
 
   availableUnits: computed("units.@each.territory", function() {
     return this.get("units").filterBy("territory", null).toArray();
